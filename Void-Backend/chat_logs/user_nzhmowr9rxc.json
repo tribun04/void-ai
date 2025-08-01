@@ -1,0 +1,51 @@
+[
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "can u connect me with a real agent",
+    "timestamp": "2025-06-09T07:07:18.152Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749452798,
+      "exp": 1752044798
+    },
+    "timestamp": "2025-06-09T07:07:33.954Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "hello",
+    "timestamp": "2025-06-09T07:07:39.400Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749463598,
+      "exp": 1752055598
+    },
+    "timestamp": "2025-06-09T10:07:38.966Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749473930,
+      "exp": 1752065930
+    },
+    "timestamp": "2025-06-09T12:58:56.117Z"
+  }
+]

@@ -1,0 +1,213 @@
+[
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-09T15:18:26.019Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:18:32.077Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T15:18:32.079Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "hello ",
+    "timestamp": "2025-06-09T15:18:34.612Z"
+  },
+  {
+    "from": "user",
+    "text": "its fucking working ",
+    "timestamp": "2025-06-09T15:18:44.205Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:19:44.435Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with real agent please ",
+    "timestamp": "2025-06-09T15:19:53.291Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:21:08.804Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T15:21:08.804Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:21:09.898Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect with a real agent",
+    "timestamp": "2025-06-09T15:21:33.059Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:22:43.420Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T15:22:43.421Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:22:45.058Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "can  u connect me with a real agent ",
+    "timestamp": "2025-06-09T15:31:35.033Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:32:57.802Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T15:32:57.803Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "hello",
+    "timestamp": "2025-06-09T15:32:59.546Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:34:12.544Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "talk to an agent",
+    "timestamp": "2025-07-02T07:28:00.672Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1751441248,
+      "exp": 1754033248
+    },
+    "timestamp": "2025-07-02T07:28:03.017Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-07-02T07:28:03.017Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "Pershendetje",
+    "timestamp": "2025-07-02T07:28:05.744Z"
+  },
+  {
+    "from": "user",
+    "text": "Me nevoitet ndihma juaj ne projektin te cilin une po e krijoj ",
+    "timestamp": "2025-07-02T07:28:24.034Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1751441248,
+      "exp": 1754033248
+    },
+    "timestamp": "2025-07-02T07:28:29.336Z"
+  }
+]

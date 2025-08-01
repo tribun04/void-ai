@@ -1,0 +1,41 @@
+{
+  "name": "Void AI Costumer Support Bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^6.12.0",
+    "@vonage/server-sdk": "^3.21.0",
+    "axios": "^1.10.0",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "form-data": "^4.0.3",
+    "franc": "^6.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.3",
+    "nodemailer": "^7.0.5",
+    "openai": "^5.1.0",
+    "pdfkit": "^0.17.1",
+    "sequelize": "^6.37.7",
+    "socket.io": "^4.8.1",
+    "twilio": "^5.7.0",
+    "uuid": "^11.1.0",
+    "vapi": "^0.1.0",
+    "ws": "^8.18.2"
+  },
+  "devDependencies": {
+    "prisma": "^6.12.0"
+  }
+}

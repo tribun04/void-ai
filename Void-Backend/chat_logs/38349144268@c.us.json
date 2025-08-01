@@ -1,0 +1,145 @@
+[
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "Fol me agjent",
+    "timestamp": "2025-06-10T08:05:07.155Z",
+    "channel": "whatsapp"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749542723,
+      "exp": 1752134723
+    },
+    "timestamp": "2025-06-10T08:05:27.397Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-10T08:05:27.399Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "pershendetje",
+    "timestamp": "2025-06-10T08:05:30.016Z"
+  },
+  {
+    "from": "user",
+    "text": "Qysh je",
+    "timestamp": "2025-06-10T08:05:35.538Z"
+  },
+  {
+    "from": "user",
+    "text": "I’m just",
+    "timestamp": "2025-06-10T08:05:53.143Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "Fol me agjent",
+    "timestamp": "2025-06-10T08:23:58.146Z",
+    "channel": "whatsapp"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749543689,
+      "exp": 1752135689
+    },
+    "timestamp": "2025-06-10T08:24:08.270Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-10T08:24:08.273Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "pershendetje",
+    "timestamp": "2025-06-10T08:24:10.529Z"
+  },
+  {
+    "from": "user",
+    "text": "Pershendetje",
+    "timestamp": "2025-06-10T08:24:46.565Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749543689,
+      "exp": 1752135689
+    },
+    "timestamp": "2025-06-10T08:25:30.429Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "Live agent",
+    "channel": "whatsapp"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750252460,
+      "exp": 1752844460
+    },
+    "timestamp": "2025-06-18T13:40:55.125Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-18T13:40:55.126Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "hello ",
+    "timestamp": "2025-06-18T13:40:57.852Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "how are you",
+    "timestamp": "2025-06-18T13:41:01.508Z"
+  },
+  {
+    "from": "user",
+    "text": "Fine fine",
+    "timestamp": "2025-06-18T13:41:05.914Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750252460,
+      "exp": 1752844460
+    },
+    "timestamp": "2025-06-18T13:41:16.564Z"
+  }
+]

@@ -1,0 +1,731 @@
+[
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent ",
+    "timestamp": "2025-06-07T15:12:06.523Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309072,
+      "exp": 1749337872
+    },
+    "timestamp": "2025-06-07T15:12:10.875Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "persshendetje ",
+    "timestamp": "2025-06-07T15:12:16.803Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "si muj me ju ndihmu",
+    "timestamp": "2025-06-07T15:12:24.091Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "hi there connect me with a real agent please ",
+    "timestamp": "2025-06-07T15:20:36.330Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T15:20:40.115Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "pershendetje qysh muj met ndihmu",
+    "timestamp": "2025-06-07T15:20:46.979Z"
+  },
+  {
+    "from": "user",
+    "text": "kam probleme me e-banking",
+    "timestamp": "2025-06-07T15:20:52.898Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T15:20:58.913Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "pershendetje",
+    "timestamp": "2025-06-07T15:21:06.809Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-07T15:23:07.865Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T15:23:09.418Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "pershendetje",
+    "timestamp": "2025-06-07T15:23:20.506Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent ",
+    "timestamp": "2025-06-07T15:23:42.657Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T15:23:44.267Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "Pershendetje ",
+    "timestamp": "2025-06-07T15:23:48.794Z"
+  },
+  {
+    "from": "user",
+    "text": "Pershendetje",
+    "timestamp": "2025-06-07T15:23:53.032Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "i need a real agent",
+    "timestamp": "2025-06-07T15:25:39.321Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "hello i need a real agent",
+    "timestamp": "2025-06-07T15:25:50.746Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T15:25:53.425Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "pershendetje",
+    "timestamp": "2025-06-07T15:26:01.473Z"
+  },
+  {
+    "from": "user",
+    "text": "pershendetje",
+    "timestamp": "2025-06-07T15:26:04.681Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-07T15:27:15.761Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T15:27:17.155Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "pershendetje",
+    "timestamp": "2025-06-07T15:27:22.459Z"
+  },
+  {
+    "from": "user",
+    "text": "pershendetje",
+    "timestamp": "2025-06-07T15:27:26.267Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with real agent",
+    "timestamp": "2025-06-07T15:36:43.592Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T15:36:48.980Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-07T15:39:39.840Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T15:39:41.664Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "pershendetje si mund te ju ndihmoj",
+    "timestamp": "2025-06-07T15:39:54.625Z"
+  },
+  {
+    "from": "user",
+    "text": "pershendetjee",
+    "timestamp": "2025-06-07T15:39:59.424Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T17:00:57.096Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-07T17:01:26.279Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T17:01:29.206Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "hi there ",
+    "timestamp": "2025-06-07T17:01:36.535Z"
+  },
+  {
+    "from": "user",
+    "text": "whats wrong",
+    "timestamp": "2025-06-07T17:01:41.751Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T17:01:44.110Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T17:07:03.422Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-07T17:11:23.230Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T17:11:25.664Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "hello ",
+    "timestamp": "2025-06-07T17:11:35.639Z"
+  },
+  {
+    "from": "user",
+    "text": "hello ",
+    "timestamp": "2025-06-07T17:11:38.606Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T17:25:29.220Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "talk to an agent",
+    "timestamp": "2025-06-18T12:48:36.756Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750250620,
+      "exp": 1752842620
+    },
+    "timestamp": "2025-06-18T12:48:41.791Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-18T12:48:41.791Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "Pershendetje",
+    "timestamp": "2025-06-18T12:48:45.900Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750250620,
+      "exp": 1752842620
+    },
+    "timestamp": "2025-06-18T12:49:06.356Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "talk to an agent",
+    "timestamp": "2025-06-18T12:58:09.619Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750250620,
+      "exp": 1752842620
+    },
+    "timestamp": "2025-06-18T13:00:11.309Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-18T13:00:11.310Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750250620,
+      "exp": 1752842620
+    },
+    "timestamp": "2025-06-18T13:00:17.779Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "hi connect me to a real agent ",
+    "timestamp": "2025-06-18T13:00:44.107Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750250620,
+      "exp": 1752842620
+    },
+    "timestamp": "2025-06-18T13:03:39.733Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-18T13:03:39.733Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750252350,
+      "exp": 1752844350
+    },
+    "timestamp": "2025-06-18T13:12:33.347Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "talk to an agent",
+    "timestamp": "2025-06-18T13:12:59.692Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750252350,
+      "exp": 1752844350
+    },
+    "timestamp": "2025-06-18T13:13:29.414Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-18T13:13:29.415Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750252350,
+      "exp": 1752844350
+    },
+    "timestamp": "2025-06-18T13:13:30.404Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "talk to an agent",
+    "timestamp": "2025-06-18T13:13:36.619Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750252350,
+      "exp": 1752844350
+    },
+    "timestamp": "2025-06-18T13:13:59.436Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-18T13:13:59.437Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "talk to an agent",
+    "timestamp": "2025-06-18T13:14:31.459Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750252460,
+      "exp": 1752844460
+    },
+    "timestamp": "2025-06-18T13:14:40.156Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-18T13:14:40.157Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750252460,
+      "exp": 1752844460
+    },
+    "timestamp": "2025-06-18T13:14:55.947Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "talk to an agent",
+    "timestamp": "2025-06-20T09:45:44.190Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1751441248,
+      "exp": 1754033248
+    },
+    "timestamp": "2025-07-02T07:27:45.515Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-07-02T07:27:45.517Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1751441248,
+      "exp": 1754033248
+    },
+    "timestamp": "2025-07-02T07:27:46.816Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "Hi there can u connect me with a real agent please ",
+    "timestamp": "2025-07-07T07:59:55.498Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+      "name": "Agent Void",
+      "role": "agent",
+      "iat": 1751875181,
+      "exp": 1754467181
+    },
+    "timestamp": "2025-07-07T08:14:31.968Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Agent Void linked to chat.",
+    "timestamp": "2025-07-07T08:14:31.969Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+    "agentName": "Agent Void",
+    "text": "Pershendetje",
+    "timestamp": "2025-07-07T08:14:39.252Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+    "agentName": "Agent Void",
+    "text": "Si mundemi me ju ndihmu?",
+    "timestamp": "2025-07-07T08:14:45.107Z"
+  },
+  {
+    "from": "user",
+    "text": "M'duhet me integru kete intelegjence ne platformen time?",
+    "timestamp": "2025-07-07T08:15:48.324Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+    "agentName": "Agent Void",
+    "text": "Per integrimin e platformens Void mundeni me kontaktu ne support@shigjeta.com",
+    "timestamp": "2025-07-07T08:16:55.400Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+    "agentName": "Agent Void",
+    "text": "Faleminderit kaloni mire !",
+    "timestamp": "2025-07-07T08:17:02.436Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+      "name": "Agent Void",
+      "role": "agent",
+      "iat": 1751875181,
+      "exp": 1754467181
+    },
+    "timestamp": "2025-07-07T08:17:03.751Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "talk to an agent ",
+    "timestamp": "2025-07-07T08:18:43.739Z",
+    "channel": "web"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+      "name": "Agent Void",
+      "role": "agent",
+      "iat": 1751875181,
+      "exp": 1754467181
+    },
+    "timestamp": "2025-07-07T08:19:25.651Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Agent Void linked to chat.",
+    "timestamp": "2025-07-07T08:19:25.652Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+    "agentName": "Agent Void",
+    "text": "Hello there how can i help you today?",
+    "timestamp": "2025-07-07T08:19:35.692Z"
+  },
+  {
+    "from": "user",
+    "text": "Hi there i want to integrate this technology into my platform",
+    "timestamp": "2025-07-07T08:20:34.502Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+    "agentName": "Agent Void",
+    "text": "To make this happend contact support@shigjeta.com",
+    "timestamp": "2025-07-07T08:20:48.984Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+      "name": "Agent Void",
+      "role": "agent",
+      "iat": 1751875181,
+      "exp": 1754467181
+    },
+    "timestamp": "2025-07-07T08:20:51.897Z"
+  }
+]

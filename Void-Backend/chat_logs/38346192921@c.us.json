@@ -1,0 +1,57 @@
+[
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "Fol me agjent",
+    "timestamp": "2025-06-10T10:09:27.852Z",
+    "channel": "whatsapp"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749543689,
+      "exp": 1752135689
+    },
+    "timestamp": "2025-06-10T10:09:31.783Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-10T10:09:31.785Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "pershendetje",
+    "timestamp": "2025-06-10T10:09:37.788Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "si muj me ju ndihmu ",
+    "timestamp": "2025-06-10T10:09:41.164Z"
+  },
+  {
+    "from": "user",
+    "text": "Sesss",
+    "timestamp": "2025-06-10T10:09:46.677Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749543689,
+      "exp": 1752135689
+    },
+    "timestamp": "2025-06-10T10:09:54.589Z"
+  }
+]

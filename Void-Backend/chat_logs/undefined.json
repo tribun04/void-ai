@@ -1,0 +1,19 @@
+[
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749473930,
+      "exp": 1752065930
+    },
+    "timestamp": "2025-06-09T13:06:23.333Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T13:06:23.333Z"
+  }
+]

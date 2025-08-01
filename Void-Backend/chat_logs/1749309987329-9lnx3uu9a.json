@@ -1,0 +1,141 @@
+[
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "can u connect me with a real agent",
+    "timestamp": "2025-06-07T15:26:38.009Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T15:26:42.795Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "pershdnetje",
+    "timestamp": "2025-06-07T15:26:46.795Z"
+  },
+  {
+    "from": "user",
+    "text": "pershdnetje",
+    "timestamp": "2025-06-07T15:26:49.891Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-07T15:29:17.353Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T15:29:19.290Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "pershendetje",
+    "timestamp": "2025-06-07T15:29:30.042Z"
+  },
+  {
+    "from": "user",
+    "text": "haha",
+    "timestamp": "2025-06-07T15:29:32.337Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect  me with a real agent",
+    "timestamp": "2025-06-07T15:30:05.033Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T15:30:08.209Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "hi",
+    "timestamp": "2025-06-07T15:30:10.642Z"
+  },
+  {
+    "from": "user",
+    "text": "hahah",
+    "timestamp": "2025-06-07T15:30:12.433Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "prsh",
+    "timestamp": "2025-06-07T15:31:30.401Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-07T15:31:42.993Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T15:31:45.953Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "prsh",
+    "timestamp": "2025-06-07T15:31:50.329Z"
+  },
+  {
+    "from": "user",
+    "text": "asgas",
+    "timestamp": "2025-06-07T15:31:52.161Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749309622,
+      "exp": 1749338422
+    },
+    "timestamp": "2025-06-07T17:00:58.702Z"
+  }
+]

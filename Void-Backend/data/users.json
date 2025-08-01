@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ce33376d-167b-4ced-b761-f39d6bfe47bc",
+    "email": "void@shigjeta.com",
+    "passwordHash": "$2b$10$gofvA4fRAy74pmvtIylnE.WsfO.judBRNZR71mJIAPApZhBGWkxPi",
+    "name": "Void Superadministrator",
+    "role": "superadmin"
+  },
+  {
+    "id": "55819a0d-e78b-42c7-99ab-13ee4c7de415",
+    "email": "admin@void.com",
+    "passwordHash": "$2b$10$xA7EMub7zrwlw/.rruE42.0MmGh5y20RsbSq021d6./gO4PScyxPy",
+    "name": "Admin Supervisor",
+    "role": "admin"
+  },
+  {
+    "id": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+    "email": "voidagen@shigjeta.com",
+    "passwordHash": "$2b$10$Au0D4BlU/aJhXraEqpDMR.uR/JBjnCiSBHfafC.SsL.5mC.yYpwaS",
+    "name": "Agent Void",
+    "role": "agent"
+  }
+]

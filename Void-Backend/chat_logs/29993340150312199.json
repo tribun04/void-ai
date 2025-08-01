@@ -1,0 +1,1514 @@
+[
+  {
+    "from": "user",
+    "text": "pershendetje",
+    "timestamp": "2025-06-09T12:57:37.076Z"
+  },
+  {
+    "from": "ai",
+    "text": "Përshëndetje! Si mund të ju ndihmoj sot?",
+    "timestamp": "2025-06-09T12:57:40.590Z"
+  },
+  {
+    "from": "user",
+    "text": "kush je ti ?",
+    "timestamp": "2025-06-09T12:58:07.350Z"
+  },
+  {
+    "from": "ai",
+    "text": "Unë jam Asistenti Virtual i Bankës Ekonomike. Mund të ju ndihmoj me informacion rreth produkteve dhe shërbimeve tona, si llogaritë bankare, kreditë, kartelat e kreditit dhe e-banking. Si mund të ju ndihmoj sot?",
+    "timestamp": "2025-06-09T12:58:12.617Z"
+  },
+  {
+    "from": "user",
+    "text": "a mundesh mem lidh me ni agjent real",
+    "timestamp": "2025-06-09T12:58:22.114Z"
+  },
+  {
+    "from": "ai",
+    "text": "Sigurisht, për të komunikuar me një agjent të vërtetë, ju lutem kontaktoni me numrin e telefonit të shërbimit për klientët të Bankës Ekonomike ose vizitoni degën më të afërt. Gjithashtu, mund të përdorni opsionin e \"Chat me një agjent\" në faqen tonë të internetit.",
+    "timestamp": "2025-06-09T12:58:27.813Z"
+  },
+  {
+    "from": "user",
+    "text": "connect me with a real agent",
+    "timestamp": "2025-06-09T12:58:35.839Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-09T12:58:35.839Z",
+    "channel": "messenger"
+  },
+  {
+    "from": "user",
+    "text": "connect me with a real agent",
+    "timestamp": "2025-06-09T12:59:01.484Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-09T12:59:01.484Z",
+    "channel": "messenger"
+  },
+  {
+    "from": "user",
+    "text": "can u connect me with a real agent",
+    "timestamp": "2025-06-09T13:06:18.582Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "can u connect me with a real agent",
+    "timestamp": "2025-06-09T13:06:18.582Z",
+    "channel": "messenger"
+  },
+  {
+    "from": "user",
+    "text": "pershendetje",
+    "timestamp": "2025-06-09T13:06:46.350Z"
+  },
+  {
+    "from": "ai",
+    "text": "Përshëndetje! Si mund t'ju ndihmoj sot?",
+    "timestamp": "2025-06-09T13:06:49.530Z"
+  },
+  {
+    "from": "user",
+    "text": "hello",
+    "timestamp": "2025-06-09T13:06:31.300Z"
+  },
+  {
+    "from": "ai",
+    "text": "Përshëndetje! Kjo bisedë është caktuar në gjuhën shqipe. Ju lutem, riformuloni pyetjen tuaj në shqip. Faleminderit!",
+    "timestamp": "2025-06-09T13:06:59.410Z"
+  },
+  {
+    "from": "user",
+    "text": "kush je ti",
+    "timestamp": "2025-06-09T13:07:00.365Z"
+  },
+  {
+    "from": "ai",
+    "text": "Unë jam Asistenti Virtual i Bankës Ekonomike. Jam këtu për të ju ndihmuar me çdo pyetje që mund të keni rreth produkteve dhe shërbimeve të bankës sonë. Si mund të ju ndihmoj sot?",
+    "timestamp": "2025-06-09T13:07:05.521Z"
+  },
+  {
+    "from": "user",
+    "text": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:07:36.679Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:07:36.679Z",
+    "channel": "messenger"
+  },
+  {
+    "from": "user",
+    "text": "pershendetje",
+    "timestamp": "2025-06-09T13:09:09.848Z"
+  },
+  {
+    "from": "ai",
+    "text": "Përshëndetje! Si mund të ju ndihmoj sot?",
+    "timestamp": "2025-06-09T13:09:12.319Z"
+  },
+  {
+    "from": "user",
+    "text": "prsh",
+    "timestamp": "2025-06-09T13:16:49.981Z"
+  },
+  {
+    "from": "ai",
+    "text": "Përshëndetje! Si mund të ju ndihmoj sot?",
+    "timestamp": "2025-06-09T13:16:53.415Z"
+  },
+  {
+    "from": "user",
+    "text": "a po pergjigjes a po han rre",
+    "timestamp": "2025-06-09T13:17:01.261Z"
+  },
+  {
+    "from": "ai",
+    "text": "Për të siguruar një komunikim sa më të qartë, ju lutem të shprehni pyetjen tuaj në mënyrë të qartë dhe të përgjegjshme. Si mund të ju ndihmoj sot?",
+    "timestamp": "2025-06-09T13:17:06.487Z"
+  },
+  {
+    "from": "user",
+    "text": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:17:50.414Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:17:50.414Z",
+    "channel": "messenger"
+  },
+  {
+    "from": "user",
+    "text": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:17:50.414Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:17:50.414Z",
+    "channel": "messenger"
+  },
+  {
+    "from": "user",
+    "text": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:22:25.083Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:22:25.083Z",
+    "channel": "messenger"
+  },
+  {
+    "from": "user",
+    "text": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:25:11.076Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:25:11.076Z",
+    "channel": "messenger"
+  },
+  {
+    "from": "user",
+    "text": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:28:30.996Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:28:30.996Z",
+    "channel": "messenger"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749474959,
+      "exp": 1752066959
+    },
+    "timestamp": "2025-06-09T13:28:32.811Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T13:28:32.811Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "man fund ",
+    "timestamp": "2025-06-09T13:28:36.665Z"
+  },
+  {
+    "from": "user",
+    "text": "hello",
+    "timestamp": "2025-06-09T13:28:45.870Z"
+  },
+  {
+    "from": "ai",
+    "text": "Përshëndetje! Kjo bisedë është caktuar në gjuhën shqipe. Ju lutem riformuloni pyetjen tuaj në shqip. Faleminderit!",
+    "timestamp": "2025-06-09T13:28:50.034Z"
+  },
+  {
+    "from": "user",
+    "text": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:35:06.839Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-09T13:35:06.839Z",
+    "channel": "messenger"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749474959,
+      "exp": 1752066959
+    },
+    "timestamp": "2025-06-09T13:35:09.195Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T13:35:09.196Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "hello ",
+    "timestamp": "2025-06-09T13:35:11.688Z"
+  },
+  {
+    "from": "user",
+    "text": "asdadad",
+    "timestamp": "2025-06-09T13:35:16.218Z"
+  },
+  {
+    "from": "ai",
+    "text": "Më vjen keq, por nuk arrita të kuptoj pyetjen tuaj. Ju lutem, mund ta riformuloni atë në mënyrë që të mund të ju ndihmoj më mirë?",
+    "timestamp": "2025-06-09T13:35:20.939Z"
+  },
+  {
+    "from": "user",
+    "text": "vec log out",
+    "timestamp": "2025-06-09T13:36:10.788Z"
+  },
+  {
+    "from": "ai",
+    "text": "Për të dalë nga llogaria juaj e Bankës Ekonomike, ju duhet të klikoni mbi emrin tuaj ose ikonën e profilit në këndin e djathtë të sipërm të ekranit. Në menunë që do të shfaqet, zgjidhni opsionin \"Dil\" ose \"Log Out\". Kjo do të ju çojë në faqen e hyrjes dhe do të ndalohet çdo sesion i hapur në llogarinë tuaj. Ju lutem, mos harroni të mbyllni sesionin tuaj kur përdorni kompjuterë publikë ose të përbashkët për të mbrojtur informacionin tuaj personal.",
+    "timestamp": "2025-06-09T13:36:22.656Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749474959,
+      "exp": 1752066959
+    },
+    "timestamp": "2025-06-09T13:40:08.338Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T13:40:08.339Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "asd",
+    "timestamp": "2025-06-09T13:40:10.624Z"
+  },
+  {
+    "from": "ai",
+    "text": "Më vjen keq, por nuk arrita të kuptoj pyetjen tuaj. Ju lutem, mund ta riformuloni atë?",
+    "timestamp": "2025-06-09T13:40:19.920Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti has joined the chat.",
+    "timestamp": "2025-06-09T14:01:29.207Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "asd",
+    "timestamp": "2025-06-09T14:01:31.740Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "asdadad",
+    "timestamp": "2025-06-09T14:14:48.188Z"
+  },
+  {
+    "from": "user",
+    "text": "asd",
+    "timestamp": "2025-06-09T14:16:42.438Z"
+  },
+  {
+    "from": "ai",
+    "text": "Më vjen keq, por nuk arrita të kuptoj pyetjen tuaj. Ju lutem, mund ta riformuloni atë?",
+    "timestamp": "2025-06-09T14:16:46.917Z"
+  },
+  {
+    "from": "user",
+    "text": "hi",
+    "timestamp": "2025-06-09T14:15:38.733Z"
+  },
+  {
+    "from": "ai",
+    "text": "Më vjen keq, por kjo bisedë është caktuar në gjuhën shqipe. Ju lutem riformuloni pyetjen tuaj në shqip. Faleminderit!",
+    "timestamp": "2025-06-09T14:17:34.486Z"
+  },
+  {
+    "from": "user",
+    "text": "hi",
+    "timestamp": "2025-06-09T14:16:15.604Z"
+  },
+  {
+    "from": "ai",
+    "text": "Më vjen keq, por kjo bisedë është caktuar në gjuhën shqipe. Ju lutem riformuloni pyetjen tuaj në shqip. Faleminderit!",
+    "timestamp": "2025-06-09T14:17:40.885Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749474959,
+      "exp": 1752066959
+    },
+    "timestamp": "2025-06-09T14:18:50.395Z"
+  },
+  {
+    "from": "user",
+    "text": "connect me with a real agent",
+    "timestamp": "2025-06-09T14:19:04.242Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-09T14:19:04.242Z",
+    "channel": "messenger"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749474959,
+      "exp": 1752066959
+    },
+    "timestamp": "2025-06-09T14:19:08.996Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T14:19:08.998Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "asdsadadadadsa",
+    "timestamp": "2025-06-09T14:19:11.514Z"
+  },
+  {
+    "from": "user",
+    "text": "asdadadadadad",
+    "timestamp": "2025-06-09T14:19:15.859Z"
+  },
+  {
+    "from": "ai",
+    "text": "Më vjen keq, por nuk arrita të kuptoj pyetjen tuaj. Ju lutem, mund ta riformuloni?",
+    "timestamp": "2025-06-09T14:19:20.280Z"
+  },
+  {
+    "from": "user",
+    "text": "a je mir",
+    "timestamp": "2025-06-09T14:19:49.287Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749474959,
+      "exp": 1752066959
+    },
+    "timestamp": "2025-06-09T14:20:06.554Z"
+  },
+  {
+    "from": "user",
+    "text": "hello there",
+    "timestamp": "2025-06-09T14:20:11.132Z"
+  },
+  {
+    "from": "ai",
+    "text": "Përshëndetje! Kjo bisedë është caktuar në gjuhën shqipe. Ju lutem riformuloni pyetjen tuaj në shqip. Faleminderit!",
+    "timestamp": "2025-06-09T14:20:17.721Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "asdad",
+    "timestamp": "2025-06-09T14:30:04.456Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749474959,
+      "exp": 1752066959
+    },
+    "timestamp": "2025-06-09T14:30:11.256Z"
+  },
+  {
+    "from": "user",
+    "text": "hello",
+    "timestamp": "2025-06-09T14:30:51.829Z"
+  },
+  {
+    "from": "ai",
+    "text": "Përshëndetje! Kjo bisedë është caktuar në gjuhën shqipe. Ju lutem riformuloni pyetjen tuaj në shqip. Faleminderit!",
+    "timestamp": "2025-06-09T14:30:57.368Z"
+  },
+  {
+    "from": "user",
+    "text": "can u connect me with a real agent",
+    "timestamp": "2025-06-09T14:31:05.300Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "can u connect me with a real agent",
+    "timestamp": "2025-06-09T14:31:05.300Z",
+    "channel": "messenger"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749474959,
+      "exp": 1752066959
+    },
+    "timestamp": "2025-06-09T14:31:12.602Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T14:31:12.603Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "prsh",
+    "timestamp": "2025-06-09T14:31:16.241Z"
+  },
+  {
+    "from": "user",
+    "text": "prsh",
+    "timestamp": "2025-06-09T14:31:20.144Z"
+  },
+  {
+    "from": "user",
+    "text": "hello",
+    "timestamp": "2025-06-09T14:27:27.793Z"
+  },
+  {
+    "from": "user",
+    "text": "helo",
+    "timestamp": "2025-06-09T14:30:15.759Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749479829,
+      "exp": 1752071829
+    },
+    "timestamp": "2025-06-09T14:37:11.223Z"
+  },
+  {
+    "from": "user",
+    "text": "asdad",
+    "timestamp": "2025-06-09T14:44:49.685Z"
+  },
+  {
+    "from": "ai",
+    "text": "Më vjen keq, por nuk arrita të kuptoj pyetjen tuaj. A mund ta riformuloni, ju lutem?",
+    "timestamp": "2025-06-09T14:44:54.216Z"
+  },
+  {
+    "from": "user",
+    "text": "hi there",
+    "timestamp": "2025-06-09T14:54:58.555Z"
+  },
+  {
+    "from": "ai",
+    "text": "Më vjen keq, por kjo bisedë është caktuar në gjuhën shqipe. Ju lutem riformuloni pyetjen tuaj në shqip.",
+    "timestamp": "2025-06-09T14:55:04.283Z"
+  },
+  {
+    "from": "user",
+    "text": "connect me with real agent",
+    "timestamp": "2025-06-09T14:55:29.003Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with real agent",
+    "timestamp": "2025-06-09T14:55:29.003Z",
+    "channel": "messenger"
+  },
+  {
+    "from": "user",
+    "text": "connect me with real agent",
+    "timestamp": "2025-06-09T15:03:30.401Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with real agent",
+    "timestamp": "2025-06-09T15:03:30.401Z",
+    "channel": "messenger"
+  },
+  {
+    "from": "user",
+    "text": "connect with a real agent please",
+    "timestamp": "2025-06-09T15:21:19.033Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect with a real agent please",
+    "timestamp": "2025-06-09T15:21:19.033Z",
+    "channel": "messenger"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:22:45.844Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T15:22:45.847Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:22:47.107Z"
+  },
+  {
+    "from": "user",
+    "text": "hi",
+    "timestamp": "2025-06-09T15:27:24.518Z"
+  },
+  {
+    "from": "ai",
+    "text": "Përshëndetje! Kjo bisedë është caktuar në gjuhën shqipe. Ju lutem riformuloni pyetjen tuaj në shqip. Faleminderit!",
+    "timestamp": "2025-06-09T15:27:29.457Z"
+  },
+  {
+    "from": "user",
+    "text": "help",
+    "timestamp": "2025-06-09T15:27:37.916Z"
+  },
+  {
+    "from": "user",
+    "text": "1.",
+    "timestamp": "2025-06-09T15:27:47.344Z"
+  },
+  {
+    "from": "user",
+    "text": "1",
+    "timestamp": "2025-06-09T15:27:56.822Z"
+  },
+  {
+    "from": "ai",
+    "text": "Përshëndetje! Si mund të ju ndihmoj sot?",
+    "timestamp": "2025-06-09T15:28:00.440Z"
+  },
+  {
+    "from": "user",
+    "text": "me lidh me agjent real",
+    "timestamp": "2025-06-09T15:28:09.756Z"
+  },
+  {
+    "from": "ai",
+    "text": "Më vjen keq, por si asistent virtual, nuk kam aftësinë të lidhem drejtpërdrejt me një agjent real. Por mund të të ndihmoj me informacione rreth produkteve dhe shërbimeve të Bankës Ekonomike. Nëse ke nevojë për ndihmë më të hollësishme, të sugjeroj të kontaktojësh me bankën nëpërmjet telefonit ose të vizitosh degën më të afërt.",
+    "timestamp": "2025-06-09T15:28:20.399Z"
+  },
+  {
+    "from": "user",
+    "text": "connect me with real agent",
+    "timestamp": "2025-06-09T15:28:32.288Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with real agent",
+    "timestamp": "2025-06-09T15:28:32.288Z",
+    "channel": "messenger"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:30:15.332Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T15:30:15.333Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "Pershendetje",
+    "timestamp": "2025-06-09T15:30:23.130Z"
+  },
+  {
+    "from": "user",
+    "text": "Spo funksionjn disa sherbime",
+    "timestamp": "2025-06-09T15:30:32.664Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:31:11.882Z"
+  },
+  {
+    "from": "user",
+    "text": "hi there",
+    "timestamp": "2025-06-09T15:31:20.893Z"
+  },
+  {
+    "from": "user",
+    "text": "help",
+    "timestamp": "2025-06-09T15:31:53.070Z"
+  },
+  {
+    "from": "user",
+    "text": "English",
+    "timestamp": "2025-06-09T15:32:01.256Z"
+  },
+  {
+    "from": "user",
+    "text": "fol me agjent",
+    "timestamp": "2025-06-09T15:32:22.695Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "fol me agjent",
+    "timestamp": "2025-06-09T15:32:22.695Z",
+    "channel": "messenger"
+  },
+  {
+    "from": "user",
+    "text": "connect me with real agent",
+    "timestamp": "2025-06-09T15:32:34.207Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with real agent",
+    "timestamp": "2025-06-09T15:32:34.207Z",
+    "channel": "messenger"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:32:42.707Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-09T15:32:42.708Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "its eroni here ",
+    "timestamp": "2025-06-09T15:32:50.722Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749481786,
+      "exp": 1752073786
+    },
+    "timestamp": "2025-06-09T15:34:13.200Z"
+  },
+  {
+    "from": "user",
+    "text": "fol me agjent",
+    "timestamp": "2025-06-10T08:23:11.682Z"
+  },
+  {
+    "from": "user",
+    "text": "help",
+    "timestamp": "2025-06-10T08:23:16.475Z"
+  },
+  {
+    "from": "user",
+    "text": "shqip",
+    "timestamp": "2025-06-10T08:23:20.255Z"
+  },
+  {
+    "from": "user",
+    "text": "fol me agjent",
+    "timestamp": "2025-06-10T08:23:25.256Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "fol me agjent",
+    "timestamp": "2025-06-10T08:23:25.256Z",
+    "channel": "messenger"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749543689,
+      "exp": 1752135689
+    },
+    "timestamp": "2025-06-10T08:24:13.081Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-10T08:24:13.082Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "pershendetje",
+    "timestamp": "2025-06-10T08:24:19.612Z"
+  },
+  {
+    "from": "user",
+    "text": "pershendetje",
+    "timestamp": "2025-06-10T08:25:07.243Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1749543689,
+      "exp": 1752135689
+    },
+    "timestamp": "2025-06-10T08:25:12.943Z"
+  },
+  {
+    "from": "user",
+    "text": "hi",
+    "timestamp": "2025-06-10T10:03:08.732Z"
+  },
+  {
+    "from": "user",
+    "text": "pershendetje",
+    "timestamp": "2025-06-10T10:11:20.450Z"
+  },
+  {
+    "from": "ai",
+    "text": "Përshëndetje! Si mund të ju ndihmoj sot?",
+    "timestamp": "2025-06-10T10:11:24.295Z"
+  },
+  {
+    "from": "user",
+    "text": "Pershendetje",
+    "timestamp": "2025-06-13T13:31:41.022Z"
+  },
+  {
+    "from": "user",
+    "text": "help",
+    "timestamp": "2025-06-13T13:31:57.519Z"
+  },
+  {
+    "from": "user",
+    "text": "English",
+    "timestamp": "2025-06-13T13:35:58.878Z"
+  },
+  {
+    "from": "user",
+    "text": "hi",
+    "timestamp": "2025-06-13T13:58:38.398Z"
+  },
+  {
+    "from": "user",
+    "text": "talk to an agjent",
+    "timestamp": "2025-06-13T13:58:48.527Z"
+  },
+  {
+    "from": "ai",
+    "text": "Më vjen keq, por unë nuk mund të lidhem me një agjent në këtë moment. Por mund të ju ndihmoj me shumë pyetje që mund të keni. Si mund të ju ndihmoj sot?",
+    "timestamp": "2025-06-13T13:58:54.136Z"
+  },
+  {
+    "from": "user",
+    "text": "talk to an agent",
+    "timestamp": "2025-06-13T13:59:00.964Z"
+  },
+  {
+    "from": "user",
+    "text": "talk to an agent",
+    "timestamp": "2025-06-13T13:59:27.703Z"
+  },
+  {
+    "from": "user",
+    "text": "Pershendetje",
+    "timestamp": "2025-06-13T14:44:34.024Z"
+  },
+  {
+    "from": "user",
+    "text": "hej",
+    "timestamp": "2025-06-16T10:00:28.867Z"
+  },
+  {
+    "from": "user",
+    "text": "hej",
+    "timestamp": "2025-06-18T13:44:46.671Z"
+  },
+  {
+    "from": "user",
+    "text": "talk to an agent",
+    "timestamp": "2025-06-18T13:44:55.289Z"
+  },
+  {
+    "from": "user",
+    "text": "hej",
+    "timestamp": "2025-06-18T13:48:53.135Z"
+  },
+  {
+    "from": "user",
+    "text": "talk to an agent",
+    "timestamp": "2025-06-18T13:49:01.111Z"
+  },
+  {
+    "from": "user",
+    "text": "talk to an agent",
+    "timestamp": "2025-06-18T13:51:06.051Z"
+  },
+  {
+    "from": "user",
+    "text": "talk to an agent",
+    "timestamp": "2025-06-18T13:51:18.994Z"
+  },
+  {
+    "from": "user",
+    "text": "hej",
+    "timestamp": "2025-06-18T13:56:29.289Z"
+  },
+  {
+    "from": "user",
+    "text": "talk to an agent",
+    "timestamp": "2025-06-18T13:56:43.395Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750254317,
+      "exp": 1752846317
+    },
+    "timestamp": "2025-06-18T13:56:52.765Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-06-18T13:56:52.765Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "pershendetje",
+    "timestamp": "2025-06-18T13:57:00.973Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "qysh muj me ju ndihmu ",
+    "timestamp": "2025-06-18T13:57:05.211Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1750254317,
+      "exp": 1752846317
+    },
+    "timestamp": "2025-06-18T13:57:09.716Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/506876365_692412286901535_1889037318033505344_n.mp4/audioclip-1750255259000-1254.mp4?_nc_cat=109&_nc_cb=47395efc-58e9a73e&ccb=1-7&_nc_sid=d61c36&_nc_ohc=kTPKZPlCmY4Q7kNvwEO8TTJ&_nc_oc=Adk_Wp7gFbwZ8bbPKw864ublUmF3gpu8nk4r1jzGh-SY4xwMq8SAahB2w9UVa7r4GAB6d3x_mRiD9u3by8KAjpT2&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=JRC3Oj6CX22te4-8qEhsyg&oh=03_Q7cD2gEaldJ_j5TQsPx6mWjgriTu_e1uUpxHQHdQbuvJpkwAnA&oe=6854A7A8",
+    "timestamp": "2025-06-18T14:01:01.237Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-06-18T14:01:13.462Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/508208496_963351822444692_9173589130097188020_n.mp4/audioclip-1750255283000-1950.mp4?_nc_cat=100&_nc_cb=47395efc-58e9a73e&ccb=1-7&_nc_sid=d61c36&_nc_ohc=3JkfLQoOYasQ7kNvwFYOgch&_nc_oc=AdnZQ9SOsWRgdva2ft8ZagpW1-hMxa2o-NxniyvbVRC_tiqsU8pVZ7JPKQTiGJihP7pmMhK4MluTtbylR6J1btta&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=PL1jS2qKrLtS8EFZD-Tp3g&oh=03_Q7cD2gF6xxVi3iCNP30LBpsDRoH3_rg4RLpmgrnyo7FNPgELsQ&oe=68548E03",
+    "timestamp": "2025-06-18T14:01:25.354Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-06-18T14:01:36.213Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/506694442_1078013630916194_6754023001510358292_n.mp4/audioclip-1750255307000-3529.mp4?_nc_cat=105&_nc_cb=47395efc-58e9a73e&ccb=1-7&_nc_sid=d61c36&_nc_ohc=zNR-1voebS0Q7kNvwEWiPFq&_nc_oc=Adkb2VtCUx6jtBcSx7XZh97F2vw_O4-LG3LAj8sMFMr3Fw1zZ3Flw4bhugfrrCzY5whYmZowAegYAzr-hWe7X5rB&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=N0foIbDWsx8fAy77RxIxZg&oh=03_Q7cD2gEXd0Q3sBAsh0JsVXImhhy85d4LI0kLCvqB_Sawhns5sA&oe=68549682",
+    "timestamp": "2025-06-18T14:01:49.061Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-06-18T14:01:59.283Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/508490681_520741184362497_1482623203480873784_n.mp4/audioclip-1750255421000-3785.mp4?_nc_cat=108&_nc_cb=47395efc-58e9a73e&ccb=1-7&_nc_sid=d61c36&_nc_ohc=FywQ-vfoL34Q7kNvwEUHchj&_nc_oc=Adm-YrldEVvfQAZlZb5C4-RGeDVduGCXAy1w-rj7OqhCMbiAszh_KfcR2mGo6S2RI4bdlqCKVcql8i1_Y-uNlCNK&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=mX-IxAZV2MqBTvvHY8QoZw&oh=03_Q7cD2gFVc7H0ByNvfvCI9fMmdQZSMS6fgkPmLKIbNc6TkhNTxg&oe=6854B386",
+    "timestamp": "2025-06-18T14:03:42.486Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-06-18T14:04:32.175Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/508455213_761782349506955_4881027807285174050_n.mp4/audioclip-1750255485000-3831.mp4?_nc_cat=107&_nc_cb=47395efc-58e9a73e&ccb=1-7&_nc_sid=d61c36&_nc_ohc=uPkEQQppSdIQ7kNvwFRLLGf&_nc_oc=AdlQoJp_aLYUDB5bkNG_kvN0Ruyy-C8AfGWHG1blhlph144YKKpZ0pakZ-OAVB9FevZZYvZTqwGumDf6CUtBEWO8&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=BZT7QwFt4bNmKfHch7xziw&oh=03_Q7cD2gHI82HzHbzznDeb0TMBh_F-7RMIHbdzMxX3LGofF0tvAg&oe=6854B681",
+    "timestamp": "2025-06-18T14:04:46.838Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/506995258_1869058707351600_5766455691979672980_n.mp4/audioclip-1750255517000-3831.mp4?_nc_cat=100&_nc_cb=47395efc-58e9a73e&ccb=1-7&_nc_sid=d61c36&_nc_ohc=mVODD_a-3HUQ7kNvwG7RJYj&_nc_oc=Adm5N5OPFDeYUMdBIFbqUVGYqEb2qYCgwLnG3VaEYKWuFi65b41faVWQa7-0a4eSgXQF46Zu4AFSSo30YJkFInF_&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=Ih2XKjJ8CBa0pEN5uF7c5g&oh=03_Q7cD2gGCFHbtHCv7D1EyRFTJ3eF6C5xSUnlSIx7Mo8mLGucaTA&oe=68548F60",
+    "timestamp": "2025-06-18T14:05:18.890Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-06-18T14:05:31.690Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/506853664_1049141433481684_8949183088207388171_n.mp4/audioclip-1750255559000-7175.mp4?_nc_cat=109&_nc_cb=47395efc-58e9a73e&ccb=1-7&_nc_sid=d61c36&_nc_ohc=tNRhDoOIHdYQ7kNvwGyv0Zu&_nc_oc=Adl9MGlxNZLsY9f04JDAdSC1jd_nOtPLy03KJWB3NfnrOaKmwLDwv6VLC0jgswat0OfEQuOPC-hP39qt7EB38LaN&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=N5HutdNodbBYjRw32Tcyew&oh=03_Q7cD2gEOJLc-EGcMJNm-WtQeHqMjy_fZqj3ykuSlFPHfiBGS0w&oe=68548B82",
+    "timestamp": "2025-06-18T14:06:00.864Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-06-18T14:06:11.486Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/506263320_3605001109632149_2653005936353317240_n.mp4/audioclip-1750255578000-4017.mp4?_nc_cat=103&_nc_cb=47395efc-58e9a73e&ccb=1-7&_nc_sid=d61c36&_nc_ohc=zyDUO9Xev8IQ7kNvwFBCM82&_nc_oc=Adl0PeRDLqMIIPpFKA_fz5TKwgcdtzN61RBnlxc0caHKj0yOw00M6Tje_E2EFsaVSGA-zJD2Fen5sE8IRR5R-Y9d&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=Mz7U6cPBPSvt_Xg5D8yj7w&oh=03_Q7cD2gHV5U0bC7kaz-m68-KsiineNwPGZM87HwqwyeG36QQ0dw&oe=6854A90A",
+    "timestamp": "2025-06-18T14:06:20.616Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-06-18T14:06:36.095Z"
+  },
+  {
+    "from": "user",
+    "text": "hi",
+    "timestamp": "2025-06-19T12:38:48.515Z"
+  },
+  {
+    "from": "user",
+    "text": "hi",
+    "timestamp": "2025-06-26T09:08:38.362Z"
+  },
+  {
+    "from": "user",
+    "text": "hi",
+    "timestamp": "2025-06-26T09:13:46.257Z"
+  },
+  {
+    "from": "user",
+    "text": "hi",
+    "timestamp": "2025-06-26T09:18:17.765Z"
+  },
+  {
+    "from": "user",
+    "text": "may i know to who im talking with ?",
+    "timestamp": "2025-06-26T09:18:28.992Z"
+  },
+  {
+    "from": "ai",
+    "text": "Nice to meet you! I am VOID AI, an artificial intelligence assistant developed by Shigjeta LLC. I'm here to help answer your questions and provide information on a wide range of topics. I don't have a personal identity or emotions, but I'm designed to be informative, neutral, and respectful. How can I assist you today?",
+    "timestamp": "2025-06-26T09:18:35.665Z"
+  },
+  {
+    "from": "user",
+    "text": "may i know the services of shigjeta llc?",
+    "timestamp": "2025-06-26T09:20:30.847Z"
+  },
+  {
+    "from": "ai",
+    "text": "Hello there!\n\nShigjeta LLC is a company that offers a wide range of innovative solutions and services. As their trusted AI assistant, I'd be happy to provide you with an overview of their services.\n\nShigjeta LLC provides:\n\n1. **Cybersecurity Services**: Shigjeta's team of experts helps organizations protect themselves against cyber threats by implementing robust security measures, conducting penetration testing, and providing incident response services.\n2. **Artificial Intelligence (AI) Development**: They develop custom AI solutions for various industries, including natural language processing, computer vision, and predictive analytics.\n3. **Data Analytics**: Shigjeta's data analysts help businesses make informed decisions by analyzing their data, identifying trends, and creating actionable insights.\n4. **Cloud Computing Services**: Their experts migrate and manage clients' infrastructure to the cloud, ensuring seamless scalability and reliability.\n5. **IT Consulting**: Shigjeta's IT consultants assess clients' technology needs and provide tailored solutions for improved efficiency, productivity, and cost savings.\n6. **Software Development**: They develop custom software applications for various industries, including mobile apps, web applications, and enterprise software.\n\nThese are just a few examples of the services offered by Shigjeta LLC. If you're interested in learning more or would like to discuss how their services can benefit your organization, feel free to ask!",
+    "timestamp": "2025-06-26T09:20:42.336Z"
+  },
+  {
+    "from": "user",
+    "text": "hello there",
+    "timestamp": "2025-06-26T09:30:45.277Z"
+  },
+  {
+    "from": "user",
+    "text": "may i know to who im talking with",
+    "timestamp": "2025-06-26T09:30:56.221Z"
+  },
+  {
+    "from": "ai",
+    "text": "Hello! You are currently interacting with VOID AI, a professional assistant provided by Shigjeta LLC. I'm here to help you with any questions or tasks you may have, and I'll respond in English. If you type in a different language, please don't hesitate to rephrase your question in English, and I'll do my best to assist you. How can I help you today?",
+    "timestamp": "2025-06-26T09:31:03.634Z"
+  },
+  {
+    "from": "user",
+    "text": "may i know the services of shigjeta llc ?",
+    "timestamp": "2025-06-26T09:31:18.700Z"
+  },
+  {
+    "from": "ai",
+    "text": "Welcome! Shigjeta LLC is a company that provides various services. According to my knowledge, their main focus areas include:\n\n1. **Digital Solutions**: They offer customized digital solutions for businesses, including website development, mobile app development, and e-commerce platform development.\n2. **IT Consulting**: Their experts provide IT consulting services to help organizations optimize their technology infrastructure, improve efficiency, and reduce costs.\n3. **Cybersecurity**: Shigjeta LLC offers cybersecurity services to protect clients' networks, systems, and data from cyber threats and attacks.\n4. **Data Analytics**: They provide data analytics services to help businesses make informed decisions by analyzing their data and identifying trends and patterns.\n\nPlease note that these services might be subject to change or expansion. If you're interested in learning more about Shigjeta LLC's services or would like to inquire about a specific service, feel free to ask!",
+    "timestamp": "2025-06-26T09:31:26.976Z"
+  },
+  {
+    "from": "user",
+    "text": "hi",
+    "timestamp": "2025-06-26T10:04:48.674Z"
+  },
+  {
+    "from": "ai",
+    "text": "Hello! It's nice to meet you. How can I assist you today?",
+    "timestamp": "2025-06-26T10:04:53.629Z"
+  },
+  {
+    "from": "user",
+    "text": "may i know to who im talking with please",
+    "timestamp": "2025-06-26T10:04:59.171Z"
+  },
+  {
+    "from": "ai",
+    "text": "Hello! I'm VOID AI, a professional assistant from Shigjeta LLC. It's nice to meet you! I'm here to help you with any questions or tasks you may have. Please feel free to ask me anything, and I'll do my best to assist you in a timely and efficient manner.",
+    "timestamp": "2025-06-26T10:05:03.130Z"
+  },
+  {
+    "from": "user",
+    "text": "Pershendetje",
+    "timestamp": "2025-07-02T07:32:48.036Z"
+  },
+  {
+    "from": "user",
+    "text": "talk to an agent",
+    "timestamp": "2025-07-02T07:32:55.293Z"
+  },
+  {
+    "from": "user",
+    "text": "hello boss",
+    "timestamp": "2025-07-07T08:03:18.294Z"
+  },
+  {
+    "from": "user",
+    "text": "hello boss",
+    "timestamp": "2025-07-07T08:03:54.611Z"
+  },
+  {
+    "from": "ai",
+    "text": "Hello! How can I assist you today?",
+    "timestamp": "2025-07-07T08:03:59.674Z"
+  },
+  {
+    "from": "user",
+    "text": "test",
+    "timestamp": "2025-07-07T08:06:52.764Z"
+  },
+  {
+    "from": "user",
+    "text": "asd",
+    "timestamp": "2025-07-07T08:06:28.783Z"
+  },
+  {
+    "from": "ai",
+    "text": "Welcome! I'm VOID AI, a professional assistant from Shigjeta LLC. How can I assist you today? Please feel free to ask your question in English. If you type in another language, I'll kindly request that you rephrase it in English. What's on your mind?",
+    "timestamp": "2025-07-07T08:07:00.528Z"
+  },
+  {
+    "from": "user",
+    "text": "mnay i know to who im talking with ?",
+    "timestamp": "2025-07-07T08:07:08.613Z"
+  },
+  {
+    "from": "ai",
+    "text": "Hello! I'm VOID AI, an assistant from Shigjeta LLC. I'm here to help you professionally and always respond in English. If you type in a different language, please don't hesitate to rephrase your question in English.\n\nAs for your question, \"mnay i know to who im talking with?\" - it seems like there might be some typos or grammatical errors. Could you please rephrase the question in a clearer and more concise manner? I'll do my best to assist you!",
+    "timestamp": "2025-07-07T08:07:14.623Z"
+  },
+  {
+    "from": "user",
+    "text": "talk to an agent",
+    "timestamp": "2025-07-07T08:07:27.644Z"
+  },
+  {
+    "from": "user",
+    "text": "Pershendetje",
+    "timestamp": "2025-07-07T08:07:57.859Z"
+  },
+  {
+    "from": "ai",
+    "text": "Welcome! I'm VOID AI, your professional assistant from Shigjeta LLC. How can I assist you today? Please feel free to ask me any question or request assistance in English. If you type in a different language, I'll kindly ask you to rephrase the question in English. What's on your mind?",
+    "timestamp": "2025-07-07T08:08:02.758Z"
+  },
+  {
+    "from": "user",
+    "text": "talk to an agent",
+    "timestamp": "2025-07-07T08:08:31.461Z"
+  },
+  {
+    "from": "user",
+    "text": "Hello there",
+    "timestamp": "2025-07-07T08:23:13.373Z"
+  },
+  {
+    "from": "ai",
+    "text": "Hello! It's nice to meet you. How can I assist you today?",
+    "timestamp": "2025-07-07T08:23:17.325Z"
+  },
+  {
+    "from": "user",
+    "text": "May i know to who im talking with",
+    "timestamp": "2025-07-07T08:25:18.257Z"
+  },
+  {
+    "from": "ai",
+    "text": "Hello! I'm VOID AI, a professional assistant from Shigjeta LLC. I'm here to help you with any questions or concerns you may have. Please feel free to ask me anything, and I'll do my best to provide you with accurate and helpful information.",
+    "timestamp": "2025-07-07T08:25:22.521Z"
+  },
+  {
+    "from": "user",
+    "text": "talk to an agent",
+    "timestamp": "2025-07-07T08:25:38.251Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+      "name": "Agent Void",
+      "role": "agent",
+      "iat": 1751875181,
+      "exp": 1754467181
+    },
+    "timestamp": "2025-07-07T08:25:47.325Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Agent Void linked to chat.",
+    "timestamp": "2025-07-07T08:25:47.326Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+    "agentName": "Agent Void",
+    "text": "Hello how can i help you today ",
+    "timestamp": "2025-07-07T08:26:15.252Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "ce33376d-167b-4ced-b761-f39d6bfe47bc",
+      "name": "Void Superadministrator",
+      "role": "superadmin",
+      "iat": 1751875223,
+      "exp": 1754467223
+    },
+    "timestamp": "2025-07-07T09:37:43.785Z"
+  },
+  {
+    "from": "user",
+    "text": "hello",
+    "timestamp": "2025-07-11T10:17:23.600Z"
+  },
+  {
+    "from": "user",
+    "text": "hello",
+    "timestamp": "2025-07-11T10:18:24.922Z"
+  },
+  {
+    "from": "user",
+    "text": "may i know to who im talking with",
+    "timestamp": "2025-07-11T10:18:41.789Z"
+  },
+  {
+    "from": "ai",
+    "text": "Hello! I'm VOID AI, a professional assistant from Shigjeta LLC. It's nice to meet you and assist you in any way I can. Please feel free to ask me anything, and I'll do my best to provide helpful responses. How may I help you today?",
+    "timestamp": "2025-07-11T10:18:49.427Z"
+  },
+  {
+    "from": "user",
+    "text": "hello may i know to who im talking with",
+    "timestamp": "2025-07-11T10:22:33.989Z"
+  },
+  {
+    "from": "user",
+    "text": "may i know to who im talking with",
+    "timestamp": "2025-07-11T10:22:46.609Z"
+  },
+  {
+    "from": "ai",
+    "text": "Nice to meet you! I'm Olive AI, an assistant from the Olive Medical Center. I'm here to help you with any medical-related questions or concerns you may have. How can I assist you today?",
+    "timestamp": "2025-07-11T10:22:51.206Z"
+  },
+  {
+    "from": "user",
+    "text": "how can i book an appointment",
+    "timestamp": "2025-07-11T10:23:10.026Z"
+  },
+  {
+    "from": "ai",
+    "text": "You can book an appointment by calling us at one of our phone numbers: Kryesor (main): +355 38-720055, Laboratori (laboratory): +355 49-520056 or +355 49-520078, Klinika (clinic): +355 48-520001, or Testimi PCR (PCR testing): +355 48-520003.",
+    "timestamp": "2025-07-11T10:23:15.894Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/517249209_1071374961622538_4961735186967317375_n.mp4/audioclip-1752229688000-2229.mp4?_nc_cat=108&ccb=1-7&_nc_sid=d61c36&_nc_ohc=IFLYkY1CwQkQ7kNvwGmLrzs&_nc_oc=Adlt-39HQStJZGsFOiHr20TtjIOfgmcAhPxXuPIL0wqrUkyLE_Ry9hSHsXP6R-DhTQXRRSqeelMA1B0gWu_Z85MR&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=kVz-RtnZltH98leDh6WJoQ&oh=03_Q7cD2wFjpZr0fcAxmBBmXhGAF9j4_p4hUuu89y-_vHoq9MwViw&oe=6872B976",
+    "timestamp": "2025-07-11T10:28:10.139Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-07-11T10:28:22.018Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/517346843_4070848723175141_7327137705238047400_n.mp4/audioclip-1752230196000-2136.mp4?_nc_cat=110&ccb=1-7&_nc_sid=d61c36&_nc_ohc=z4QELnltxjYQ7kNvwHviCnX&_nc_oc=Adk95wvZehauv6vjv-bTad2JDoyk2TEmxaOxzh7Taqbw6QGrwcUPuc3RXDqZwS7stnbmG0JdbjLo9dRYjcVfF9pd&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=xNrT0_YTQDSaMltq5TInIA&oh=03_Q7cD2wFzcQrXf5Wibfw6Johgf9YJ-JXGuFpfuHoH1swzQPp-nQ&oe=6872CC46",
+    "timestamp": "2025-07-11T10:36:38.135Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-07-11T10:36:51.821Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/517740896_4038732886273535_7547461089421890284_n.mp4/audioclip-1752230347000-1974.mp4?_nc_cat=102&ccb=1-7&_nc_sid=d61c36&_nc_ohc=P-_ziQRAYWcQ7kNvwHqNuG0&_nc_oc=Adkkt2w1Kc3D7jhwgpeb2AVhCwYJti182oM_lI_G2Gk-J4812ErWyvgRjwAnm4IQWh8543J1mS-quWrOL-Nd06az&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=ydKVh4YEbUfnv1jQboDwIA&oh=03_Q7cD2wHIoHpbelw2HXthzx0z7gIWKX-pFygOFCipfV1YguVm0Q&oe=6872DF1D",
+    "timestamp": "2025-07-11T10:39:09.530Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-07-11T10:39:19.770Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/517422119_1386066122656924_2463585281963737777_n.mp4/audioclip-1752230378000-2043.mp4?_nc_cat=107&ccb=1-7&_nc_sid=d61c36&_nc_ohc=5XkOQ5jDXCkQ7kNvwHkHhXY&_nc_oc=Adlav0DU6MYFPDilJItfjnu6dUBfiT7okZE5B4oFjFccYSQt2dPND6AvoDZnwlRM9yL548V-a8XrYRmBIvROSnJV&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=UoaGGYQPH7RLrsUJCgvMQg&oh=03_Q7cD2wHIMO0DdrWt8YVXHZOUon41jjt80pfrtq2XgLnyQuCgEg&oe=6872B409",
+    "timestamp": "2025-07-11T10:39:39.948Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-07-11T10:39:54.386Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/518236668_1203855961428249_8883429477033945705_n.mp4/audioclip-1752230427000-6200.mp4?_nc_cat=111&ccb=1-7&_nc_sid=d61c36&_nc_ohc=Pu_JM3WlYooQ7kNvwG9W_ZN&_nc_oc=AdmGvKBxfjIG3BlIslW2kUW6d7J9A79Ddw225_28XekN9yLnzejnNGuV0D7uzXmJ2qXcUuvuIRPH0OgorH1J1_TP&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=MNMGDHLWAE2DLkf3nxNXOg&oh=03_Q7cD2wHIm-P0Fr2Kmu9RuUm0y4jDJseklj7gAH4sdoHywa9v4w&oe=6872B367",
+    "timestamp": "2025-07-11T10:40:28.474Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-07-11T10:40:46.754Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/517852968_24116706851321316_7807735397886890832_n.mp4/audioclip-1752230470000-6850.mp4?_nc_cat=102&ccb=1-7&_nc_sid=d61c36&_nc_ohc=Og0u1YafeXIQ7kNvwGgHMbT&_nc_oc=Adkrf8vktn1s1q8s66HYnsv7IAm3TIq5j_omgSVykNLODUtYgjDaBi1MkXV_UNEYrHvXb9u2MuVZ-NjP-AYbVkYY&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=kzdkG6guJal_kbevZ4BTXg&oh=03_Q7cD2wFY77LARWBIhjH35wJ0jQ9Y6QMieFc-0eTmWo1Cy7l2qQ&oe=6872E3D1",
+    "timestamp": "2025-07-11T10:41:11.819Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-07-11T10:41:28.855Z"
+  },
+  {
+    "from": "user",
+    "type": "voice",
+    "url": "https://cdn.fbsbx.com/v/t59.3654-21/518130685_1175883154570934_8295613417428828073_n.mp4/audioclip-1752230560000-3738.mp4?_nc_cat=105&ccb=1-7&_nc_sid=d61c36&_nc_ohc=aFuOAK1q_24Q7kNvwFm13Ff&_nc_oc=AdnjMU3VxV00A57zU5ycUqNZdVuuDe7mPxHEBLtvv8IlTinsECrp5oFLRjKj0HIpD96ojyGtFPzLHR9aHTn9Tf5t&_nc_zt=28&_nc_ht=cdn.fbsbx.com&_nc_gid=lufq8i4SLUyr7KNUGEhSjQ&oh=03_Q7cD2wFntPM17_YqBmxQDL_Sg8u47r7u7CxmbjEys7JmbI__Rg&oe=6872B47C",
+    "timestamp": "2025-07-11T10:42:42.163Z"
+  },
+  {
+    "from": "ai",
+    "type": "voice",
+    "text": "[AI Voice Reply Sent]",
+    "timestamp": "2025-07-11T10:42:56.110Z"
+  },
+  {
+    "from": "user",
+    "text": "hello",
+    "timestamp": "2025-07-11T10:56:37.817Z"
+  },
+  {
+    "from": "user",
+    "text": "Pershendetje",
+    "timestamp": "2025-07-11T13:04:33.603Z"
+  },
+  {
+    "from": "user",
+    "text": "fol shqip",
+    "timestamp": "2025-07-11T13:04:43.919Z"
+  },
+  {
+    "from": "ai",
+    "text": "I'm Olive AI, a professional assistant from Olive Medical Center. I'll be happy to help you in English. If you type in another language, please kindly rephrase your question in English.\n\nPlease go ahead and ask your question or provide more context so I can better assist you.",
+    "timestamp": "2025-07-11T13:04:49.797Z"
+  },
+  {
+    "from": "user",
+    "text": "Perdhendetje",
+    "timestamp": "2025-07-11T13:18:51.559Z"
+  },
+  {
+    "from": "ai",
+    "text": "Welcome to Olive Medical Center! I'm Olive AI, your professional assistant. How can I help you today? Please feel free to ask me any questions or concerns you may have. I'll do my best to provide you with accurate and helpful information.",
+    "timestamp": "2025-07-11T13:18:56.672Z"
+  },
+  {
+    "from": "user",
+    "text": "who are you",
+    "timestamp": "2025-07-11T13:19:03.166Z"
+  },
+  {
+    "from": "ai",
+    "text": "Nice to meet you! I am Olive AI, a professional assistant from the Olive Medical Center. I'm here to help you with any questions or concerns you may have, and I'll do my best to provide accurate and helpful information. If you have any medical-related queries, feel free to ask me!",
+    "timestamp": "2025-07-11T13:19:07.110Z"
+  },
+  {
+    "from": "user",
+    "text": "i want to schedule an appoinyment",
+    "timestamp": "2025-07-11T13:19:10.798Z"
+  },
+  {
+    "from": "ai",
+    "text": "I'd be happy to help you schedule an appointment. Can you please provide me with some more information about the type of appointment you're looking for? For example, what is the reason for your visit (e.g. routine check-up, follow-up on a previous diagnosis, etc.) and do you have a preferred date and time in mind?\n\nAlso, are you a new patient or an existing one? If you're a new patient, please let me know if you have any medical records or test results that we should be aware of.\n\nOnce I have this information, I can assist you in scheduling an appointment at your convenience.",
+    "timestamp": "2025-07-11T13:19:17.177Z"
+  },
+  {
+    "from": "user",
+    "text": "pershendetje",
+    "timestamp": "2025-07-11T13:25:14.847Z"
+  },
+  {
+    "from": "user",
+    "text": "fol shqip",
+    "timestamp": "2025-07-11T13:25:20.889Z"
+  },
+  {
+    "from": "ai",
+    "text": "Shpresa! Unë jam Olive AI, asistenti zyrtar i Olive Medical Center. Për ju është e gatshme të kthehet në ndihmë për t'u dhënë informacione sakte dhe të përgjigjet pyetjeve tuaj në lidhje me shumë tematikë mjekësore. Si mundësi, siç jeni i interesuar për një temë në veçanti?",
+    "timestamp": "2025-07-11T13:25:27.200Z"
+  }
+]

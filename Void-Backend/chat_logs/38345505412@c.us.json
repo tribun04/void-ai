@@ -1,0 +1,8 @@
+[
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "Fol me agjent",
+    "channel": "whatsapp"
+  }
+]

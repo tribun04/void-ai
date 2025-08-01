@@ -1,0 +1,11 @@
+{
+  "twilio": {
+    "apiKey": "",
+    "apiSecret": "",
+    "authId": "ACbdd9e4da1475c1eba035cd667665345d",
+    "authToken": "b95b80ac965eb2a060792e44c1a58275",
+    "spaceUrl": "",
+    "phoneNumber": "+18149926899",
+    "webhookPath": "incoming-twilio"
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "intent": "home_sample_collection_info",
+    "responses": {
+      "en": "Thank you for your interest. Olive Medical Center offers home sample collection services for your convenience. For details on scheduling, availability in your area, and any associated costs, please visit our website or contact our patient support team at +383 (0) 49 123 456.",
+      "sq": "Faleminderit për interesimin tuaj. Olive Medical Center ofron shërbime të marrjes së mostrave në shtëpi për lehtësinë tuaj. Për detaje rreth caktimit të terminit, disponueshmërisë në zonën tuaj dhe kostove, ju lutemi vizitoni faqen tonë të internetit ose kontaktoni ekipin tonë të mbështetjes për pacientë në +383 (0) 49 123 456.",
+      "sr": "Hvala na interesovanju. Olive Medical Center nudi usluge uzimanja uzoraka kod kuće radi vaše udobnosti. Za detalje o zakazivanju, dostupnosti u vašem području i troškovima, posetite našu veb stranicu ili kontaktirajte naš tim za podršku pacijentima na +383 (0) 49 123 456."
+    }
+  },
+  {
+    "intent": "request_for_partnership",
+    "responses": {
+      "en": "We appreciate your interest in partnering with Olive Medical Center. We are always open to exploring strategic collaborations with other clinics, corporate partners, and insurance providers. Please send your proposal to partnerships@olivemedical-ks.com, and our development team will get in touch.",
+      "sq": "E vlerësojmë interesimin tuaj për partneritet me Olive Medical Center. Gjithmonë jemi të hapur për bashkëpunime strategjike me klinika të tjera, partnerë korporativë dhe ofrues të sigurimeve. Ju lutemi dërgoni propozimin tuaj në partnerships@olivemedical-ks.com dhe ekipi ynë i zhvillimit do t'ju kontaktojë.",
+      "sr": "Zahvaljujemo se na interesovanju za partnerstvo sa Olive Medical Center. Uvek smo otvoreni za stratešku saradnju sa drugim klinikama, korporativnim partnerima i osiguravajućim kućama. Pošaljite svoj predlog na partnerships@olivemedical-ks.com i naš razvojni tim će vas kontaktirati."
+    }
+  },
+  {
+    "intent": "insurance_coverage_query",
+    "responses": {
+      "en": "Olive Medical Center collaborates with most major health insurance providers. To verify if your specific plan is accepted and for details on coverage, please contact our billing department directly at +383 (0) 49 111 222 or email billing@olivemedical-ks.com.",
+      "sq": "Olive Medical Center bashkëpunon me shumicën e ofruesve kryesorë të sigurimeve shëndetësore. Për të verifikuar nëse plani juaj pranohet dhe për detaje mbi mbulimin, ju lutemi kontaktoni departamentin tonë të faturimit direkt në +383 (0) 49 111 222 ose dërgoni email në billing@olivemedical-ks.com.",
+      "sr": "Olive Medical Center sarađuje sa većinom velikih osiguravajućih kuća. Da biste proverili da li je vaš plan prihvaćen i za detalje o pokriću, molimo kontaktirajte naše odeljenje za naplatu direktno na +383 (0) 49 111 222 ili pošaljite email na billing@olivemedical-ks.com."
+    }
+  }
+]

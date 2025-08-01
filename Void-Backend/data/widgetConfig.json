@@ -1,0 +1,27 @@
+{
+  "organizationId": "org_8e3083b3110f8d3b0d708427d6a86bcb",
+  "companyName": "Eron Company",
+  "brandColor": "#00ff62",
+  "welcomeMessage": "Hello! How can I help you today?",
+  "allowedDomains": [
+    "www.shigjeta.com"
+  ],
+  "languages": {
+    "en": {
+      "welcomeMessage": "Hi there, its Eron Company here how can i help you today ",
+      "inputPlaceholder": "Please Type Your Message Here ",
+      "agentHandoffMessage": "Agent is part of the conversation now",
+      "downloadTranscript": "Download your file"
+    },
+    "sq": {
+      "welcomeMessage": "Pershendetje Mire Se Vini",
+      "inputPlaceholder": "Pershendetje",
+      "agentHandoffMessage": "Agenti iu Bashkangjit Bisedes",
+      "downloadTranscript": "Downlodoje transcripten "
+    },
+    "sr": {}
+  },
+  "handoffTriggerKeywords": [
+    "agent"
+  ]
+}

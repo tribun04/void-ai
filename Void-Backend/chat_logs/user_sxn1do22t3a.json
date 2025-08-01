@@ -1,0 +1,51 @@
+[
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "connect me with a real agent",
+    "timestamp": "2025-06-08T11:17:52.364Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749381489,
+      "exp": 1749410289
+    },
+    "timestamp": "2025-06-08T11:18:13.126Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": "pershendetje",
+    "timestamp": "2025-06-08T11:18:18.509Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "da1f64a1-6981-4318-a3fd-de548bef101f",
+    "agentName": "Agent Sarah",
+    "text": " qysh muj me ju ndihmu ?",
+    "timestamp": "2025-06-08T11:18:21.501Z"
+  },
+  {
+    "from": "user",
+    "text": "mduhet me integru botin e juj ne platformen time a  mundesh mem than ma shume informata ",
+    "timestamp": "2025-06-08T11:18:39.780Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "da1f64a1-6981-4318-a3fd-de548bef101f",
+      "name": "Agent Sarah",
+      "role": "agent",
+      "iat": 1749381489,
+      "exp": 1749410289
+    },
+    "timestamp": "2025-06-08T11:20:29.430Z"
+  }
+]

@@ -1,0 +1,120 @@
+[
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "Live agent",
+    "channel": "whatsapp"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1751441592,
+      "exp": 1754033592
+    },
+    "timestamp": "2025-07-02T07:35:41.954Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Eron Bruti linked to chat.",
+    "timestamp": "2025-07-02T07:35:41.954Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "698a0601-3de9-4649-9441-4416548f4221",
+    "agentName": "Eron Bruti",
+    "text": "Pershendetje",
+    "timestamp": "2025-07-02T07:35:44.785Z"
+  },
+  {
+    "from": "user",
+    "text": "Si je",
+    "timestamp": "2025-07-02T07:35:48.991Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "698a0601-3de9-4649-9441-4416548f4221",
+      "name": "Eron Bruti",
+      "role": "agent",
+      "iat": 1751441592,
+      "exp": 1754033592
+    },
+    "timestamp": "2025-07-02T07:35:56.785Z"
+  },
+  {
+    "type": "event",
+    "event": "agent-requested",
+    "message": "Fol me agjent",
+    "channel": "whatsapp"
+  },
+  {
+    "type": "event",
+    "event": "agent-linked",
+    "agent": {
+      "id": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+      "name": "Agent Void",
+      "role": "agent",
+      "iat": 1752230811,
+      "exp": 1754822811
+    },
+    "timestamp": "2025-07-11T10:46:59.568Z"
+  },
+  {
+    "from": "system",
+    "text": "Agent Agent Void linked to chat.",
+    "timestamp": "2025-07-11T10:46:59.569Z"
+  },
+  {
+    "from": "user",
+    "text": "Hi",
+    "timestamp": "2025-07-11T10:47:04.912Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+    "agentName": "Agent Void",
+    "text": "Pershendetje qysh muj met ndihmu ",
+    "timestamp": "2025-07-11T10:47:09.646Z"
+  },
+  {
+    "from": "user",
+    "text": "I",
+    "timestamp": "2025-07-11T10:47:18.284Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+    "agentName": "Agent Void",
+    "text": "\\o shgo",
+    "timestamp": "2025-07-11T10:47:23.878Z"
+  },
+  {
+    "from": "user",
+    "text": "Ha",
+    "timestamp": "2025-07-11T10:47:26.676Z"
+  },
+  {
+    "from": "agent",
+    "agentId": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+    "agentName": "Agent Void",
+    "text": "shok shkruj qysh duhet mos mlodh ",
+    "timestamp": "2025-07-11T10:47:29.614Z"
+  },
+  {
+    "type": "event",
+    "event": "chat-ended-by-agent",
+    "agent": {
+      "id": "17ea14f8-69d1-4ddc-8160-84f97d567cb1",
+      "name": "Agent Void",
+      "role": "agent",
+      "iat": 1752230811,
+      "exp": 1754822811
+    },
+    "timestamp": "2025-07-11T10:47:34.846Z"
+  }
+]

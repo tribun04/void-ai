@@ -1,0 +1,82 @@
+[
+  {
+    "from": "user",
+    "message": "hello there can u help me please my card is gone ",
+    "timestamp": "2025-06-05T12:23:18.168Z"
+  },
+  {
+    "from": "user",
+    "message": "hi there ",
+    "timestamp": "2025-06-05T12:23:41.863Z"
+  },
+  {
+    "from": "user",
+    "message": "hi there ",
+    "timestamp": "2025-06-05T12:24:45.453Z"
+  },
+  {
+    "from": "user",
+    "message": "Hi there",
+    "timestamp": "2025-06-05T12:27:03.221Z"
+  },
+  {
+    "from": "user",
+    "message": "hi there",
+    "timestamp": "2025-06-05T12:27:38.285Z"
+  },
+  {
+    "from": "user",
+    "message": "hi there",
+    "timestamp": "2025-06-05T12:29:02.214Z"
+  },
+  {
+    "from": "user",
+    "message": "hi there",
+    "timestamp": "2025-06-05T12:29:23.782Z"
+  },
+  {
+    "from": "user",
+    "message": "hi there",
+    "timestamp": "2025-06-05T12:30:18.190Z"
+  },
+  {
+    "from": "user",
+    "message": "test",
+    "timestamp": "2025-06-05T12:31:01.102Z"
+  },
+  {
+    "from": "user",
+    "message": "hi there",
+    "timestamp": "2025-06-05T12:32:53.998Z"
+  },
+  {
+    "from": "user",
+    "message": "hi there",
+    "timestamp": "2025-06-05T12:36:53.109Z"
+  },
+  {
+    "from": "agent",
+    "message": "how can i help you",
+    "timestamp": "2025-06-05T12:36:58.885Z"
+  },
+  {
+    "from": "user",
+    "message": "i lost my card",
+    "timestamp": "2025-06-05T12:37:05.837Z"
+  },
+  {
+    "from": "agent",
+    "message": "you want to delete the card or what",
+    "timestamp": "2025-06-05T12:37:23.949Z"
+  },
+  {
+    "from": "user",
+    "message": "hi there",
+    "timestamp": "2025-06-05T13:14:39.417Z"
+  },
+  {
+    "from": "agent",
+    "message": "how can i help you",
+    "timestamp": "2025-06-05T13:14:45.081Z"
+  }
+]
