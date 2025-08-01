@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.3s forwards;
+}
+
+@keyframes gradient-shift {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.animate-gradient-shift {
+  animation: gradient-shift 15s ease infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
