@@ -11,7 +11,7 @@ import { ProtectedRoute } from './dashboard/components/ProtectedRoute';
 import { AdminRoute } from './dashboard/components/AdminRoute';
 import { SuperadminRoute } from './dashboard/components/SuperadminRoute';
 import { testModal } from './pages/Home';
-
+import { ManageTenantModal } from './dashboard/components/modals/ManageTenantModal';
 
 function App() {
   return (
@@ -42,6 +42,7 @@ function App() {
               </SuperadminRoute>
             }
           />
+          <Route path="/manage-tenant" element={<ManageTenantModal />} />
               <Route
             path="/superadmin"
             element={

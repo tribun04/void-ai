@@ -59,6 +59,40 @@ exports.getTenantById = async (req, res) => {
     }
 };
 
+exports.getTenantApiDetails = async (req, res) => {
+    // The 'protect' middleware gives us the logged-in user's details, including their tenantId
+    const { tenantId } = req.user;
+
+    try {
+        // Fetch the API key and token limit from the `tenants` table
+        const [[tenant]] = await db.query(
+            'SELECT apiKey, token_limit FROM tenants WHERE id = ?', 
+            [tenantId]
+        );
+
+        // Fetch the current token usage from the `tenant_tokens` table
+        const [[tokenUsage]] = await db.query(
+            'SELECT tokens_used FROM tenant_tokens WHERE tenantId = ?', 
+            [tenantId]
+        );
+
+        if (!tenant) {
+            return res.status(404).json({ message: 'API details not found. Your account may not be active yet.' });
+        }
+
+        // Combine the data into a single, clean response
+        res.status(200).json({
+            apiKey: tenant.apiKey,
+            tokenLimit: tenant.token_limit,
+            tokensUsed: tokenUsage ? tokenUsage.tokens_used : 0 // Handle case where token usage record might not exist yet
+        });
+
+    } catch (error) {
+        console.error("Error fetching tenant API details:", error);
+        res.status(500).json({ message: 'Server error while fetching your API details.' });
+    }
+};
+
 /**
  * Activates a tenant, setting their status and initializing their tokens.
  * Used by the "Activate" button.
@@ -160,5 +194,41 @@ exports.regenerateApiKey = async (req, res) => {
     } catch (error) {
         console.error("Error regenerating API key:", error);
         res.status(500).json({ message: 'Failed to regenerate API key.' });
+    }
+};
+
+exports.getAgents = async (req, res) => {
+    const { tenantId } = req.user; // Get tenantId from the logged-in admin
+    try {
+        const [agents] = await db.query(
+            `SELECT id, fullName, email, role FROM users WHERE tenantId = ? AND role = 'agent' ORDER BY createdAt DESC`,
+            [tenantId]
+        );
+        res.status(200).json(agents);
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to fetch agents.' });
+    }
+};
+
+/**
+ * @desc    An admin deletes one of their own agents.
+ * @route   DELETE /api/admin/agents/:agentId
+ */
+exports.deleteAgent = async (req, res) => {
+    const { tenantId } = req.user; // Admin's tenantId
+    const { agentId } = req.params; // ID of the agent to delete
+    try {
+        // This query ensures an admin can only delete agents from their own company
+        const [result] = await db.query(
+            `DELETE FROM users WHERE id = ? AND tenantId = ? AND role = 'agent'`,
+            [agentId, tenantId]
+        );
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Agent not found or you do not have permission to delete them.' });
+        }
+        res.status(200).json({ message: 'Agent deleted successfully.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to delete agent.' });
     }
 };

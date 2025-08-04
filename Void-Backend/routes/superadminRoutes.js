@@ -11,7 +11,8 @@ const {
     deleteUser,
     activateUser,      // ✅ For the "Activate" button
     activateTenant,
-    getTenantById,     // ✅ For the "Manage" button
+    getTenantById,   
+    getUserById,
     trainAIEntry,
     getAIEntries,
     deleteAIEntry,
@@ -30,13 +31,13 @@ router.use(protect, isSuperadmin);
 // --- Route Definitions ---
 
 // User Management
-router.get('/users', getAllUsers);
 router.post('/users', createUser);
 router.delete('/users/:id', deleteUser);
 // ✅ THIS IS THE FIX FOR THE "ACTIVATE" BUTTON
 // The server will now correctly handle the PATCH request.
+router.get('/users', getAllUsers);
 router.patch('/users/:id/activate', activateUser);
-
+router.get('/users/:id', getUserById);
 // Tenant Management
 router.post('/tenants/:tenantId/activate', activateTenant);
 // ✅ THIS IS THE FIX FOR THE "MANAGE" BUTTON

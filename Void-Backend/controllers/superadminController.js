@@ -14,17 +14,14 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 exports.getAllUsers = async (req, res) => {
     const { status } = req.query;
     try {
-        // ✅ THE FIX: We have added 'tenantId' to the SELECT statement.
-        let sqlQuery = "SELECT id, tenantId, fullName, email, companyName, role, paymentStatus, createdAt FROM users WHERE role != 'superadmin'";
-        const queryParams = [];
-
+        let sql = "SELECT id, tenantId, fullName, email, companyName, role, planName, paymentStatus, apiKey, createdAt FROM users WHERE role != 'superadmin'";
+        const params = [];
         if (status && status !== 'all') {
-            sqlQuery += " AND paymentStatus = ?";
-            queryParams.push(status);
+            sql += " AND paymentStatus = ?";
+            params.push(status);
         }
-        sqlQuery += " ORDER BY createdAt DESC";
-
-        const [users] = await db.query(sqlQuery, queryParams);
+        sql += " ORDER BY createdAt DESC";
+        const [users] = await db.query(sql, params);
         res.status(200).json(users);
     } catch (error) {
         console.error("Error fetching users:", error);
@@ -56,14 +53,21 @@ exports.deleteUser = async (req, res) => {
         res.status(500).json({ message: "Failed to delete user." });
     }
 };
-
 exports.activateUser = async (req, res) => {
     const { id } = req.params;
     try {
-        const [result] = await db.query(`UPDATE users SET paymentStatus = 'completed' WHERE id = ?`, [id]);
-        if (result.affectedRows === 0) return res.status(404).json({ message: 'User not found.' });
-        res.status(200).json({ message: 'User activated successfully.' });
+        const apiKey = `void_sk_${uuidv4().replace(/-/g, '')}`;
+        const [result] = await db.query(
+            `UPDATE users SET paymentStatus = 'completed', apiKey = ? WHERE id = ?`,
+            [apiKey, id]
+        );
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'User not found.' });
+        }
+        console.log(`✅ User ${id} activated successfully. API Key has been generated.`);
+        res.status(200).json({ message: 'User activated successfully!', apiKey: apiKey });
     } catch (error) {
+        console.error(`Error activating user ${id}:`, error);
         res.status(500).json({ message: 'Failed to activate user.' });
     }
 };
@@ -133,6 +137,25 @@ exports.activateTenant = async (req, res) => {
         res.status(500).json({ message: 'Server error during activation.' });
     } finally {
         if (connection) connection.release();
+    }
+};
+exports.getUserById = async (req, res) => {
+    const { id } = req.params; 
+    try {
+        const [[user]] = await db.query(
+            'SELECT id, fullName, email, companyName, planName, paymentStatus, apiKey FROM users WHERE id = ?', 
+            [id]
+        );
+        
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        
+        res.status(200).json(user);
+
+    } catch (error) {
+        console.error(`Error fetching user ${id}:`, error);
+        res.status(500).json({ message: 'Server error fetching user details.' });
     }
 };
 exports.getTenantById = async (req, res) => {

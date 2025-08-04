@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthProvider';
-import { ManageTenantModal } from '../components/ManageTenantModal';
 import { FiUsers, FiClock, FiCheckCircle, FiRefreshCw, FiAlertCircle, FiInfo, FiSearch } from 'react-icons/fi';
+import { ManageTenantModal } from '../components/modals/ManageTenantModal';
+
 
 export const SuperSuperadminDashboardPage = () => {
     const { token } = useAuth();
@@ -35,35 +36,39 @@ export const SuperSuperadminDashboardPage = () => {
     // This useEffect will now re-run the fetchUsers function WHENEVER the 'filter' state changes
     useEffect(() => { fetchUsers(); }, [fetchUsers]);
 
-    const handleActivate = async (userId) => {
-        setFeedback(`Activating user ${userId}...`);
-        try {
-            await axios.patch(`http://localhost:5000/api/superadmin/users/${userId}/activate`, {}, { 
-                headers: { Authorization: `Bearer ${token}` } 
-            });
-            setFeedback(`User ${userId} activated successfully!`);
-            await fetchUsers();
-        } catch (err) { 
-            setFeedback(err.response?.data?.message || 'Activation failed.'); 
-        }
-    };
+const handleActivate = async (userId) => {
+    setFeedback(`Activating user ${userId}...`);
+    try {
+        // This now correctly calls the PATCH route for activating a USER
+        const response = await axios.patch(`http://localhost:5000/api/superadmin/users/${userId}/activate`, {}, { 
+            headers: { Authorization: `Bearer ${token}` } 
+        });
+        setFeedback(`User activated! API Key: ${response.data.apiKey}`);
+        await fetchUsers(); // Refresh the list
+    } catch (err) { 
+        setFeedback(err.response?.data?.message || 'Activation failed.'); 
+    }
+};
 
-    const handleOpenManageModal = async (tenantId) => {
-        // This will now work because the backend sends the tenantId for each user
-        if (!tenantId) {
-            setFeedback('Could not open manage modal: Tenant ID is missing.');
-            return;
-        }
-        try {
-            const response = await axios.get(`http://localhost:5000/api/superadmin/tenants/${tenantId}`, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            setSelectedTenant(response.data);
-            setIsModalOpen(true);
-        } catch (err) { 
-            setFeedback('Could not load tenant details.'); 
-        }
-    };
+const handleOpenManageModal = async (userId) => {
+    setFeedback('Loading user details...');
+    try {
+        const response = await axios.get(`http://localhost:5000/api/superadmin/users/${userId}`, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        
+        // We will store the full user object in the 'selectedTenant' state for the modal
+        // (You can rename 'selectedTenant' to 'selectedUser' for clarity if you wish)
+        setSelectedTenant(response.data); 
+        setIsModalOpen(true);
+        setFeedback(''); // Clear loading message
+
+    } catch (err) { 
+        setFeedback('Could not load user details.');
+        setError(err.response?.data?.message || 'Failed to fetch user details.'); 
+    }
+};
+
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
@@ -129,7 +134,7 @@ export const SuperSuperadminDashboardPage = () => {
                                 <td className="px-6 py-4">{getStatusBadge(user.paymentStatus)}</td>
                                 <td className="px-6 py-4 text-right space-x-2">
                                     {user.paymentStatus === 'pending' && <button onClick={() => handleActivate(user.id)} className="px-3 py-1.5 bg-[#16a085] hover:bg-teal-600 text-white rounded-lg text-xs">Activate</button>}
-                                    <button onClick={() => handleOpenManageModal(user.tenantId)} className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg text-xs">Manage</button>
+                                    <button onClick={() => handleOpenManageModal(user.id)} className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg text-xs">Manage</button>
                                 </td>
                             </tr>
                         ))}
@@ -138,7 +143,11 @@ export const SuperSuperadminDashboardPage = () => {
                 {isLoading && <div className="py-8 text-center text-zinc-400">Loading...</div>}
                 {!isLoading && filteredUsers.length === 0 && <div className="py-12 text-center text-zinc-500">No users found for this filter.</div>}
             </div>
-            <ManageTenantModal isOpen={isModalOpen} onClose={handleCloseModal} tenant={selectedTenant} onSave={fetchUsers} />
-        </div>
+<ManageTenantModal 
+    isOpen={isModalOpen} 
+    onClose={handleCloseModal} 
+    tenant={selectedTenant}
+    onSave={fetchUsers} 
+/>        </div>
     );
 };

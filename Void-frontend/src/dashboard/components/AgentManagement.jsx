@@ -1,5 +1,4 @@
 // src/components/AgentManagement.jsx
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaPlus, FaTrash, FaUserShield, FaUserTie, FaSearch } from 'react-icons/fa';
