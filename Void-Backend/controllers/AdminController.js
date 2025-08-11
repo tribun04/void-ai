@@ -1,11 +1,51 @@
 const db = require('../db/mysql');
+const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
-// const { sendActivationEmail } = require('../utils/email'); // Uncomment when your email utility is ready
 
 /**
  * Gets a list of all tenants, with optional filtering by status.
  * Used for the main dashboard view.
  */
+exports.createAgent = async (req, res) => {
+    try {
+        const { fullName, email, password } = req.body;
+
+        if (!fullName || !email || !password) {
+            return res.status(400).json({ message: 'All fields are required' });
+        }
+
+        const [existing] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
+        if (existing.length > 0) {
+            return res.status(409).json({ message: 'Email already in use' });
+        }
+
+        const id = uuidv4();
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // This object now perfectly matches a database table without a 'lastName' column
+        const newUser = {
+            id,
+            fullName,
+            email,
+            passwordHash: hashedPassword,
+            role: 'agent',
+            tenantId: req.user.tenantId // Links to the admin who created this agent
+        };
+
+        // This query will now succeed
+        await db.query('INSERT INTO users SET ?', newUser);
+
+        // SECURITY FIX: Never send the password hash back to the client
+        delete newUser.password;
+
+        res.status(201).json({ message: 'Agent created successfully', user: newUser });
+
+    } catch (err) {
+        // This will now log any other potential errors (like database connection issues)
+        console.error(err);
+        res.status(500).json({ message: 'Something went wrong', error: err.message });
+    }
+};
 exports.getTenants = async (req, res) => {
     const { status } = req.query;
     let sql = `
@@ -28,7 +68,22 @@ exports.getTenants = async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch tenants.' });
     }
 };
+exports.deleteUser = async (req, res) => {
+    const agentId = req.params.id;
 
+    try {
+        const [result] = await db.query('DELETE FROM users WHERE id = ?', [agentId]);
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Agent not found' });
+        }
+
+        res.status(200).json({ message: 'Agent deleted successfully' });
+    } catch (error) {
+        console.error('Delete Agent Error:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
 /**
  * Gets the detailed information for a single tenant by their ID.
  * Used for the "View Details" / "Manage Tokens" modal.
@@ -66,13 +121,13 @@ exports.getTenantApiDetails = async (req, res) => {
     try {
         // Fetch the API key and token limit from the `tenants` table
         const [[tenant]] = await db.query(
-            'SELECT apiKey, token_limit FROM tenants WHERE id = ?', 
+            'SELECT apiKey, token_limit FROM tenants WHERE id = ?',
             [tenantId]
         );
 
         // Fetch the current token usage from the `tenant_tokens` table
         const [[tokenUsage]] = await db.query(
-            'SELECT tokens_used FROM tenant_tokens WHERE tenantId = ?', 
+            'SELECT tokens_used FROM tenant_tokens WHERE tenantId = ?',
             [tenantId]
         );
 
@@ -108,7 +163,7 @@ exports.activateTenant = async (req, res) => {
         // ✅ --- 1. THE FIX: Check the tenant's current status FIRST --- ✅
         // We only proceed if the tenant is 'inactive'.
         const [tenantRows] = await connection.execute('SELECT status, planId FROM tenants WHERE id = ?', [tenantId]);
-        
+
         if (tenantRows.length === 0) {
             await connection.rollback();
             return res.status(404).json({ message: 'Tenant not found.' });
@@ -136,12 +191,12 @@ exports.activateTenant = async (req, res) => {
             ON DUPLICATE KEY UPDATE totalAllocated = VALUES(totalAllocated)
         `;
         await connection.execute(initTokensSql, [tenantId, tokenLimit]);
-        
+
         // 4. Update the corresponding invoice status to 'paid'
         await connection.execute("UPDATE invoices SET status = 'paid' WHERE tenantId = ? AND status = 'pending'", [tenantId]);
-        
+
         await connection.commit();
-        
+
         res.status(200).json({ message: `Tenant ${tenantId} has been successfully activated.` });
 
     } catch (error) {
@@ -197,6 +252,29 @@ exports.regenerateApiKey = async (req, res) => {
     }
 };
 
+exports.getAgentsForMyTenant = async (req, res) => {
+    // The 'protect' middleware gives us the logged-in user's tenantId.
+    const { tenantId } = req.user;
+
+    if (!tenantId) {
+        return res.status(403).json({ message: 'Could not identify your organization from your login token.' });
+    }
+
+    try {
+        // Find all users who have the role 'agent' AND share the same tenantId as the admin.
+        const [agents] = await db.query(
+            `SELECT id, fullName, email, role, isOnline, lastSeen FROM users WHERE tenantId = ? AND role = 'agent'`,
+            [tenantId]
+        );
+
+        res.status(200).json(agents);
+
+    } catch (error) {
+        console.error("Error fetching agents for admin's tenant:", error);
+        res.status(500).json({ message: "Failed to retrieve your agents." });
+    }
+};
+
 exports.getAgents = async (req, res) => {
     const { tenantId } = req.user; // Get tenantId from the logged-in admin
     try {
@@ -209,6 +287,10 @@ exports.getAgents = async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch agents.' });
     }
 };
+
+
+
+
 
 /**
  * @desc    An admin deletes one of their own agents.

@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const db = require('../db/mysql');
 
 const protect = (req, res, next) => {
   let token;
@@ -28,6 +29,30 @@ const isSuperadmin = (req, res, next) => {
   res.status(403).json({ message: 'Forbidden: Access is restricted to Superadmins.' });
 };
 
+const validateApiKey = async (req, res, next) => {
+  const apiKey = req.headers['x-tenant-api-key'];
+
+  if (!apiKey) {
+    return res.status(400).json({ message: 'API key is missing from x-tenant-api-key header.' });
+  }
+
+  try {
+    const [tenants] = await db.query('SELECT * FROM tenants WHERE api_key = ?', [apiKey]);
+
+    if (tenants.length === 0) {
+      return res.status(401).json({ message: 'Invalid API key.' });
+    }
+
+    const tenant = tenants[0];
+    req.tenant = tenant; // Attach the tenant to the request object
+    next(); // Call next() to proceed to the next middleware/route handler
+
+  } catch (error) {
+    console.error('Error validating API key:', error);
+    return res.status(500).json({ message: 'Server error.' });
+  }
+};
+
 // NEW: Ensures the tenant in route/body/query matches the user's tenant
 const requireTenantMatch = (req, res, next) => {
   const tenantFromRequest =
@@ -44,4 +69,4 @@ const requireTenantMatch = (req, res, next) => {
   next();
 };
 
-module.exports = { protect, isSuperadmin, requireTenantMatch };
+module.exports = { protect, isSuperadmin, requireTenantMatch, validateApiKey };

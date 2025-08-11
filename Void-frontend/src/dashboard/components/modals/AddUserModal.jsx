@@ -1,93 +1,121 @@
-// src/components/modals/AddUserModal.jsx
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-// This is the new, rebranded AddUserModal.
-export const AddUserModal = ({ isOpen, onClose, onUserAdded }) => {
+const AddUserModal = ({ isOpen, onClose, onUserAdded }) => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('agent');
+  const [subscriptionDuration, setSubscriptionDuration] = useState('12 Months');
+  const [subscriptionPlan, setSubscriptionPlan] = useState('Plan - 10M Tokens per Month');
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (isOpen) {
-      setEmail('');
-      setName('');
-      setPassword('');
-      setRole('agent');
-      setError('');
-      setIsLoading(false);
-    }
-  }, [isOpen]);
-
-  if (!isOpen) return null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setError('');
-    setIsLoading(true);
+
     try {
-      const res = await axios.post('/api/superadmin/users', { email, name, password, role });
+      const res = await apiClient.post('/api/admin/agents', {
+        firstName,
+        lastName,
+        email,
+        password,
+        role: 'agent', // ✅ Enforced by frontend
+        subscriptionDuration,
+        subscriptionPlan,
+        paymentStatus: 'completed' // ✅ Enforced by frontend
+      });
+
       onUserAdded(res.data);
       onClose();
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+      setPassword('');
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to create user.');
+      setError('Failed to create agent. Make sure email is unique.');
+      console.error(err);
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
+  if (!isOpen) return null;
+
   return (
-    // Modal container with a smooth backdrop
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 p-4 transition-opacity duration-300">
-      <div className="bg-gray-800 p-6 md:p-8 rounded-xl shadow-2xl w-full max-w-md border border-gray-700 transform transition-all duration-300 scale-95 opacity-0 animate-fade-in-scale">
-        <h2 className="text-2xl font-bold text-white mb-6">Create New Platform User</h2>
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-zinc-900 p-6 rounded-lg shadow-lg w-full max-w-md border border-zinc-700">
+        <h2 className="text-xl font-bold text-white mb-4">Add Full Agent</h2>
+        {error && <p className="text-red-500 mb-2">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
-          {error && <p className="text-red-300 bg-red-500/20 p-3 rounded-lg font-semibold">{error}</p>}
-          
-          {/* Re-styled input fields for consistency */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-400 mb-2">Full Name</label>
+          <div className="flex gap-2">
             <input
-              type="text" value={name} onChange={(e) => setName(e.target.value)} required
-              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              type="text"
+              placeholder="First Name"
+              className="w-1/2 px-4 py-2 rounded bg-zinc-800 text-white border border-zinc-700"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Last Name"
+              className="w-1/2 px-4 py-2 rounded bg-zinc-800 text-white border border-zinc-700"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
             />
           </div>
-          <div>
-            <label className="block text-sm font-semibold text-gray-400 mb-2">Email</label>
-            <input
-              type="email" value={email} onChange={(e) => setEmail(e.target.value)} required
-              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-gray-400 mb-2">Initial Password</label>
-            <input
-              type="password" value={password} onChange={(e) => setPassword(e.target.value)} required
-              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-          <div className="pb-2">
-            <label className="block text-sm font-semibold text-gray-400 mb-2">Role</label>
-            <select value={role} onChange={(e) => setRole(e.target.value)}
-              className="w-full px-4 py-2 bg-gray-700 text-white rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 appearance-none"
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full px-4 py-2 rounded bg-zinc-800 text-white border border-zinc-700"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full px-4 py-2 rounded bg-zinc-800 text-white border border-zinc-700"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <select
+            value={subscriptionDuration}
+            onChange={(e) => setSubscriptionDuration(e.target.value)}
+            className="w-full px-4 py-2 rounded bg-zinc-800 text-white border border-zinc-700"
+          >
+            <option value="12 Months">12 Months</option>
+            <option value="6 Months">6 Months</option>
+            <option value="3 Months">3 Months</option>
+          </select>
+
+          <select
+            value={subscriptionPlan}
+            onChange={(e) => setSubscriptionPlan(e.target.value)}
+            className="w-full px-4 py-2 rounded bg-zinc-800 text-white border border-zinc-700"
+          >
+            <option value="Plan - 10M Tokens per Month">10M Tokens</option>
+            <option value="Plan - 5M Tokens per Month">5M Tokens</option>
+            <option value="Plan - 1M Tokens per Month">1M Tokens</option>
+          </select>
+
+          <div className="flex justify-between mt-4">
+            <button
+              type="button"
+              className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded"
+              onClick={onClose}
             >
-              <option value="agent">Agent</option>
-              <option value="admin">Admin</option>
-            </select>
-          </div>
-          
-          {/* Re-styled action buttons */}
-          <div className="flex justify-end gap-4 pt-4 border-t border-gray-700 mt-6">
-            <button type="button" onClick={onClose}
-              className="px-6 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-500 transition-colors font-semibold">
               Cancel
             </button>
-            <button type="submit" disabled={isLoading}
-              className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:bg-indigo-900 disabled:cursor-not-allowed transition-colors font-bold">
-              {isLoading ? 'Creating...' : 'Create User'}
+            <button
+              type="submit"
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
+              disabled={loading}
+            >
+              {loading ? 'Creating...' : 'Create Agent'}
             </button>
           </div>
         </form>

@@ -30,19 +30,20 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post('http://localhost:5000/api/auth/login', {  // Ensure correct URL
         email,
         password,
       });
 
-      const { token: newToken } = response.data;
+      const { token: newToken, tenantId } = response.data;  // Extract token and tenantId
+      // Validate tenantId
 
       localStorage.setItem('token', newToken);
       setToken(newToken);
       const decodedUser = jwtDecode(newToken);
-      setUser(decodedUser);
+      setUser({ ...decodedUser, tenantId: tenantId }); //Add tenantId to the user to be saved for AITraining
+      return { ...decodedUser, tenantId: tenantId };  // Return tenantId so that AITraining can access it
 
-      return decodedUser;
     } catch (error) {
       logout();
       throw error;

@@ -8,7 +8,7 @@ const {
 } = require('../controllers/chatController');
 
 const { validateApiKey } = require('../middleware/tenantAuthMiddleware'); // or resolveTenant
-const { authenticateJWT } = require('../middleware/authMiddleware'); // optional for agents
+const { protect } = require('../middleware/authMiddleware'); // optional for agents
 
 // 🔹 AI Chat (Bot API Key)
 router.post('/ask', validateApiKey, handleChatMessage);

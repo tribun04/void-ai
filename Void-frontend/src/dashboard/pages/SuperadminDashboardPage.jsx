@@ -17,21 +17,21 @@ import {
 // --- COMPONENT 1: Rebranded "Void AI" Logo ---
 // Now uses your actual logo image and new accent color.
 const VoidBrandLogo = () => (
-    <div className="flex items-center gap-3">
-        {/* 1. Replaced the temporary "V" with your actual logo image. */}
-        <img src="/void.png" alt="Void AI Logo" className="h-10 w-auto" />
-        <div>
-            <h1 className="font-bold text-white text-lg leading-tight">Void AI</h1>
-            {/* 2. Used your new accent color for the sub-title. */}
-            <p className="text-xs text-[#16a085] font-semibold">Superadmin Panel</p>
-        </div>
+  <div className="flex items-center gap-3">
+    {/* 1. Replaced the temporary "V" with your actual logo image. */}
+    <img src="/void.png" alt="Void AI Logo" className="h-10 w-auto" />
+    <div>
+      <h1 className="font-bold text-white text-lg leading-tight">Void AI</h1>
+      {/* 2. Used your new accent color for the sub-title. */}
+      <p className="text-xs text-[#16a085] font-semibold">Superadmin Panel</p>
     </div>
+  </div>
 );
 
 // --- COMPONENT 2: Rebranded Sidebar ---
 // Updated with your brand's color palette.
 const Sidebar = ({ user, activeView, setActiveView, onLogout, closeSidebar }) => {
-    
+
   const navItems = [
     { view: 'overview', label: 'Overview', icon: <FaTachometerAlt /> },
     { view: 'agents', label: 'User Management', icon: <FaUsers /> },
@@ -45,50 +45,48 @@ const Sidebar = ({ user, activeView, setActiveView, onLogout, closeSidebar }) =>
   return (
     // 3. Using a complementary dark color for the sidebar against the main background.
     <div className="flex flex-col h-full bg-zinc-900 text-gray-300">
-        {/* Header Section */}
-        <div className="p-4 border-b border-zinc-800 flex items-center justify-between">
-            <VoidBrandLogo />
-            <button onClick={closeSidebar} className="p-2 text-gray-400 hover:text-white lg:hidden">
-                <FaTimes />
-            </button>
-        </div>
+      {/* Header Section */}
+      <div className="p-4 border-b border-zinc-800 flex items-center justify-between">
+        <VoidBrandLogo />
+        <button onClick={closeSidebar} className="p-2 text-gray-400 hover:text-white lg:hidden">
+          <FaTimes />
+        </button>
+      </div>
 
-        {/* Navigation Section */}
-        <nav className="flex-1 px-3 py-4 space-y-2">
-            {navItems.map(item => (
-                <a key={item.view} href="#" 
-                   onClick={(e) => { e.preventDefault(); setActiveView(item.view); closeSidebar(); }}
-                   // 4. Updated the active item to use your brand's accent color.
-                   // The hover state is now a more fitting darker gray.
-                   className={`flex items-center p-3 rounded-lg transition-colors duration-200 font-semibold ${
-                       activeView === item.view 
-                       ? 'bg-[#16a085] text-white shadow-md' 
-                       : 'hover:bg-zinc-800'
-                   }`}>
-                    <span className="mr-4 w-5 text-center text-lg">{item.icon}</span>
-                    {item.label}
-                </a>
-            ))}
-        </nav>
-        
-        {/* User Profile & Logout Section */}
-        <div className="p-4 border-t border-zinc-800">
-            <div className="flex items-center gap-3 mb-4">
-                {/* 5. Updated the user avatar to use your brand's accent color. */}
-                <div className="w-10 h-10 rounded-full bg-[#16a085] flex items-center justify-center font-bold text-lg text-white">
-                    {user?.name?.charAt(0).toUpperCase() || 'S'}
-                </div>
-                <div>
-                    <p className="font-semibold text-sm text-white">{user?.name || 'Super Admin'}</p>
-                    <p className="text-xs text-gray-400">{user?.email || 'admin@void.ai'}</p>
-                </div>
-            </div>
-            {/* The red logout button is standard for a destructive action, so we keep it. */}
-            <button onClick={onLogout} className="w-full flex items-center justify-center p-3 rounded-lg bg-red-600/80 hover:bg-red-600 text-white font-semibold transition-colors">
-                <FaSignOutAlt className="mr-2" />
-                <span>Log Out</span>
-            </button>
+      {/* Navigation Section */}
+      <nav className="flex-1 px-3 py-4 space-y-2">
+        {navItems.map(item => (
+          <a key={item.view} href="#"
+            onClick={(e) => { e.preventDefault(); setActiveView(item.view); closeSidebar(); }}
+            // 4. Updated the active item to use your brand's accent color.
+            // The hover state is now a more fitting darker gray.
+            className={`flex items-center p-3 rounded-lg transition-colors duration-200 font-semibold ${activeView === item.view
+              ? 'bg-[#16a085] text-white shadow-md'
+              : 'hover:bg-zinc-800'
+              }`}>
+            <span className="mr-4 w-5 text-center text-lg">{item.icon}</span>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      {/* User Profile & Logout Section */}
+      <div className="p-4 border-t border-zinc-800">
+        <div className="flex items-center gap-3 mb-4">
+          {/* Display the admin's avatar with their initials */}
+          <div className="w-10 h-10 rounded-full bg-[#16a085] flex items-center justify-center font-bold text-lg text-white">
+            {user?.fullName?.charAt(0).toUpperCase() || 'A'}
+          </div>
+          <div>
+            <p className="font-semibold text-sm text-white">{user?.fullName || 'Admin'}</p>
+          </div>
         </div>
+        {/* Logout button */}
+        <button onClick={onLogout} className="w-full flex items-center justify-center p-3 rounded-lg bg-red-600/80 hover:bg-red-600 text-white font-semibold transition-colors">
+          <FaSignOutAlt className="mr-2" />
+          <span>Log Out</span>
+        </button>
+      </div>
     </div>
   );
 };
@@ -127,10 +125,10 @@ export function SuperadminDashboardPage() {
     <div className="flex h-screen bg-[#161616] font-sans text-gray-200">
       {/* Mobile Overlay */}
       <div className={`fixed inset-0 bg-black bg-opacity-60 z-30 lg:hidden ${isSidebarOpen ? 'block' : 'hidden'}`} onClick={() => setIsSidebarOpen(false)}></div>
-      
+
       {/* Sidebar for Mobile (sliding) and Desktop (fixed) */}
       <aside className={`fixed inset-y-0 left-0 z-40 w-72 transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:relative lg:w-72 lg:flex-shrink-0`}>
-        <Sidebar 
+        <Sidebar
           user={user}
           activeView={activeView}
           setActiveView={setActiveView}

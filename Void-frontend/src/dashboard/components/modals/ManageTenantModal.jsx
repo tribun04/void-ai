@@ -40,17 +40,17 @@ export const ManageTenantModal = ({ isOpen, onClose, tenant, onSave }) => {
                 totalAllocated: parseInt(totalAllocated, 10),
                 usedTokens: parseInt(usedTokens, 10)
             };
-            
+
             await axios.post(endpoint, payload, { headers: { Authorization: `Bearer ${token}` } });
 
             setFeedback('Changes saved successfully!');
-            
+
             // This calls the 'fetchUsers' function on the parent page to refresh the list
-            if (onSave) onSave(); 
-            
+            if (onSave) onSave();
+
             // Close the modal after a short delay to show the success message
             setTimeout(() => {
-                onClose(); 
+                onClose();
             }, 1500);
 
         } catch (error) {
@@ -69,23 +69,23 @@ export const ManageTenantModal = ({ isOpen, onClose, tenant, onSave }) => {
                     <h2 className="text-xl font-bold text-white">Manage Tenant</h2>
                     <button onClick={onClose} className="p-2 rounded-full hover:bg-zinc-800"><FiX /></button>
                 </div>
-                
+
                 <div className="space-y-4">
                     <div>
                         <label className="text-sm font-medium text-zinc-400 flex items-center gap-2"><FiCpu /> Tenant</label>
-                        <input type="text" readOnly value={tenant?.name || 'N/A'} className="mt-1 w-full p-2 bg-zinc-800 rounded-md text-zinc-300 cursor-not-allowed"/>
+                        <input type="text" readOnly value={tenant?.name || 'N/A'} className="mt-1 w-full p-2 bg-zinc-800 rounded-md text-zinc-300 cursor-not-allowed" />
                     </div>
                     <div>
                         <label className="text-sm font-medium text-zinc-400 flex items-center gap-2"><FiKey /> API Key</label>
-                        <input type="text" readOnly value={apiKey} className="mt-1 w-full p-2 bg-zinc-800 rounded-md font-mono cursor-not-allowed"/>
+                        <input type="text" readOnly value={apiKey} className="mt-1 w-full p-2 bg-zinc-800 rounded-md font-mono cursor-not-allowed" />
                     </div>
                     <div>
                         <label className="text-sm font-medium text-zinc-400 flex items-center gap-2"><FiCloud /> Total Allocated Tokens</label>
-                        <input type="number" value={totalAllocated} onChange={(e) => setTotalAllocated(e.target.value)} className="mt-1 w-full p-2 bg-zinc-800 rounded-md"/>
+                        <input type="number" value={totalAllocated} onChange={(e) => setTotalAllocated(e.target.value)} className="mt-1 w-full p-2 bg-zinc-800 rounded-md" />
                     </div>
                     <div>
                         <label className="text-sm font-medium text-zinc-400 flex items-center gap-2"><FiCloud /> Used Tokens</label>
-                        <input type="number" value={usedTokens} onChange={(e) => setUsedTokens(e.target.value)} className="mt-1 w-full p-2 bg-zinc-800 rounded-md"/>
+                        <input type="number" value={usedTokens} onChange={(e) => setUsedTokens(e.target.value)} className="mt-1 w-full p-2 bg-zinc-800 rounded-md" />
                     </div>
                 </div>
 

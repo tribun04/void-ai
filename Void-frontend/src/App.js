@@ -23,7 +23,7 @@ function App() {
           <Route path="/testModal" element={<testModal />} />
 
           <Route path="/dashboard" element={<ProtectedRoute><ChatProvider><DashboardPage /></ChatProvider></ProtectedRoute>} />
-          
+
           {/* ✅ THE ROUTE WE ARE FIXING ✅ */}
           <Route
             path="/admin"
@@ -43,7 +43,7 @@ function App() {
             }
           />
           <Route path="/manage-tenant" element={<ManageTenantModal />} />
-              <Route
+          <Route
             path="/superadmin"
             element={
               <SuperadminRoute>

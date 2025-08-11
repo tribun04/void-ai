@@ -8,26 +8,70 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 // --- USER MANAGEMENT ---
 
+
+exports.createChildAgent = async (req, res) => {
+    // ... no changes needed, this code is correct.
+    const { email, password, fullName, role } = req.body;
+    const { tenantId, companyName } = req.user;
+    if (!email || !password || !fullName || !role) { return res.status(400).json({ message: 'All fields are required.' }); }
+    if (!tenantId) { return res.status(403).json({ message: 'Could not identify your organization. Please log in again.' }); }
+    try {
+        const [[existingUser]] = await db.query('SELECT id FROM users WHERE email = ? AND tenantId = ?', [email.toLowerCase(), tenantId]);
+        if (existingUser) { return res.status(400).json({ message: 'An agent with this email already exists in your organization.' }); }
+        const passwordHash = await bcrypt.hash(password, 10);
+        const newUserId = uuidv4();
+        await db.query('INSERT INTO users (id, tenantId, fullName, companyName, email, passwordHash, role) VALUES (?, ?, ?, ?, ?, ?, ?)', [newUserId, tenantId, fullName, companyName || 'N/A', email.toLowerCase(), passwordHash, role]);
+        res.status(201).json({ id: newUserId, email, fullName, role, tenantId });
+    } catch (error) {
+        console.error("Error creating child agent:", error);
+        res.status(500).json({ message: "Failed to create the agent due to a server error." });
+    }
+};
 /**
  * @description Get all non-superadmin users
  */
 exports.getAllUsers = async (req, res) => {
-    const { status } = req.query;
+    // For a superadmin, we get the filter criteria from the query string, not the user's own token.
+    const { tenantId, status } = req.query;
+
     try {
-        let sql = "SELECT id, tenantId, fullName, email, companyName, role, planName, paymentStatus, apiKey, createdAt FROM users WHERE role != 'superadmin'";
+        let sql = "SELECT id, tenantId, fullName, email, companyName, role, planName, paymentStatus, apiKey, createdAt FROM users";
+
         const params = [];
+        const whereClauses = [];
+
+        // We only add a WHERE clause if a filter is actually provided.
+        if (tenantId) {
+            whereClauses.push("tenantId = ?");
+            params.push(tenantId);
+        }
+
         if (status && status !== 'all') {
-            sql += " AND paymentStatus = ?";
+            whereClauses.push("paymentStatus = ?");
             params.push(status);
         }
+
+        // This makes sure the query is built correctly
+        if (whereClauses.length > 0) {
+            sql += " WHERE " + whereClauses.join(" AND ");
+        }
+
         sql += " ORDER BY createdAt DESC";
+
+        // --- FIX FOR THE NESTED ARRAY ---
+        // Your database library returns an array like [rows, fields].
+        // By using `const [users]`, you correctly extract just the `rows` array.
         const [users] = await db.query(sql, params);
+
+        // Send the `users` array directly. This will result in `[{...}, {...}]`
         res.status(200).json(users);
+
     } catch (error) {
         console.error("Error fetching users:", error);
         res.status(500).json({ message: "Failed to retrieve users." });
     }
 };
+
 exports.createUser = async (req, res) => {
     const { email, password, fullName, role, companyName } = req.body;
     if (!email || !password || !fullName || !role || !companyName) return res.status(400).json({ message: 'All fields are required.' });
@@ -45,14 +89,28 @@ exports.createUser = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
-    const { id } = req.params;
+    const { id: userIdToDelete } = req.params;
+    // FIX: Get the tenantId from the logged-in user's token for validation.
+    const { tenantId } = req.user;
+
     try {
-        await db.query('DELETE FROM users WHERE id = ?', [id]);
+        // FIX: First, check if the user being deleted actually belongs to the admin's tenant.
+        const [[user]] = await db.query('SELECT id FROM users WHERE id = ? AND tenantId = ?', [userIdToDelete, tenantId]);
+
+        // If no user is found, they either don't exist or belong to another tenant.
+        if (!user) {
+            return res.status(403).json({ message: 'Forbidden: User not found in your organization.' });
+        }
+
+        // If the check passes, proceed with the deletion.
+        await db.query('DELETE FROM users WHERE id = ?', [userIdToDelete]);
         res.status(200).json({ message: 'User deleted successfully.' });
     } catch (error) {
+        console.error("Error deleting user:", error);
         res.status(500).json({ message: "Failed to delete user." });
     }
 };
+
 exports.activateUser = async (req, res) => {
     const { id } = req.params;
     try {
@@ -121,7 +179,7 @@ exports.activateTenant = async (req, res) => {
              ON DUPLICATE KEY UPDATE tokenLimit = VALUES(tokenLimit)`,
             [uuidv4(), tenantId, tokenLimit, 0]
         );
-        
+
         // 7. (Optional but recommended) Send a Welcome Email
         // await sendWelcomeEmail(adminUser.email, apiKey);
 
@@ -140,17 +198,17 @@ exports.activateTenant = async (req, res) => {
     }
 };
 exports.getUserById = async (req, res) => {
-    const { id } = req.params; 
+    const { id } = req.params;
     try {
         const [[user]] = await db.query(
-            'SELECT id, fullName, email, companyName, planName, paymentStatus, apiKey FROM users WHERE id = ?', 
+            'SELECT id, fullName, email, companyName, planName, paymentStatus, apiKey FROM users WHERE id = ?',
             [id]
         );
-        
+
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-        
+
         res.status(200).json(user);
 
     } catch (error) {
@@ -163,12 +221,12 @@ exports.getTenantById = async (req, res) => {
     if (!tenantId) {
         return res.status(400).json({ message: 'Tenant ID is required.' });
     }
-    
+
     try {
         // 1. Get the primary admin user for this tenant to find company details
         // We query the USERS table because that's where the company info is.
         const [[companyAdmin]] = await db.query(
-            'SELECT companyName, planName FROM users WHERE tenantId = ? AND role = "admin" LIMIT 1', 
+            'SELECT companyName, planName FROM users WHERE tenantId = ? AND role = "admin" LIMIT 1',
             [tenantId]
         );
 
@@ -179,13 +237,13 @@ exports.getTenantById = async (req, res) => {
 
         // 2. Get ALL users associated with this tenant
         const [users] = await db.query(
-            'SELECT id, fullName, email, role FROM users WHERE tenantId = ?', 
+            'SELECT id, fullName, email, role FROM users WHERE tenantId = ?',
             [tenantId]
         );
-        
+
         // 3. Get the token usage details for this tenant (this table name is correct)
         const [[tokenDetails]] = await db.query(
-            'SELECT * FROM tenant_tokens WHERE tenantId = ?', 
+            'SELECT * FROM tenant_tokens WHERE tenantId = ?',
             [tenantId]
         );
 
@@ -265,7 +323,7 @@ exports.deleteAIEntry = async (req, res) => {
     try {
         await db.query('DELETE FROM ai_entries WHERE intent = ? AND tenantId = ?', [intent, tenantId]);
         res.status(200).json({ message: 'AI entry deleted successfully.' });
-    } catch (error){
+    } catch (error) {
         console.error("Error deleting AI entry:", error);
         res.status(500).json({ message: 'Failed to delete AI entry.' });
     }

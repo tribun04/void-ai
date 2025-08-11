@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const publicController = require('../controllers/publicController');
 
-router.post('/signup', publicController.handleSignup);
+router.get('/test', (req, res) => {
+  res.send('Public route working');
+});
 
 module.exports = router;

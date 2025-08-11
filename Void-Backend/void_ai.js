@@ -15,6 +15,8 @@ const { WebSocketServer } = require('ws');
 
 dotenv.config();
 
+// ROUTE IMPORTS (One import for each route file)
+// =================================================================
 const adminRoutes = require('./routes/adminRoutes.js');
 const apiRoutes = require('./routes/apiRoutes.js');
 const authRoutes = require('./routes/authRoutes.js');
@@ -22,26 +24,24 @@ const chatRoutes = require('./routes/chatRoutes.js');
 const conversationRoutes = require('./routes/conversationRoutes.js');
 const agentRoutes = require('./routes/agentRoutes.js');
 const inboxRoutes = require('./routes/inboxRoutes.js');
-// const facebookWebhook = require('./routes/facebookWebhook');
 const facebookRouter = require('./routes/facebook.js');
 const superadminRoutes = require('./routes/superadminRoutes.js');
 const chatHistoryRoutes = require('./routes/chatHistoryRoutes.js');
-const voiceBot = require('./void_bot/voiceBot');
 const whatsappRoutes = require('./routes/whatsapp.js');
 const widgetRoutes = require('./routes/widget.js');
 const voipRoutes = require('./routes/voip.js');
+const voipConfigRoutes = require('./routes/voipConfigRoutes.js');
+const settingsRoutes = require('./routes/settingsRoutes.js');
+const aiRoutes = require('./routes/airoutes');
 
-
-// --- Custom Utility & Controller Imports ---
+// =================================================================
+// CONTROLLER & UTILITY IMPORTS
+// =================================================================
+const voiceBot = require('./void_bot/voiceBot');
 const { askOpenAI } = require('./utils/openai.js');
 const { sendFacebookMessage } = require('./utils/facebook.js');
 const { init: initWhatsappController } = require('./controllers/whatsappController.js');
 const voipController = require('./controllers/voipController.js');
-const voipConfigRoutes = require('./routes/voipConfigRoutes.js');
-const settingsRoutes = require('./routes/settingsRoutes.js');
-const aiRoutes = require('./routes/airoutes'); // Adjust the path to your new router file
-
-const publicRoutes = require('./routes/publicRoutes.js');
 
 
 // --- Express App Initialization ---
@@ -52,32 +52,30 @@ app.use(cors());
 app.use(express.json()); // ✅ ADD THIS LINE HERE ✅
 
 // --- API Route Definitions ---
-app.use('/api/auth', require('./routes/authRoutes'));
-app.use('/api/public', publicRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
+
 app.use('/api/ai', aiRoutes);
-
-
-app.use('/api/v1', apiRoutes);
-app.use('/api/chat', chatRoutes);
+app.use('/api/superadmin', superadminRoutes); // ✅ Only one definition
+app.use('/api/admin', adminRoutes);         // ✅ Only one definition
+app.use('/api/users', adminRoutes);         // Assuming you want /users to also use adminRoutes
+app.use('/api/v1', apiRoutes); // ✅ ADD THIS LINE HERE ✅
 app.use('/api/conversations', conversationRoutes);
 app.use('/api/agents', agentRoutes);
 app.use('/api/inbox', inboxRoutes);
 app.use('/api/whatsapp', whatsappRoutes);
 app.use('/api/voip', voipRoutes);
 app.use('/api/voip-config', voipConfigRoutes);
-// app.use('/api/facebook', facebookWebhook);
-app.use('/api/admin', adminRoutes);
-app.use('/api/admin', require('./routes/adminRoutes'));
+
 app.use('/api/facebook', facebookRouter);
-app.use('/api/superadmin', superadminRoutes);
 app.use('/api/chat-history', chatHistoryRoutes);
-app.set('usersAwaitingHelpLanguage', new Set()); 
 app.use('/api/widget', widgetRoutes);
 app.use("/api/voice", voiceBot);
+app.use('/api/chat', chatRoutes); // ✅ ADD THIS
 app.use('/api/settings', settingsRoutes);
 
 
-app.set('greetedFacebookUsers', new Set()); 
+app.set('greetedFacebookUsers', new Set());
 // --- Root Endpoint for Health Check ---
 app.get('/api', (req, res) => res.status(200).json({ message: 'VOID AI Support Backend is running ✅' }));
 
@@ -91,43 +89,43 @@ const io = new Server(httpServer, {
 });
 
 const voipWss = new WebSocketServer({
-    // We don't specify a path here because we will check it manually.
-    noServer: true
+  // We don't specify a path here because we will check it manually.
+  noServer: true
 });
 
 // The httpServer is the one you created with http.createServer(app)
 httpServer.on('upgrade', (request, socket, head) => {
-    // This event fires when a client tries to upgrade from HTTP to WebSocket.
-    const pathname = url.parse(request.url).pathname;
+  // This event fires when a client tries to upgrade from HTTP to WebSocket.
+  const pathname = url.parse(request.url).pathname;
 
-    // We check if the request is for our main VOIP stream path.
-    if (pathname.startsWith('/api/voip/stream/')) {
-        voipWss.handleUpgrade(request, socket, head, (ws) => {
-            // If the upgrade is successful, emit a 'connection' event with the custom data.
-            voipWss.emit('connection', ws, request);
-        });
-    } else {
-        // If it's not our VOIP path, we don't handle it here.
-        // Let the socket.io server handle its own upgrades.
-    }
+  // We check if the request is for our main VOIP stream path.
+  if (pathname.startsWith('/api/voip/stream/')) {
+    voipWss.handleUpgrade(request, socket, head, (ws) => {
+      // If the upgrade is successful, emit a 'connection' event with the custom data.
+      voipWss.emit('connection', ws, request);
+    });
+  } else {
+    // If it's not our VOIP path, we don't handle it here.
+    // Let the socket.io server handle its own upgrades.
+  }
 });
 
 // --- Handle New VOIP Connections ---
 voipWss.on('connection', (ws, request) => {
-    // This function runs every time a new VOIP call connects via WebSocket.
-    const pathname = url.parse(request.url).pathname;
+  // This function runs every time a new VOIP call connects via WebSocket.
+  const pathname = url.parse(request.url).pathname;
 
-    // Extract the provider name from the end of the URL
-    // e.g., '/api/voip/stream/twilio' -> 'twilio'
-    const providerName = pathname.split('/').pop();
-    
-    // For providers like Telnyx, we might pass a stream_id in the URL.
-    const query = url.parse(request.url, true).query;
-    const streamId = query.stream_id || null;
+  // Extract the provider name from the end of the URL
+  // e.g., '/api/voip/stream/twilio' -> 'twilio'
+  const providerName = pathname.split('/').pop();
 
-    // Now, we pass the live connection AND the provider name to our controller.
-    console.log(`🔗 VOIP WebSocket connection established for provider: ${providerName}!`);
-    voipController.handleLiveConversation(ws, providerName, streamId);
+  // For providers like Telnyx, we might pass a stream_id in the URL.
+  const query = url.parse(request.url, true).query;
+  const streamId = query.stream_id || null;
+
+  // Now, we pass the live connection AND the provider name to our controller.
+  console.log(`🔗 VOIP WebSocket connection established for provider: ${providerName}!`);
+  voipController.handleLiveConversation(ws, providerName, streamId);
 });
 
 // --- Persistent State & Logging Setup ---
@@ -244,7 +242,7 @@ io.on('connection', (socket) => {
     const tempDir = path.join(__dirname, 'temp_transcripts');
     if (!fs.existsSync(logFilePath)) return;
     if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
-    
+
     const outputPdfPath = path.join(tempDir, `${userId}-${Date.now()}.pdf`);
     const doc = new PDFDocument({ size: 'A4', margin: 50 });
     const writeStream = fs.createWriteStream(outputPdfPath);
@@ -254,18 +252,18 @@ io.on('connection', (socket) => {
     const conversation = JSON.parse(fs.readFileSync(logFilePath, 'utf-8'));
 
     conversation.forEach(msg => {
-        const timestamp = new Date(msg.timestamp).toLocaleString();
-        doc.fontSize(8).fillColor('gray').text(timestamp).moveDown(0.2);
-        if (msg.from === 'user') doc.font('Helvetica-Bold').fillColor('#005ce6').text('User:').font('Helvetica').fillColor('black').text(msg.text, { indent: 10 }).moveDown();
-        else if (msg.from === 'agent') doc.font('Helvetica-Bold').fillColor('#25D366').text(`${msg.agentName || 'Agent'}:`).font('Helvetica').fillColor('black').text(msg.text, { indent: 10 }).moveDown();
-        else if (msg.from === 'system') doc.font('Helvetica-Oblique').fillColor('gray').text(`--- ${msg.text} ---`, { align: 'center' }).moveDown();
-        else if (msg.type === 'event') doc.font('Helvetica-Oblique').fillColor('gray').text(`--- Event: ${msg.event.replace(/-/g, ' ')} ---`, { align: 'center' }).moveDown();
+      const timestamp = new Date(msg.timestamp).toLocaleString();
+      doc.fontSize(8).fillColor('gray').text(timestamp).moveDown(0.2);
+      if (msg.from === 'user') doc.font('Helvetica-Bold').fillColor('#005ce6').text('User:').font('Helvetica').fillColor('black').text(msg.text, { indent: 10 }).moveDown();
+      else if (msg.from === 'agent') doc.font('Helvetica-Bold').fillColor('#25D366').text(`${msg.agentName || 'Agent'}:`).font('Helvetica').fillColor('black').text(msg.text, { indent: 10 }).moveDown();
+      else if (msg.from === 'system') doc.font('Helvetica-Oblique').fillColor('gray').text(`--- ${msg.text} ---`, { align: 'center' }).moveDown();
+      else if (msg.type === 'event') doc.font('Helvetica-Oblique').fillColor('gray').text(`--- Event: ${msg.event.replace(/-/g, ' ')} ---`, { align: 'center' }).moveDown();
     });
     doc.end();
 
     writeStream.on('finish', () => {
-        io.to('whatsapp_bot_room').emit('send-file-to-user', { userId, filePath: outputPdfPath });
-        setTimeout(() => { if (fs.existsSync(outputPdfPath)) fs.unlinkSync(outputPdfPath); }, 60000);
+      io.to('whatsapp_bot_room').emit('send-file-to-user', { userId, filePath: outputPdfPath });
+      setTimeout(() => { if (fs.existsSync(outputPdfPath)) fs.unlinkSync(outputPdfPath); }, 60000);
     });
   });
 
@@ -313,7 +311,7 @@ io.on('connection', (socket) => {
 
     activeConversations.set(userId, agentSocketId);
     savePendingRequests(getPendingRequests().filter(req => req.userId !== userId));
-    
+
     io.to(agentSocketId).emit('chat-assigned', { userId, initialMessage });
     socket.to('agents-pool').emit('request-claimed', { userId });
 
@@ -322,12 +320,12 @@ io.on('connection', (socket) => {
     logMessage(userId, { from: 'system', text: systemMessage, timestamp: new Date().toISOString() });
 
     if (userId.includes('@c.us')) {
-        io.to('whatsapp_bot_room').emit('agent-linked', { userId, agentSocketId });
-        io.to('whatsapp_bot_room').emit('inform-user-agent-joined', { userId, agentName: socket.user.name });
+      io.to('whatsapp_bot_room').emit('agent-linked', { userId, agentSocketId });
+      io.to('whatsapp_bot_room').emit('inform-user-agent-joined', { userId, agentName: socket.user.name });
     } else if (/^\d{15,}$/.test(userId)) {
-        await sendFacebookMessage(userId, `Ju jeni lidhur me agjentin tonë: ${socket.user.name}.`);
+      await sendFacebookMessage(userId, `Ju jeni lidhur me agjentin tonë: ${socket.user.name}.`);
     } else {
-        io.to(userId).emit('agent-linked', { agent: { id: socket.user.id, name: socket.user.name, role: socket.user.role } });
+      io.to(userId).emit('agent-linked', { agent: { id: socket.user.id, name: socket.user.name, role: socket.user.role } });
     }
   });
 
@@ -338,13 +336,13 @@ io.on('connection', (socket) => {
       logMessage(userId, { from: 'user', text: message, timestamp: new Date().toISOString() });
       io.to(agentSocketId).emit('user-message', { userId, message, channel });
     } else {
-        console.warn(`[WARN] Received 'forward-to-agent' for user ${userId} but no active conversation was found.`);
+      console.warn(`[WARN] Received 'forward-to-agent' for user ${userId} but no active conversation was found.`);
     }
   });
 
   socket.on('agent-reply', async ({ userId, message }) => {
     if (!socket.user) return;
-    
+
     logMessage(userId, { from: 'agent', agentId: socket.user.id, agentName: socket.user.name, text: message, timestamp: new Date().toISOString() });
 
     if (userId.includes('@c.us')) {
@@ -375,16 +373,16 @@ io.on('connection', (socket) => {
 
   socket.on('user-ended-chat', ({ userId }) => {
     if (!userId) return; // Basic validation
-  
+
     console.log(`🚫 Chat ended by user: ${userId}`);
     const agentSocketId = activeConversations.get(userId);
-  
-  
+
+
     if (agentSocketId) {
-    
+
       io.to(agentSocketId).emit('user-left-chat', { userId });
     }
-  
+
 
     activeConversations.delete(userId);
     logMessage(userId, { type: 'event', event: 'chat-ended-by-user', timestamp: new Date().toISOString() });

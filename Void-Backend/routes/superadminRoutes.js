@@ -1,60 +1,62 @@
-// In routes/superadminRoutes.js
-
 const express = require('express');
 const router = express.Router();
 
 // --- Controller Imports ---
 // This list imports EVERY function we need for this router to work.
-const { 
-    getAllUsers,
+const {
+    // User/Tenant Management
     createUser,
-    deleteUser,
-    activateUser,      // ✅ For the "Activate" button
-    activateTenant,
-    getTenantById,   
+    getAllUsers,
     getUserById,
+    deleteUser,
+    activateUser, // This activates a single user account
+    activateTenant, // This activates the entire tenant account
+    getTenantById,
+    getAgentsByTenant, // This gets all agents under a specific tenant
+    getTenants, // This gets all tenants for the superadmin dashboard   
+    createChildAgent, // This is for an admin to create an agent under their tenant
+
+
+    // AI Training & Management
     trainAIEntry,
     getAIEntries,
     deleteAIEntry,
+
+    // Dashboard Analytics
     getChatVolume,
     getTodaysConversationsCount,
     getRecentActivity,
     getTopIntents
 } = require('../controllers/superadminController');
 
+// WhatsApp Bot Controller (if it's separate)
 const { startBot, stopBot, getBotStatus } = require('../controllers/whatsappController');
+
+// Middleware for authentication and authorization
 const { protect, isSuperadmin } = require('../middleware/authMiddleware');
 
-// Apply protection to all routes in this file
+// Protect all routes below with superadmin access
 router.use(protect, isSuperadmin);
 
-// --- Route Definitions ---
+// --- USER & TENANT MANAGEMENT ---
 
-// User Management
-router.post('/users', createUser);
-router.delete('/users/:id', deleteUser);
-// ✅ THIS IS THE FIX FOR THE "ACTIVATE" BUTTON
-// The server will now correctly handle the PATCH request.
-router.get('/users', getAllUsers);
-router.patch('/users/:id/activate', activateUser);
-router.get('/users/:id', getUserById);
-// Tenant Management
-router.post('/tenants/:tenantId/activate', activateTenant);
-// ✅ THIS IS THE FIX FOR THE "MANAGE" BUTTON
-// The server will now correctly handle the GET request.
-router.get('/tenants/:tenantId', getTenantById);
 
-// AI Training
-router.post('/train-ai', trainAIEntry);
-router.get('/ai-entries', getAIEntries);
-router.delete('/ai-entries/:intent', deleteAIEntry);
 
-// WhatsApp Bot Control
+// --- AI TRAINING & MANAGEMENT ---
+// These routes are correctly structured to manage AI entries on a per-tenant basis.
+router.post('/tenants/:tenantId/ai/train', trainAIEntry);
+router.get('/tenants/:tenantId/ai/entries', getAIEntries);
+router.delete('/tenants/:tenantId/ai/entries/:intent', deleteAIEntry);
+
+// --- WHATSAPP BOT CONTROL ---
+// These routes seem intended for global bot control by a superadmin.
 router.post('/whatsapp/start', startBot);
 router.post('/whatsapp/stop', stopBot);
 router.get('/whatsapp/status', getBotStatus);
 
-// Dashboard Analytics
+// --- DASHBOARD ANALYTICS ---
+// These routes require a `tenantId` as a query parameter to specify which tenant's data to fetch.
+// Example: GET /api/superadmin/chat-volume?tenantId=some-tenant-id
 router.get('/chat-volume', getChatVolume);
 router.get('/conversations/count-today', getTodaysConversationsCount);
 router.get('/recent-activity', getRecentActivity);
