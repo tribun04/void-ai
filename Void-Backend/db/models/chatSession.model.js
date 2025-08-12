@@ -1,20 +1,12 @@
-// /db/models/chatMessage.model.js
+// /db/models/chatSession.model.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../config/database');
 
-const ChatMessage = sequelize.define('ChatMessage', {
+const ChatSession = sequelize.define('ChatSession', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-    },
-    message: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-    },
-    sender: {
-        type: DataTypes.ENUM('user', 'agent', 'system', 'ai'),
-        allowNull: false,
     },
     userId: {
         type: DataTypes.INTEGER,
@@ -32,22 +24,14 @@ const ChatMessage = sequelize.define('ChatMessage', {
         },
         allowNull: false,
     },
-    sessionId: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'ChatSessions',
-            key: 'id',
-        },
-        allowNull: false,
-    },
-    createdAt: {
+    startedAt: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
     }
 }, {
-    tableName: 'chat_messages',
-    timestamps: false // because we manually set createdAt
+    tableName: 'chat_sessions',
+    timestamps: false
 });
 
-module.exports = ChatMessage;
+module.exports = ChatSession;

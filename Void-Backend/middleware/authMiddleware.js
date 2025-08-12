@@ -9,6 +9,8 @@ const protect = (req, res, next) => {
       token = req.headers.authorization.split(' ')[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = decoded; // includes userId, email, role, tenantId
+      console.log("authMiddleware.protect - Decoded JWT:", decoded);  //  ADD THIS
+      console.log("authMiddleware.protect - Token Validated. Setting req.user:", req.user) //  ADD THIS
       next();
     } catch (error) {
       console.error('Token verification failed:', error.message);

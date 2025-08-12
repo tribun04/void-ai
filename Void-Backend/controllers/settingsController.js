@@ -1,31 +1,5 @@
-const fs = require('fs/promises');
-const path = require('path');
+const db = require('../db/mysql');
 const bcrypt = require('bcryptjs');
-
-// --- Define paths to your JSON "database" files ---
-const usersFilePath = path.join(__dirname, '..', 'data', 'users.json');
-const workspaceFilePath = path.join(__dirname, '..', 'data', 'workspaceSettings.json');
-
-// --- Helper function to read and parse a JSON file ---
-const readJSONFile = async (filePath) => {
-    try {
-        const data = await fs.readFile(filePath, 'utf-8');
-        return JSON.parse(data);
-    } catch (error) {
-        console.error(`Error reading or parsing file at ${filePath}:`, error);
-        throw new Error('Could not read data file.');
-    }
-};
-
-// --- Helper function to write data to a JSON file ---
-const writeJSONFile = async (filePath, data) => {
-    try {
-        await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
-    } catch (error) {
-        console.error(`Error writing file at ${filePath}:`, error);
-        throw new Error('Could not save data file.');
-    }
-};
 
 /**
  * @desc    Get current user profile and workspace settings
@@ -34,16 +8,32 @@ const writeJSONFile = async (filePath, data) => {
  */
 exports.getSettings = async (req, res) => {
     try {
-        const userId = req.user.id;
-        const [users, workspaceSettings] = await Promise.all([
-            readJSONFile(usersFilePath),
-            readJSONFile(workspaceFilePath)
-        ]);
-        const user = users.find(u => u.id === userId || u._id === userId);
+        console.log("getSettings - User:", req.user);
 
-        if (!user) {
+        const userId = req.user.id;
+        const tenantId = req.user.tenantId; // Assuming tenantId is in req.user
+
+        // Fetch user profile from the users table
+        const [users] = await db.query(
+            'SELECT id, fullName AS name, email FROM users WHERE id = ? AND tenantId = ?', // Selecting only necessary fields
+            [userId, tenantId]
+        );
+
+        if (!users || users.length === 0) {
+            console.warn("User not found for ID:", userId, "and tenantId:", tenantId);
             return res.status(404).json({ message: 'User not found.' });
         }
+
+        const user = users[0];
+
+        // Fetch workspace settings from the workspace_settings table, using tenantId
+        const [workspace] = await db.query(
+            'SELECT timezone FROM workspace_settings WHERE tenantId = ?',
+            [tenantId]
+        );
+
+        const workspaceSettings = workspace && workspace.length > 0 ? workspace[0] : { timezone: 'UTC' }; // Correctly access the first element if it exists
+
 
         res.status(200).json({
             profile: {
@@ -55,6 +45,7 @@ exports.getSettings = async (req, res) => {
             },
         });
     } catch (error) {
+        console.error("Error in getSettings:", error);
         res.status(500).json({ message: 'Server Error: ' + error.message });
     }
 };
@@ -68,21 +59,36 @@ exports.updateProfile = async (req, res) => {
     try {
         const { name } = req.body;
         const userId = req.user.id;
+        const tenantId = req.user.tenantId; // Ensure tenantId is available
+
         if (!name) {
             return res.status(400).json({ message: 'Name is required.' });
         }
-        const users = await readJSONFile(usersFilePath);
-        const userIndex = users.findIndex(u => u.id === userId || u._id === userId);
-        if (userIndex === -1) {
-            return res.status(404).json({ message: 'User not found.' });
+
+        // Update user's profile in the database
+        const [result] = await db.query(
+            'UPDATE users SET fullName = ? WHERE id = ? AND tenantId = ?',
+            [name, userId, tenantId]
+        );
+
+        if (result.affectedRows === 0) {
+            console.warn("User not found or no changes made for ID:", userId, "and tenantId:", tenantId);
+            return res.status(404).json({ message: 'User not found or no changes made.' });
         }
-        users[userIndex].name = name;
-        await writeJSONFile(usersFilePath, users);
+
+        // Fetch updated user data for response
+        const [updatedUsers] = await db.query(
+            'SELECT fullName AS name, email FROM users WHERE id = ? AND tenantId = ?',
+            [userId, tenantId]
+        );
+        const updatedUser = updatedUsers[0];
+
         res.status(200).json({
             message: 'Profile updated successfully!',
-            user: { name: users[userIndex].name, email: users[userIndex].email }
+            user: { name: updatedUser.name, email: updatedUser.email }
         });
     } catch (error) {
+        console.error("Error in updateProfile:", error);
         res.status(500).json({ message: 'Server Error: ' + error.message });
     }
 };
@@ -95,17 +101,36 @@ exports.updateProfile = async (req, res) => {
 exports.updateWorkspace = async (req, res) => {
     try {
         const { timezone } = req.body;
+        const tenantId = req.user.tenantId; // Ensure tenantId is available
+
         if (!timezone) {
             return res.status(400).json({ message: 'Timezone is required.' });
         }
-        const workspaceSettings = await readJSONFile(workspaceFilePath);
-        workspaceSettings.timezone = timezone;
-        await writeJSONFile(workspaceFilePath, workspaceSettings);
+
+        // Update workspace settings in the database
+        const [result] = await db.query(
+            'UPDATE workspace_settings SET timezone = ? WHERE tenantId = ?',
+            [timezone, tenantId]
+        );
+
+        // Check if the workspace settings were found and updated
+        if (result.affectedRows === 0) {
+            console.warn("Workspace settings not found for tenantId:", tenantId);
+            return res.status(404).json({ message: 'Workspace settings not found.' });
+        }
+
+        // Fetch updated workspace settings for response
+        const [updatedWorkspace] = await db.query(
+            'SELECT timezone FROM workspace_settings WHERE tenantId = ?',
+            [tenantId]
+        );
+
         res.status(200).json({
             message: 'Workspace settings updated successfully!',
-            workspace: workspaceSettings,
+            workspace: updatedWorkspace[0],
         });
     } catch (error) {
+        console.error("Error in updateWorkspace:", error);
         res.status(500).json({ message: 'Server Error: ' + error.message });
     }
 };
@@ -124,25 +149,25 @@ exports.updatePassword = async (req, res) => {
     }
 
     try {
-        const users = await readJSONFile(usersFilePath);
-        const userIndex = users.findIndex(u => u.id === userId || u._id === userId);
-        if (userIndex === -1) return res.status(404).json({ message: 'User not found.' });
-        
-        const user = users[userIndex];
-        
-        // Use user.passwordHash to match the field in your users.json file
-        const isMatch = await bcrypt.compare(currentPassword, user.passwordHash); // <-- CHANGED
+        const users = await db.query("SELECT * FROM users WHERE id = ?", [userId]);
+
+        if (users.length === 0) {
+            return res.status(404).json({ message: 'User not found.' });
+        }
+
+        const user = users[0][0];
+
+        const isMatch = await bcrypt.compare(currentPassword, user.passwordHash); // <-- Use passwordHash
         if (!isMatch) return res.status(401).json({ message: 'Incorrect current password.' });
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(newPassword, salt);
-        
-        // Save the new hash to the correct field
-        users[userIndex].passwordHash = hashedPassword; // <-- CHANGED
-        await writeJSONFile(usersFilePath, users);
+
+        await db.query("UPDATE users SET passwordHash = ? WHERE id = ?", [hashedPassword, userId]);  // Use passwordHash
 
         res.status(200).json({ message: 'Password updated successfully!' });
     } catch (error) {
+        console.error("Error in updatePassword:", error);
         res.status(500).json({ message: 'Server Error: ' + error.message });
     }
 };
@@ -155,30 +180,44 @@ exports.updatePassword = async (req, res) => {
 exports.updateEmail = async (req, res) => {
     const { newEmail, currentPassword } = req.body;
     const userId = req.user.id;
+    const tenantId = req.user.tenantId;
 
     if (!newEmail || !currentPassword) {
         return res.status(400).json({ message: 'Please provide the new email and your current password.' });
     }
 
     try {
-        const users = await readJSONFile(usersFilePath);
-        const emailExists = users.some(u => u.email === newEmail && (u.id !== userId && u._id !== userId));
-        if (emailExists) return res.status(400).json({ message: 'This email is already in use.' });
+        const [existingEmails] = await db.query(
+            'SELECT * FROM users WHERE email = ? AND tenantId = ?',
+            [newEmail, tenantId]
+        );
 
-        const userIndex = users.findIndex(u => u.id === userId || u._id === userId);
-        if (userIndex === -1) return res.status(404).json({ message: 'User not found.' });
+        if (existingEmails.length > 0) {
+            return res.status(400).json({ message: 'This email is already in use.' });
+        }
 
-        const user = users[userIndex];
+        const [users] = await db.query(
+            'SELECT * FROM users WHERE id = ? AND tenantId = ?',
+            [userId, tenantId]
+        );
 
-        // Use user.passwordHash to match the field in your users.json file
-        const isMatch = await bcrypt.compare(currentPassword, user.passwordHash); // <-- CHANGED
+        if (!users || users.length === 0) {
+            return res.status(404).json({ message: 'User not found.' });
+        }
+
+        const user = users[0];
+
+        const isMatch = await bcrypt.compare(currentPassword, user.passwordHash); // <-- Use passwordHash
         if (!isMatch) return res.status(401).json({ message: 'Incorrect password. Cannot change email.' });
 
-        users[userIndex].email = newEmail;
-        await writeJSONFile(usersFilePath, users);
-        
+        await db.query(
+            'UPDATE users SET email = ? WHERE id = ? AND tenantId = ?',
+            [newEmail, userId, tenantId]
+        );
+
         res.status(200).json({ message: 'Email updated successfully!' });
     } catch (error) {
+        console.error("Error in updateEmail:", error);
         res.status(500).json({ message: 'Server Error: ' + error.message });
     }
 };

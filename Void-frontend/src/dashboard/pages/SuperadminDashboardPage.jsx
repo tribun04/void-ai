@@ -38,7 +38,6 @@ const Sidebar = ({ user, activeView, setActiveView, onLogout, closeSidebar }) =>
     { view: 'history', label: 'Conversation History', icon: <FaHistory /> },
     { view: 'ai_training', label: 'AI Knowledge Base', icon: <FaBrain /> },
     { view: 'integrations', label: 'Integrations', icon: <FaShareAlt /> },
-    { view: 'voipintegrations', label: 'Voice Gateway', icon: <FaPhoneAlt /> },
     { view: 'settings', label: 'Settings', icon: <FaCog /> },
   ];
 
@@ -103,7 +102,6 @@ export function SuperadminDashboardPage() {
     history: 'Global Conversation History',
     ai_training: 'AI Knowledge Base & Training',
     integrations: 'Channel Integrations (WhatsApp, Facebook)',
-    voipintegrations: 'Voice Gateway Configuration', // More descriptive title
     settings: 'Platform Settings',
   };
 
