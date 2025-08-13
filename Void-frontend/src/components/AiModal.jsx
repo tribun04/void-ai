@@ -19,7 +19,7 @@
       placeholder: "Type your question here...",
       placeholderWaiting: "Please wait for a technology specialist to connect...",
       placeholderEnded: "This chat has ended. You may download the transcript.",
-    },
+    },  
     sq: {
       welcomeScreen: {
         title: "Asistenti Virtual i Tech Innovations",
