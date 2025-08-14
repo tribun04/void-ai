@@ -1,26 +1,43 @@
 const jwt = require('jsonwebtoken');
 const db = require('../db/mysql');
+const protect = async (req, res, next) => {
+    let token;
 
-const protect = (req, res, next) => {
-  let token;
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+        try {
+            token = req.headers.authorization.split(' ')[1];
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-    try {
-      token = req.headers.authorization.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = decoded; // includes userId, email, role, tenantId
-      console.log("authMiddleware.protect - Decoded JWT:", decoded);  //  ADD THIS
-      console.log("authMiddleware.protect - Token Validated. Setting req.user:", req.user) //  ADD THIS
-      next();
-    } catch (error) {
-      console.error('Token verification failed:', error.message);
-      return res.status(401).json({ message: 'Not authorized, token failed' });
+            // Fetch the user from the database to get all necessary details
+            const [users] = await db.query(
+                'SELECT id, tenantId FROM users WHERE id = ?', 
+                [decoded.id]
+            );
+
+            if (!users || users.length === 0) {
+                return res.status(401).json({ message: 'Not authorized, user for this token not found' });
+            }
+
+            // This is the object that will be passed to your controllers
+            req.user = users[0]; 
+
+            // --- DEBUGGING STEP ---
+            // Let's log the user object right before we proceed.
+            // This should print an object like: { id: 'some-id', tenantId: 'some-tenant-id' }
+            console.log('User attached by middleware:', req.user); 
+            // --------------------
+
+            next(); // Proceed to the controller
+
+        } catch (error) {
+            console.error('Error in protect middleware:', error);
+            res.status(401).json({ message: 'Not authorized, token is invalid or expired' });
+        }
     }
-  }
 
-  if (!token) {
-    return res.status(401).json({ message: 'Not authorized, no token' });
-  }
+    if (!token) {
+        res.status(401).json({ message: 'Not authorized, no token was provided' });
+    }
 };
 
 // Checks if the user has superadmin privileges
