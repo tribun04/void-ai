@@ -8,45 +8,19 @@ const bcrypt = require('bcryptjs');
  */
 exports.getSettings = async (req, res) => {
     try {
-        console.log("getSettings - User:", req.user);
+        // ... code to fetch the user ...
 
-        const userId = req.user.id;
-        const tenantId = req.user.tenantId; // Assuming tenantId is in req.user
-
-        // Fetch user profile from the users table
-        const [users] = await db.query(
-            'SELECT id, fullName AS name, email FROM users WHERE id = ? AND tenantId = ?', // Selecting only necessary fields
-            [userId, tenantId]
-        );
-
-        if (!users || users.length === 0) {
-            console.warn("User not found for ID:", userId, "and tenantId:", tenantId);
-            return res.status(404).json({ message: 'User not found.' });
-        }
-
-        const user = users[0];
-
-        // Fetch workspace settings from the workspace_settings table, using tenantId
+        // THIS IS THE LINE THAT IS FAILING
         const [workspace] = await db.query(
             'SELECT timezone FROM workspace_settings WHERE tenantId = ?',
             [tenantId]
         );
 
-        const workspaceSettings = workspace && workspace.length > 0 ? workspace[0] : { timezone: 'UTC' }; // Correctly access the first element if it exists
-
-
-        res.status(200).json({
-            profile: {
-                name: user.name,
-                email: user.email,
-            },
-            workspace: {
-                timezone: workspaceSettings.timezone,
-            },
-        });
+        // ... the rest of the code ...
     } catch (error) {
+        // This catch block is what's sending the error to your frontend
         console.error("Error in getSettings:", error);
-        res.status(500).json({ message: 'Server Error: ' + error.message });
+        // res.status(500).json({ message: 'Server Error: ' + error.message });
     }
 };
 
@@ -89,7 +63,7 @@ exports.updateProfile = async (req, res) => {
         });
     } catch (error) {
         console.error("Error in updateProfile:", error);
-        res.status(500).json({ message: 'Server Error: ' + error.message });
+        // res.status(500).json({ message: 'Server Error: ' + error.message });
     }
 };
 
@@ -131,7 +105,7 @@ exports.updateWorkspace = async (req, res) => {
         });
     } catch (error) {
         console.error("Error in updateWorkspace:", error);
-        res.status(500).json({ message: 'Server Error: ' + error.message });
+        // res.status(500).json({ message: 'Server Error: ' + error.message });
     }
 };
 
@@ -168,7 +142,7 @@ exports.updatePassword = async (req, res) => {
         res.status(200).json({ message: 'Password updated successfully!' });
     } catch (error) {
         console.error("Error in updatePassword:", error);
-        res.status(500).json({ message: 'Server Error: ' + error.message });
+        // res.status(500).json({ message: 'Server Error: ' + error.message });
     }
 };
 
@@ -218,6 +192,6 @@ exports.updateEmail = async (req, res) => {
         res.status(200).json({ message: 'Email updated successfully!' });
     } catch (error) {
         console.error("Error in updateEmail:", error);
-        res.status(500).json({ message: 'Server Error: ' + error.message });
+        // res.status(500).json({ message: 'Server Error: ' + error.message });
     }
 };

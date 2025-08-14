@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// --- IMPORTANT: CHANGE THE IMPORT FROM 'axios' TO YOUR NEW API CLIENT ---
+import apiClient from '../api/apiClient'; // Adjust the path if necessary
 import { FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
 
 // A list of common timezones for the dropdown.
@@ -9,7 +10,6 @@ const timezones = [
 ];
 
 // --- Reusable, Branded Settings Card ---
-// This keeps the code clean and ensures all setting sections look identical.
 const SettingsCard = ({ title, children }) => (
     <div className="bg-zinc-900 rounded-xl shadow-lg border border-zinc-800">
         <h2 className="text-xl font-bold text-white p-6 border-b border-zinc-700">
@@ -23,7 +23,7 @@ const SettingsCard = ({ title, children }) => (
 
 const Settings = () => {
     const [profileData, setProfileData] = useState({ name: '', email: '' });
-    const [workspaceData, setWorkspaceData] = useState({ timezone: '' });
+    const [workspaceData, setWorkspaceData] = useState({ timezone: 'UTC' });
     const [loading, setLoading] = useState(true);
     const [feedback, setFeedback] = useState({ message: '', type: '' });
 
@@ -34,17 +34,22 @@ const Settings = () => {
         newEmail: '', currentPassword: ''
     });
 
-    // --- Data Fetching and Handlers (No changes to logic) ---
+    // --- Data Fetching and Handlers ---
     useEffect(() => {
         const fetchSettings = async () => {
             try {
-                // Assuming you have set up an Axios instance with the auth token
-                const res = await axios.get('/api/settings');
-                setProfileData(res.data.profile);
-                setWorkspaceData(res.data.workspace);
+                // Use the new apiClient. It automatically includes the token.
+                // The URL is now just '/settings' because the base URL is in apiClient.js
+                const res = await apiClient.get('/settings');
+                
+                // Set state with fetched data, providing defaults if data is missing
+                setProfileData(res.data.profile || { name: '', email: '' });
+                setWorkspaceData(res.data.workspace || { timezone: 'UTC' });
             } catch (error) {
                 console.error('Failed to fetch settings:', error);
-                showFeedback('Failed to load settings.', 'error');
+                // The error message from the backend is now more accessible
+                const errorMessage = error.response?.data?.message || 'Failed to load settings.';
+                showFeedback(errorMessage, 'error');
             } finally {
                 setLoading(false);
             }
@@ -65,7 +70,8 @@ const Settings = () => {
     const handleProfileSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put('/api/settings/profile', { name: profileData.name });
+            // Use apiClient for the PUT request
+            await apiClient.put('/settings/profile', { name: profileData.name });
             showFeedback('Profile updated successfully!', 'success');
         } catch (error) {
             showFeedback(error.response?.data?.message || 'Failed to update profile.', 'error');
@@ -75,7 +81,8 @@ const Settings = () => {
     const handleWorkspaceSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put('/api/settings/workspace', { timezone: workspaceData.timezone });
+            // Use apiClient for the PUT request
+            await apiClient.put('/settings/workspace', { timezone: workspaceData.timezone });
             showFeedback('Workspace settings updated!', 'success');
         } catch (error) {
             showFeedback(error.response?.data?.message || 'Failed to update workspace.', 'error');
@@ -89,7 +96,8 @@ const Settings = () => {
             return;
         }
         try {
-            await axios.put('/api/settings/password', {
+            // Use apiClient for the PUT request
+            await apiClient.put('/settings/password', {
                 currentPassword: passwordData.currentPassword,
                 newPassword: passwordData.newPassword,
             });
@@ -103,15 +111,18 @@ const Settings = () => {
     const handleEmailSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.put('/api/settings/email', emailData);
+            // Use apiClient for the PUT request
+            const res = await apiClient.put('/settings/email', emailData);
             showFeedback(res.data.message, 'success');
             setEmailData({ newEmail: '', currentPassword: '' });
+            // Update the email in the local state to reflect the change immediately
             setProfileData({...profileData, email: emailData.newEmail });
         } catch (error) {
             showFeedback(error.response?.data?.message || 'Failed to update email.', 'error');
         }
     };
 
+    // --- JSX (No changes here) ---
     if (loading) {
         return <div className="p-12 text-center text-gray-400">Loading Settings...</div>;
     }
@@ -129,9 +140,7 @@ const Settings = () => {
                 </div>
             )}
             
-            {/* Using a responsive two-column grid for better layout */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                {/* Left Column: General Settings */}
                 <div className="space-y-10">
                     <SettingsCard title="My Profile">
                         <form onSubmit={handleProfileSubmit} className="space-y-4">
@@ -164,7 +173,6 @@ const Settings = () => {
                     </SettingsCard>
                 </div>
 
-                {/* Right Column: Security Settings */}
                 <div className="space-y-10">
                     <SettingsCard title="Change Password">
                         <form onSubmit={handlePasswordSubmit} className="space-y-4">
