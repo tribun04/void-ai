@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef, Fragment, useCallback } from 'react';
 import { useAuth } from '../context/AuthProvider';
 import {
-  FaWhatsapp, FaFacebookMessenger, FaGlobe, FaPowerOff, FaPlay, FaCircleNotch,
-  FaCopy, FaEye, FaCode, FaCheckCircle, FaSpinner, FaUnlink, FaSave
+    FaWhatsapp, FaFacebookMessenger, FaGlobe, FaPowerOff, FaPlay, FaCircleNotch,
+    FaCopy, FaEye, FaCode, FaCheckCircle, FaSpinner, FaUnlink, FaSave,
+    FaTelegram,
+    FaInstagram
 } from 'react-icons/fa';
 import QRCode from 'react-qr-code';
 import { Tab } from '@headlessui/react';
@@ -23,11 +25,11 @@ function TechAiModalPreview({ isOpen, onClose, config }) {
                 <div className="flex items-center justify-between p-4 border-b border-zinc-800 flex-shrink-0">
                     <div className="flex items-center gap-3">
                         <div className="rounded-lg p-2 shadow-lg" style={{ backgroundColor: brandColor }}>
-                           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                         </div>
                         <div><h2 className="text-lg font-semibold text-white">{companyName}</h2></div>
                     </div>
-                    <button onClick={onClose} className="text-gray-400 hover:text-white p-2"><svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/></svg></button>
+                    <button onClick={onClose} className="text-gray-400 hover:text-white p-2"><svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg></button>
                 </div>
                 <div className="flex-grow overflow-y-auto p-4 space-y-4">
                     <div className="flex flex-col items-center justify-center h-full text-center p-6">
@@ -37,7 +39,7 @@ function TechAiModalPreview({ isOpen, onClose, config }) {
                 </div>
                 <div className="p-4 border-t border-zinc-800 flex-shrink-0 relative">
                     <textarea className="w-full p-4 pr-12 bg-zinc-800 text-white rounded-xl" placeholder={inputPlaceholder} rows={1} readOnly />
-                    <div className="absolute right-6 top-1/2 -translate-y-1/2"><button className="p-2 rounded-full text-white" style={{ backgroundColor: brandColor }}><svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg></button></div>
+                    <div className="absolute right-6 top-1/2 -translate-y-1/2"><button className="p-2 rounded-full text-white" style={{ backgroundColor: brandColor }}><svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg></button></div>
                 </div>
             </div>
         </div>
@@ -46,7 +48,7 @@ function TechAiModalPreview({ isOpen, onClose, config }) {
 
 // --- Rebranded Helper Functions & Components ---
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
+    return classes.filter(Boolean).join(' ');
 }
 
 const InstructionStep = ({ number, title, children }) => (
@@ -88,6 +90,9 @@ export function Integrations() {
         { name: 'Website', icon: FaGlobe },
         { name: 'WhatsApp', icon: FaWhatsapp },
         { name: 'Facebook', icon: FaFacebookMessenger },
+        { name: 'Telegram', icon: FaTelegram },
+        { name: 'Instagram', icon: FaInstagram },
+
     ];
     return (
         <div className="bg-zinc-900 rounded-xl shadow-lg p-6 md:p-8 border border-zinc-800">
@@ -103,7 +108,11 @@ export function Integrations() {
                 <Tab.Panels className="mt-2">
                     <Tab.Panel><WebsitePanel /></Tab.Panel>
                     <Tab.Panel><WhatsAppPanel /></Tab.Panel>
-                    <Tab.Panel><FacebookPanel /></Tab.Panel>
+                    <Tab.Panel><FacebookPanel /></Tab.Panel>                    <
+                        Tab.Panel><FaInstagram /></Tab.Panel>
+
+                    <Tab.Panel><FaTelegram /></Tab.Panel>
+
                 </Tab.Panels>
             </Tab.Group>
         </div>
@@ -117,7 +126,7 @@ function WebsitePanel() {
     const [isLoading, setIsLoading] = useState(true);
     const [isSaving, setIsSaving] = useState(false);
     const [feedback, setFeedback] = useState({ message: '', type: 'info' });
-    
+
     const [config, setConfig] = useState({
         organizationId: '', companyName: '', brandColor: '#16a085',
         welcomeMessage: '', allowedDomains: [], handoffTriggerKeywords: [],
@@ -138,12 +147,12 @@ function WebsitePanel() {
                 const sanitizedData = {
                     ...data,
                     brandColor: data.brandColor || '#16a085',
-                    languages: data.languages || { en:{}, sq:{}, sr:{} },
+                    languages: data.languages || { en: {}, sq: {}, sr: {} },
                     handoffTriggerKeywords: data.handoffTriggerKeywords || [],
                     allowedDomains: data.allowedDomains || [],
                 };
                 setConfig(sanitizedData);
-            } catch (error) { setFeedback({ message: error.message, type: 'error' }); } 
+            } catch (error) { setFeedback({ message: error.message, type: 'error' }); }
             finally { setIsLoading(false); }
         };
         fetchConfig();
@@ -172,10 +181,10 @@ function WebsitePanel() {
             }
             setFeedback({ message: 'Configuration saved successfully!', type: 'success' });
             setTimeout(() => setFeedback({ message: '', type: 'info' }), 3000);
-        } catch (error) { setFeedback({ message: `Error: ${error.message}`, type: 'error' }); } 
+        } catch (error) { setFeedback({ message: `Error: ${error.message}`, type: 'error' }); }
         finally { setIsSaving(false); }
     };
-    
+
     const API_BASE_URL = "http://localhost:5000";
 
     const reactHookCode = `// hooks/useWidgetLoader.js
@@ -251,7 +260,7 @@ export const ChatTrigger = () => {
     </>
   );
 };`;
-    
+
     const vanillaJsCode = `// public/js/widget-launcher.js
 class TechAiWidget {
   constructor(options) {
@@ -319,10 +328,10 @@ $apiBaseUrl = "${API_BASE_URL}";
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <TechAiModalPreview isOpen={isPreviewOpen} onClose={() => setIsPreviewOpen(false)} config={config} />
-            
+
             {/* Left Column: Configuration Form */}
             {/* This form is missing from the provided code, but the logic for it exists. */}
-            
+
             {/* Right Column: Developer Integration Guide */}
             <div className="space-y-6">
                 <h3 className="text-xl font-bold text-white">Developer Integration Guide</h3>
@@ -358,7 +367,7 @@ const WebhookDisplay = ({ url }) => {
         <div className="flex items-center bg-zinc-800 rounded-md border border-zinc-700">
             <span className="px-4 text-gray-400 font-mono text-sm truncate">{displayUrl}</span>
             <button onClick={handleCopy} disabled={url === 'Loading...'} className="ml-auto flex-shrink-0 px-4 py-2 bg-[#16a085] hover:bg-[#138f75] text-white font-semibold text-sm rounded-r-md flex items-center gap-2 disabled:bg-[#16a085]/40 disabled:cursor-not-allowed">
-                <FaCopy/> {copied ? 'Copied!' : 'Copy'}
+                <FaCopy /> {copied ? 'Copied!' : 'Copy'}
             </button>
         </div>
     );
@@ -400,10 +409,10 @@ function WhatsAppPanel() {
                 <p className="text-gray-400 mb-6 min-h-[20px]">{statusMessage}</p>
                 <div className="flex gap-4 mb-8">
                     <button onClick={() => handleAction('start')} disabled={isLoading || status === 'connected' || status === 'connecting'} className="flex items-center gap-2 px-5 py-2.5 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700 disabled:bg-zinc-700 disabled:cursor-not-allowed">
-                        <FaPlay/> Start Service
+                        <FaPlay /> Start Service
                     </button>
                     <button onClick={handleStop} disabled={isLoading || status === 'disconnected'} className="flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white rounded-lg font-bold hover:bg-red-700 disabled:bg-zinc-700 disabled:cursor-not-allowed">
-                        <FaPowerOff/> Stop Service
+                        <FaPowerOff /> Stop Service
                     </button>
                 </div>
                 <div className="w-full h-64 flex items-center justify-center bg-zinc-950 rounded-lg p-4 border border-zinc-800">
@@ -456,7 +465,7 @@ function FacebookPanel() {
             if (!res.ok) throw new Error(data.message || 'Activation failed.');
             setStatus('active');
             setFeedback({ message: data.message, type: 'success' });
-        } catch (error) { setFeedback({ message: error.message, type: 'error' }); } 
+        } catch (error) { setFeedback({ message: error.message, type: 'error' }); }
         finally { setIsBusy(false); }
     };
     const handleDeactivate = async () => {

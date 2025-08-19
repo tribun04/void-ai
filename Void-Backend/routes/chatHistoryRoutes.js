@@ -1,15 +1,27 @@
+// routes/chatHistoryRoutes.js
 const express = require('express');
 const router = express.Router();
-const { getChatLogsList, getChatLogContent } = require('../controllers/chatHistoryController');
-const { protect, isSuperadmin } = require('../middleware/authMiddleware');
 
-// Protect all routes in this file, ensuring only a logged-in superadmin can access them.
-router.use(protect, isSuperadmin);
+const { protect } = require('../middleware/authMiddleware');
+const {
+    getChatLogsList,
+    getChatLogContent,
+} = require('../controllers/chatHistoryController');
 
-// Route to get the list of all chat logs
-router.get('/', getChatLogsList);
+// All routes require auth
+router.use(protect);
 
-// Route to get the content of a specific chat log by its ID
-router.get('/:conversationId', getChatLogContent);
+// ---- Primary routes
+// JWT-scoped list/detail
+router.get('/chat-history', getChatLogsList);
+router.get('/chat-history/:conversationId', getChatLogContent);
+
+// Explicit tenant routes (for SUPERADMIN viewing other tenants)
+router.get('/tenants/:tenantId/chat-history', getChatLogsList);
+router.get('/tenants/:tenantId/chat-history/:conversationId', getChatLogContent);
+
+// ---- Legacy aliases (keep until all frontends are updated)
+router.get('/tenant/chat-history', getChatLogsList);
+router.get('/tenant/chat-history/:conversationId', getChatLogContent);
 
 module.exports = router;

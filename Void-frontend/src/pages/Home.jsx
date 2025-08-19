@@ -31,7 +31,7 @@ const fadeInItem = {
   visible: { opacity: 1, y: 0 },
 };
 
-const OliveHome = () => {
+const Olive = () => {
   // --- STATE MANAGEMENT ---
   // State from oldHome.jsx for AI Modal and Navigation
   const sessionId = useSessionId();
@@ -108,11 +108,11 @@ const OliveHome = () => {
     { name: "Dr. Mirjeta Hoxha", position: "Specialiste Hematologe", photo: "https://images.unsplash.com/photo-1659353887907-000c9a92377d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
     { name: "Dr. Arben Shehu", position: "Patolog", photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=800" },
   ];
-  
+
   const laboratoryNews = [
-      { title: "Hapja e Departamentit të Ri Molekular", date: "15 Qershor 2024", summary: "Filloi punë sistemi i ri PCR me kapacitet të lartë, duke na bërë lider në rajon.", image: "https://images.unsplash.com/photo-1618498082410-b4aa22193b38?auto=format&fit=crop&q=80&w=800" },
-      { title: "Certifikimi Ndërkombëtar ISO 15189:2022", date: "3 Mars 2024", summary: "Laboratori ynë merr certifikimin prestigjioz për menaxhimin e cilësisë.", image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=800" },
-      { title: "Partneritet me Spitalin Universitar", date: "10 Janar 2024", summary: "Nënshkruam marrëveshje bashkëpunimi për kërkime klinike të avancuara.", image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=800" },
+    { title: "Hapja e Departamentit të Ri Molekular", date: "15 Qershor 2024", summary: "Filloi punë sistemi i ri PCR me kapacitet të lartë, duke na bërë lider në rajon.", image: "https://images.unsplash.com/photo-1618498082410-b4aa22193b38?auto=format&fit=crop&q=80&w=800" },
+    { title: "Certifikimi Ndërkombëtar ISO 15189:2022", date: "3 Mars 2024", summary: "Laboratori ynë merr certifikimin prestigjioz për menaxhimin e cilësisë.", image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&q=80&w=800" },
+    { title: "Partneritet me Spitalin Universitar", date: "10 Janar 2024", summary: "Nënshkruam marrëveshje bashkëpunimi për kërkime klinike të avancuara.", image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=800" },
   ];
 
   const navLinks = [
@@ -276,125 +276,125 @@ const OliveHome = () => {
       {/* Staff Section */}
       <section id="staff" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <motion.div className="text-center" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={fadeInItem}>
-                <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Njihuni me Ekipin Tonë</h2>
-                <p className="mt-4 text-lg text-slate-600">Profesionistë të përkushtuar për shëndetin tuaj.</p>
-            </motion.div>
-            <motion.div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeInStagger}>
-                {staffMembers.map((member, index) => (
-                <motion.div key={index} variants={fadeInItem} className="text-center group">
-                    <div className="relative w-48 h-48 mx-auto">
-                    <img src={member.photo} alt={member.name} className="w-full h-full rounded-full object-cover shadow-lg transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute inset-0 rounded-full border-4 border-emerald-200 transition-all duration-500 group-hover:border-emerald-400 transform scale-105 group-hover:scale-110 opacity-0 group-hover:opacity-100" />
-                    </div>
-                    <h3 className="mt-6 text-xl font-bold text-slate-900">{member.name}</h3>
-                    <p className="text-emerald-600 font-medium">{member.position}</p>
-                </motion.div>
-                ))}
-            </motion.div>
+          <motion.div className="text-center" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={fadeInItem}>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Njihuni me Ekipin Tonë</h2>
+            <p className="mt-4 text-lg text-slate-600">Profesionistë të përkushtuar për shëndetin tuaj.</p>
+          </motion.div>
+          <motion.div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeInStagger}>
+            {staffMembers.map((member, index) => (
+              <motion.div key={index} variants={fadeInItem} className="text-center group">
+                <div className="relative w-48 h-48 mx-auto">
+                  <img src={member.photo} alt={member.name} className="w-full h-full rounded-full object-cover shadow-lg transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 rounded-full border-4 border-emerald-200 transition-all duration-500 group-hover:border-emerald-400 transform scale-105 group-hover:scale-110 opacity-0 group-hover:opacity-100" />
+                </div>
+                <h3 className="mt-6 text-xl font-bold text-slate-900">{member.name}</h3>
+                <p className="text-emerald-600 font-medium">{member.position}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* Video Section */}
       <section className="py-24 bg-slate-100">
         <motion.div className="max-w-4xl mx-auto px-6 lg:px-8 text-center" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={fadeInItem}>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Eksperienca Olive Medical</h2>
-            <p className="mt-4 text-lg text-slate-600">Shikoni një tur virtual të laboratorit dhe teknologjisë sonë të përparuar.</p>
-            <div className="mt-10 relative aspect-video w-full rounded-xl overflow-hidden shadow-2xl cursor-pointer group">
-                {!isVideoPlaying ? (
-                <>
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1470" alt="Video Thumbnail" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black/40 transition-colors group-hover:bg-black/60" onClick={() => setIsVideoPlaying(true)}>
-                    <PlayCircleIcon className="w-24 h-24 text-white/80 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform transition-transform group-hover:scale-110" />
-                    </div>
-                </>
-                ) : (
-                <iframe className="w-full h-full" src="https://www.youtube.com/embed/SdpY-153h6s?autoplay=1&rel=0" title="Video prezantimi i Olive Medical" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                )}
-            </div>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Eksperienca Olive Medical</h2>
+          <p className="mt-4 text-lg text-slate-600">Shikoni një tur virtual të laboratorit dhe teknologjisë sonë të përparuar.</p>
+          <div className="mt-10 relative aspect-video w-full rounded-xl overflow-hidden shadow-2xl cursor-pointer group">
+            {!isVideoPlaying ? (
+              <>
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1470" alt="Video Thumbnail" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black/40 transition-colors group-hover:bg-black/60" onClick={() => setIsVideoPlaying(true)}>
+                  <PlayCircleIcon className="w-24 h-24 text-white/80 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform transition-transform group-hover:scale-110" />
+                </div>
+              </>
+            ) : (
+              <iframe className="w-full h-full" src="https://www.youtube.com/embed/SdpY-153h6s?autoplay=1&rel=0" title="Video prezantimi i Olive Medical" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+            )}
+          </div>
         </motion.div>
       </section>
 
       {/* News Section */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <motion.div className="text-center" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={fadeInItem}>
-                <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Lajmet e Fundit</h2>
-                <p className="mt-4 text-lg text-slate-600">Qëndroni të informuar me zhvillimet më të reja në Olive Medical.</p>
-            </motion.div>
-            <motion.div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeInStagger}>
-                {laboratoryNews.map((news, index) => (
-                <motion.div key={index} variants={fadeInItem} className="flex flex-col rounded-lg shadow-lg overflow-hidden group">
-                    <div className="flex-shrink-0 h-48 overflow-hidden"><img src={news.image} alt={news.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></div>
-                    <div className="flex-1 bg-white p-6 flex flex-col justify-between">
-                    <div className="flex-1">
-                        <p className="text-sm font-medium text-emerald-600">{news.date}</p>
-                        <a href="#" className="block mt-2">
-                        <p className="text-xl font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors">{news.title}</p>
-                        <p className="mt-3 text-base text-slate-500">{news.summary}</p>
-                        </a>
-                    </div>
-                    <div className="mt-6 flex items-center">
-                        <a href="#" className="text-base font-semibold text-emerald-600 hover:text-emerald-500 flex items-center">Lexo më shumë<ChevronRightIcon className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" /></a>
-                    </div>
-                    </div>
-                </motion.div>
-                ))}
-            </motion.div>
+          <motion.div className="text-center" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={fadeInItem}>
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Lajmet e Fundit</h2>
+            <p className="mt-4 text-lg text-slate-600">Qëndroni të informuar me zhvillimet më të reja në Olive Medical.</p>
+          </motion.div>
+          <motion.div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeInStagger}>
+            {laboratoryNews.map((news, index) => (
+              <motion.div key={index} variants={fadeInItem} className="flex flex-col rounded-lg shadow-lg overflow-hidden group">
+                <div className="flex-shrink-0 h-48 overflow-hidden"><img src={news.image} alt={news.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" /></div>
+                <div className="flex-1 bg-white p-6 flex flex-col justify-between">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-emerald-600">{news.date}</p>
+                    <a href="#" className="block mt-2">
+                      <p className="text-xl font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors">{news.title}</p>
+                      <p className="mt-3 text-base text-slate-500">{news.summary}</p>
+                    </a>
+                  </div>
+                  <div className="mt-6 flex items-center">
+                    <a href="#" className="text-base font-semibold text-emerald-600 hover:text-emerald-500 flex items-center">Lexo më shumë<ChevronRightIcon className="w-5 h-5 ml-1 transition-transform group-hover:translate-x-1" /></a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* Footer */}
       <footer id="footer" className="bg-slate-800 text-white pt-16 pb-8">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <div>
-                <h3 className="text-xl font-bold mb-6">Olive Medical</h3>
-                <p className="text-slate-400 mb-4">Përkushtim dhe ekselencë në kujdesin shëndetësor për ju dhe familjen tuaj.</p>
-                <div className="flex gap-4">
-                    {socialLinks.map((social) => (
-                    <a key={social.name} href={social.href} className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center hover:bg-emerald-600 transition-colors" aria-label={`Visit our ${social.name} page`}>
-                        <social.icon className="w-5 h-5" /> 
-                    </a>
-                    ))}
-                </div>
-                </div>
-                <div>
-                    <h3 className="text-lg font-bold mb-6">Linqe të Shpejta</h3>
-                    <ul className="space-y-3">
-                        <li><a href="#services" className="text-slate-400 hover:text-emerald-300 transition-colors">Shërbimet Tona</a></li>
-                        <li><a href="#staff" className="text-slate-400 hover:text-emerald-300 transition-colors">Ekipi Ynë</a></li>
-                        <li><a href="#" className="text-slate-400 hover:text-emerald-300 transition-colors">Blog</a></li>
-                        <li><a href="#" className="text-slate-400 hover:text-emerald-300 transition-colors">Karriera</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 className="text-lg font-bold mb-6">Për Pacientët</h3>
-                    <ul className="space-y-3">
-                        <li><a href="#" className="text-slate-400 hover:text-emerald-300 transition-colors">Rezervo Takim</a></li>
-                        <li><a href="#" className="text-slate-400 hover:text-emerald-300 transition-colors">Pyetje të Shpeshta</a></li>
-                        <li><a href="#" className="text-slate-400 hover:text-emerald-300 transition-colors">Sigurimet Shëndetësore</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 className="text-lg font-bold mb-6">Na Kontaktoni</h3>
-                    <ul className="space-y-3 text-slate-400">
-                        <li>Rruga e Spitalit, Prishtinë</li>
-                        <li>info@olivemedical-ks.com</li>
-                        <li>+383 49 123 456</li>
-                    </ul>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div>
+              <h3 className="text-xl font-bold mb-6">Olive Medical</h3>
+              <p className="text-slate-400 mb-4">Përkushtim dhe ekselencë në kujdesin shëndetësor për ju dhe familjen tuaj.</p>
+              <div className="flex gap-4">
+                {socialLinks.map((social) => (
+                  <a key={social.name} href={social.href} className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center hover:bg-emerald-600 transition-colors" aria-label={`Visit our ${social.name} page`}>
+                    <social.icon className="w-5 h-5" />
+                  </a>
+                ))}
+              </div>
             </div>
-            <div className="border-t border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <div className="text-slate-400 mb-4 md:mb-0">© {new Date().getFullYear()} Olive Medical Center. Të gjitha të drejtat e rezervuara.</div>
-                <div className="flex gap-6">
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">Termat</a>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">Privatësia</a>
-                </div>
+            <div>
+              <h3 className="text-lg font-bold mb-6">Linqe të Shpejta</h3>
+              <ul className="space-y-3">
+                <li><a href="#services" className="text-slate-400 hover:text-emerald-300 transition-colors">Shërbimet Tona</a></li>
+                <li><a href="#staff" className="text-slate-400 hover:text-emerald-300 transition-colors">Ekipi Ynë</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-emerald-300 transition-colors">Blog</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-emerald-300 transition-colors">Karriera</a></li>
+              </ul>
             </div>
+            <div>
+              <h3 className="text-lg font-bold mb-6">Për Pacientët</h3>
+              <ul className="space-y-3">
+                <li><a href="#" className="text-slate-400 hover:text-emerald-300 transition-colors">Rezervo Takim</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-emerald-300 transition-colors">Pyetje të Shpeshta</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-emerald-300 transition-colors">Sigurimet Shëndetësore</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-6">Na Kontaktoni</h3>
+              <ul className="space-y-3 text-slate-400">
+                <li>Rruga e Spitalit, Prishtinë</li>
+                <li>info@olivemedical-ks.com</li>
+                <li>+383 49 123 456</li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <div className="text-slate-400 mb-4 md:mb-0">© {new Date().getFullYear()} Olive Medical Center. Të gjitha të drejtat e rezervuara.</div>
+            <div className="flex gap-6">
+              <a href="#" className="text-slate-400 hover:text-white transition-colors">Termat</a>
+              <a href="#" className="text-slate-400 hover:text-white transition-colors">Privatësia</a>
+            </div>
+          </div>
         </div>
       </footer>
-      
+
       {/* AI Assistant Button */}
       <button
         onClick={handleOpenModal}
@@ -410,8 +410,8 @@ const OliveHome = () => {
       </button>
 
       {/* Render the AI Modal */}
-      <AiModal 
-        isOpen={isModalOpen} 
+      <AiModal
+        isOpen={isModalOpen}
         onClose={handleCloseModal}
         lang={currentLang}
         currentUserId={sessionId}
@@ -420,4 +420,4 @@ const OliveHome = () => {
   );
 };
 
-export default OliveHome;
+export default Olive;

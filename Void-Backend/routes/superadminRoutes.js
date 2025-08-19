@@ -2,19 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // --- Controller Imports ---
-// This list imports EVERY function we need for this router to work.
 const {
-    // User/Tenant Management
-    createUser,
-    getAllUsers,
-    getUserById,
-    deleteUser,
-    activateUser, // This activates a single user account
-    activateTenant, // This activates the entire tenant account
-    getTenantById,
-    getAgentsByTenant, // This gets all agents under a specific tenant
-    getTenants, // This gets all tenants for the superadmin dashboard   
-    createChildAgent, // This is for an admin to create an agent under their tenant
 
 
     // AI Training & Management

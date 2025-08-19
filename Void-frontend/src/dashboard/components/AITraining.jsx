@@ -27,24 +27,13 @@ export function AITraining() {
 
   const { token } = useAuth();
   const topRef = useRef(null);
-
   const [feedback, setFeedback] = useFeedback();
 
-  const enableLogging = process.env.NODE_ENV === 'development';
-
-  // Function to handle API requests with error handling
   const apiRequest = useCallback(async (url, options, needsBody = true) => {
-    if (enableLogging) console.log("API Request URL:", url);
-    if (enableLogging) console.log("API Request Options:", options);
-    if (enableLogging) console.log("Token Value:", token);
-    if (enableLogging) console.log("Needs Body:", needsBody);
-    if (enableLogging) console.log("Options Body:", options.body);
-    if (enableLogging) console.log("Options Headers:", options.headers);
-
     const headers = {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json',
-      ...(options.headers || {}), // Merge any additional headers
+      ...(options.headers || {}),
     };
 
     const finalOptions = {
@@ -64,25 +53,21 @@ export function AITraining() {
         try {
           const errorData = await res.json();
           errorMessage = errorData.message || errorMessage;
-        } catch (jsonError) {
-          console.warn("Failed to parse error JSON:", jsonError);
+        } catch {
+          /* ignore parse errors */
         }
-        console.error("API Error:", errorMessage);
         throw new Error(errorMessage);
       }
 
       return await res.json();
     } catch (error) {
-      console.error("API Request Error:", error);
       setFeedback({ message: error.message, type: 'error' });
-      throw error; // Re-throw to be caught in component functions
+      throw error;
     }
-  }, [token, setFeedback, enableLogging]);
+  }, [token, setFeedback]);
 
-  // Fetch entries from the API
   const fetchEntries = useCallback(async () => {
     if (!token) {
-      if (enableLogging) console.warn("No token available. User might not be logged in.");
       setFeedback({ message: 'You must be logged in to view AI knowledge.', type: 'error' });
       return;
     }
@@ -90,21 +75,19 @@ export function AITraining() {
     setIsFetching(true);
     try {
       const apiUrl = 'http://localhost:5000/api/ai/ai-entries';
-      if (enableLogging) console.log("Fetching entries from:", apiUrl);
       const data = await apiRequest(apiUrl, { method: 'GET' }, false);
       setEntries(data);
-    } catch (error) {
-      // Error is already handled in apiRequest
+    } catch {
+      /* handled in apiRequest */
     } finally {
       setIsFetching(false);
     }
-  }, [token, setFeedback, apiRequest, enableLogging]);
+  }, [token, setFeedback, apiRequest]);
 
   useEffect(() => {
     fetchEntries();
   }, [fetchEntries]);
 
-  // Handle form submission for adding/updating AI knowledge
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!intent || !baseResponse) {
@@ -115,26 +98,21 @@ export function AITraining() {
     setIsLoading(true);
     try {
       const apiUrl = 'http://localhost:5000/api/ai/train-ai';
-      if (enableLogging) console.log("Training AI at:", apiUrl, { intent, prompt: baseResponse });
-      // Add a console log to check that intent and baseResponse are set correctly, to address the problem: AITraining.jsx:69 API Error: Missing intent, prompt, or response.
-      console.log("handleSubmit API data", { intent, prompt: baseResponse })
       const data = await apiRequest(apiUrl, {
         method: 'POST',
-        body: { intent, prompt: baseResponse, response: baseResponse }, // added response as it may be required
-
+        body: { intent, prompt: baseResponse, response: baseResponse },
       });
 
       setFeedback({ message: data.message, type: 'success' });
       handleCancelEdit();
-      fetchEntries(); // Refresh entries
-    } catch (error) {
-      // Error is already handled in apiRequest
+      fetchEntries();
+    } catch {
+      /* handled in apiRequest */
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Handle editing an existing entry
   const handleEdit = (entry) => {
     setEditMode(true);
     setIntent(entry.intent);
@@ -142,26 +120,20 @@ export function AITraining() {
     topRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Handle deleting an entry
   const handleDelete = useCallback(async (intentToDelete) => {
     if (!window.confirm(`Delete intent "${intentToDelete}"?`)) return;
 
     try {
       const apiUrl = `http://localhost:5000/api/ai/ai-entries/${encodeURIComponent(intentToDelete)}`;
-      if (enableLogging) console.log("Deleting intent from:", apiUrl);
-
-      const data = await apiRequest(apiUrl, {
-        method: 'DELETE',
-      }, false);
+      const data = await apiRequest(apiUrl, { method: 'DELETE' }, false);
 
       setFeedback({ message: data.message, type: 'success' });
-      fetchEntries(); // Refresh entries
-    } catch (error) {
-      // Error is already handled in apiRequest
+      fetchEntries();
+    } catch {
+      /* handled in apiRequest */
     }
-  }, [token, fetchEntries, setFeedback, apiRequest, enableLogging]);
+  }, [token, fetchEntries, setFeedback, apiRequest]);
 
-  // Handle canceling edit mode
   const handleCancelEdit = () => {
     setEditMode(false);
     setIntent('');

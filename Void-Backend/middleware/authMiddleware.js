@@ -7,18 +7,28 @@ const protect = (req, res, next) => {
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     try {
       token = req.headers.authorization.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = decoded; // includes userId, email, role, tenantId
-      console.log("authMiddleware.protect - Decoded JWT:", decoded);  //  ADD THIS
-      console.log("authMiddleware.protect - Token Validated. Setting req.user:", req.user) //  ADD THIS
-      next();
+      if (!token) {
+        console.log("authMiddleware.protect - No token found after 'Bearer '");
+        return res.status(401).json({ message: 'Not authorized, no token' });
+      }
+      jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+          console.error('Token verification failed:', err.message);
+          console.error('JWT Verification Error:', err); // Log the full error
+          return res.status(401).json({ message: 'Not authorized, token failed' });
+        }
+        req.user = decoded; // includes userId, email, role, tenantId
+        console.log("authMiddleware.protect - Decoded JWT:", decoded);  //  ADD THIS
+        console.log("authMiddleware.protect - Token Validated. Setting req.user:", req.user) //  ADD THIS
+        next();
+      });
+
     } catch (error) {
-      console.error('Token verification failed:', error.message);
+      console.error('Token processing error:', error.message);
       return res.status(401).json({ message: 'Not authorized, token failed' });
     }
-  }
-
-  if (!token) {
+  } else {
+    console.log("authMiddleware.protect - No authorization header found");
     return res.status(401).json({ message: 'Not authorized, no token' });
   }
 };

@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const fetch = require("node-fetch");
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const LLM_API_URL = process.env.LLM_API_URL || "https://voidsystem.shigjeta.com/api/generate";
 const MODEL_NAME = process.env.MODEL_NAME || "llama3:8b-instruct-q3_K_M";
@@ -316,8 +316,3 @@ async function testTrainAIEntry() {
   }
 }
 
-// -- Example usage: test cases  (Uncomment to run tests)
-//testLoadKnowledgeBase();
-//testGetSystemPrompt();
-//testAskOpenAI();
-//testTrainAIEntry();

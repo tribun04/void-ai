@@ -1,60 +1,215 @@
-import React, { useState, useEffect, useCallback } from 'react';
+// src/components/ChatHistoryViewer.js
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import axios from 'axios';
 import { FaArchive, FaExclamationCircle } from 'react-icons/fa';
-import { useAuth } from '../context/AuthProvider'; // ✅ 1. Import useAuth to get user credentials
+import { useAuth } from '../context/AuthProvider';
 
-export function ChatHistoryViewer() {
-    const { auth } = useAuth(); // ✅ Get the authenticated user's data
+/**
+ * Optional props:
+ *  - selectedTenantId: string | null   (superadmin viewing another tenant)
+ */
+export function ChatHistoryViewer({ selectedTenantId = null }) {
+    const { token, logout, isLoading: isLoadingAuth, user } = useAuth();
+
+    // Role detection (optional; default non-superadmin)
+    const role = String(user?.role || '').toUpperCase();
+    const isSuperadmin = role === 'SUPERADMIN';
+
+    // ----- State
     const [logs, setLogs] = useState([]);
+    const [logsCursor, setLogsCursor] = useState(null);       // will be used only if backend returns nextCursor
+    const [hasMoreLogs, setHasMoreLogs] = useState(true);
+
     const [selectedLog, setSelectedLog] = useState(null);
     const [messages, setMessages] = useState([]);
+
     const [loading, setLoading] = useState(true);
+    const [loadingMore, setLoadingMore] = useState(false);
     const [loadingMessages, setLoadingMessages] = useState(false);
-    const [error, setError] = useState(''); // ✅ State to show UI feedback on errors
+    const [error, setError] = useState('');
 
-    // ✅ Fetch the list of chat logs for the LOGGED-IN TENANT
-    const fetchLogs = useCallback(() => {
-        if (!auth?.token) return; // Don't fetch if not logged in
+    const logsAbortRef = useRef(null);
+    const msgsAbortRef = useRef(null);
 
-        setLoading(true);
-        setError(''); // Clear previous errors
+    // ----- Axios with token
+    const api = useRef(null);
+    if (!api.current) {
+        api.current = axios.create();
+        api.current.interceptors.request.use((config) => {
+            if (token) config.headers.Authorization = `Bearer ${token}`;
+            return config;
+        });
+    }
 
-        axios.get('/api/tenant/chat-history', { // ✅ 2. Use the correct TENANT-specific URL
-            headers: {
-                Authorization: `Bearer ${auth.token}` // ✅ 3. Add the required authentication token
+    // ----- Helpers: route builders (multi-tenant aware)
+    const buildListUrl = useCallback(
+        ({ limit = 50 }) => {
+            if (isSuperadmin && selectedTenantId) {
+                const base = `/api/tenants/${encodeURIComponent(selectedTenantId)}/chat-history`;
+                const qs = new URLSearchParams({ limit: String(limit) });
+                if (logsCursor) qs.set('cursor', String(logsCursor)); // only if your backend supports it
+                return `${base}?${qs.toString()}`;
             }
-        })
-        .then(res => setLogs(res.data))
-        .catch(err => {
-            console.error("Failed to fetch chat logs list", err);
-            setError('Could not load chat archives. Please try again later.'); // ✅ Set a user-friendly error
-        })
-        .finally(() => setLoading(false));
-    }, [auth]); // ✅ Re-run if auth state changes
+            const base = `/api/chat-history`;
+            const qs = new URLSearchParams({ limit: String(limit) });
+            if (logsCursor) qs.set('cursor', String(logsCursor));  // harmless if server ignores
+            return `${base}?${qs.toString()}`;
+        },
+        [isSuperadmin, selectedTenantId, logsCursor]
+    );
 
+    const buildMsgsUrl = useCallback(
+        ({ conversationId, limit = 1000 }) => {
+            if (isSuperadmin && selectedTenantId) {
+                return `/api/tenants/${encodeURIComponent(selectedTenantId)}/chat-history/${encodeURIComponent(
+                    conversationId
+                )}?limit=${limit}`;
+            }
+            return `/api/chat-history/${encodeURIComponent(conversationId)}?limit=${limit}`;
+        },
+        [isSuperadmin, selectedTenantId]
+    );
+
+    // ----- Error handler
+    const handleAxiosError = useCallback(
+        (err, fallbackMsg) => {
+            if (axios.isCancel(err)) return;
+            const status = err?.response?.status;
+            if (status === 401) {
+                setError('Your session expired. Please sign in again.');
+                logout();
+            } else if (status === 403) {
+                setError("You don't have permission to access this resource.");
+            } else {
+                setError(fallbackMsg);
+            }
+        },
+        [logout]
+    );
+
+    // ----- Normalizers (keep yours)
+    const normalizeLogs = (rows) =>
+        rows.map((r) => ({
+            conversationId: r.conversationId ?? r.conversation_id,
+            createdAt: r.createdAt ?? r.created_at,
+            title: r.title ?? r.conversation_title ?? null,
+            lastMessageAt: r.lastMessageAt ?? r.last_message_at ?? null,
+            messageCount: r.messageCount ?? r.message_count ?? null,
+        }));
+
+    const normalizeMessages = (rows) =>
+        rows.map((m) => ({
+            type: m.type,
+            from: m.from ?? m.sender ?? m.role,
+            agentName: m.agentName ?? m.agent_name ?? null,
+            text: m.text ?? m.content ?? '',
+            timestamp: m.timestamp ?? m.created_at,
+            event: m.event ?? null,
+        }));
+
+    // ----- Fetch logs (first page or "load more")
+    const fetchLogs = useCallback(
+        async (opts = { reset: false }) => {
+            if (!token) return;
+
+            if (logsAbortRef.current) logsAbortRef.current.abort();
+            logsAbortRef.current = new AbortController();
+
+            try {
+                if (opts.reset) {
+                    setLoading(true);
+                    setError('');
+                } else {
+                    setLoadingMore(true);
+                }
+
+                const url = buildListUrl({ limit: 50 });
+                const res = await api.current.get(url, { signal: logsAbortRef.current.signal });
+
+                // Accept both array and { items, nextCursor }
+                const payload = Array.isArray(res.data) ? { items: res.data, nextCursor: null } : res.data || {};
+                const batch = normalizeLogs(Array.isArray(payload.items) ? payload.items : payload.items ?? []);
+                const nextCursor = payload.nextCursor ?? null;
+
+                if (opts.reset) {
+                    setLogs(batch);
+                } else {
+                    setLogs((prev) => [...prev, ...batch]);
+                }
+
+                // If the server gave us nextCursor, use it; otherwise stop pagination.
+                setHasMoreLogs(Boolean(nextCursor) && batch.length > 0);
+                setLogsCursor(nextCursor);
+
+            } catch (err) {
+                handleAxiosError(err, 'Could not load chat archives. Please try again later.');
+            } finally {
+                setLoading(false);
+                setLoadingMore(false);
+            }
+        },
+        [token, buildListUrl, handleAxiosError]
+    );
+
+    // Reset & load on auth/tenant changes
     useEffect(() => {
-        fetchLogs();
-    }, [fetchLogs]);
+        if (!token) {
+            setLoading(false);
+            setLogs([]);
+            setSelectedLog(null);
+            setMessages([]);
+            setHasMoreLogs(true);
+            setLogsCursor(null);
+            return;
+        }
+        setLogs([]);
+        setHasMoreLogs(true);
+        setLogsCursor(null);
+        fetchLogs({ reset: true });
+        return () => {
+            if (logsAbortRef.current) logsAbortRef.current.abort();
+        };
+    }, [token, fetchLogs, selectedTenantId, isSuperadmin]);
 
-    const fetchLogContent = (conversationId) => {
-        if (!auth?.token) return;
+    // ----- Fetch one conversation
+    const fetchLogContent = async (conversationId) => {
+        if (!token) return;
+
+        if (msgsAbortRef.current) msgsAbortRef.current.abort();
+        msgsAbortRef.current = new AbortController();
 
         setLoadingMessages(true);
         setSelectedLog(conversationId);
         setError('');
 
-        axios.get(`/api/tenant/chat-history/${conversationId}`, { // ✅ Use the correct TENANT-specific URL
-            headers: {
-                Authorization: `Bearer ${auth.token}` // ✅ Add the required authentication token
-            }
-        })
-        .then(res => setMessages(res.data))
-        .catch(err => {
-            console.error(`Failed to fetch content for ${conversationId}`, err);
-            setError('Could not load the selected conversation.'); // ✅ Set a user-friendly error
-        })
-        .finally(() => setLoadingMessages(false));
+        try {
+            const url = buildMsgsUrl({ conversationId, limit: 1000 });
+            const res = await api.current.get(url, { signal: msgsAbortRef.current.signal });
+            const rows = Array.isArray(res.data) ? res.data : res.data?.items ?? [];
+            setMessages(normalizeMessages(rows));
+        } catch (err) {
+            handleAxiosError(err, 'Could not load the selected conversation.');
+        } finally {
+            setLoadingMessages(false);
+        }
     };
+
+    useEffect(() => {
+        return () => {
+            if (msgsAbortRef.current) msgsAbortRef.current.abort();
+        };
+    }, []);
+
+    // ----- Render
+    if (isLoadingAuth) return <p>Loading...</p>;
+
+    if (!token) {
+        return (
+            <div className="flex items-center justify-center h-full text-gray-500">
+                Please sign in to view your chat history.
+            </div>
+        );
+    }
 
     return (
         <div className="flex h-[calc(100vh-11rem)] bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800">
@@ -66,31 +221,56 @@ export function ChatHistoryViewer() {
                         Chat Archives
                     </h2>
                 </div>
-                <div className="flex-1 overflow-y-auto">
+
+                <div className="flex-1 overflow-y-auto" role="list" aria-label="Chat archives">
                     {loading ? (
                         <p className="p-4 text-gray-400">Loading archives...</p>
-                    ) : logs.length > 0 ? ( // ✅ Check if logs exist before mapping
-                        logs.map(log => (
-                            <div key={log.conversationId} onClick={() => fetchLogContent(log.conversationId)}
-                                className={`p-4 border-b border-zinc-800 cursor-pointer transition-colors ${
-                                    selectedLog === log.conversationId ? 'bg-[#16a085]/20' : 'hover:bg-zinc-800'
-                                }`}>
-                                <p className={`font-semibold truncate ${
-                                    selectedLog === log.conversationId ? 'text-white' : 'text-gray-300'
-                                }`}>
-                                    Chat: ...{log.conversationId.slice(-12)}
-                                </p>
-                            </div>
-                        ))
-                    ) : ( // ✅ 4. Show a helpful message if there are no logs
+                    ) : logs.length > 0 ? (
+                        <>
+                            {logs.map((log) => {
+                                const id = log.conversationId;
+                                const label = log.title || `Chat: …${String(id).slice(-12)}`;
+                                return (
+                                    <button
+                                        key={id}
+                                        onClick={() => !loadingMessages && fetchLogContent(id)}
+                                        disabled={loadingMessages}
+                                        className={`w-full text-left p-4 border-b border-zinc-800 cursor-pointer transition-colors ${selectedLog === id ? 'bg-[#16a085]/20' : 'hover:bg-zinc-800'
+                                            } ${loadingMessages ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                        role="listitem"
+                                        aria-current={selectedLog === id}
+                                    >
+                                        <p className={`font-semibold truncate ${selectedLog === id ? 'text-white' : 'text-gray-300'}`}>
+                                            {label}
+                                        </p>
+                                        {log.lastMessageAt && (
+                                            <p className="text-xs text-gray-400 mt-1">
+                                                Updated {new Date(log.lastMessageAt).toLocaleString()}
+                                            </p>
+                                        )}
+                                    </button>
+                                );
+                            })}
+
+                            {hasMoreLogs && (
+                                <button
+                                    onClick={() => fetchLogs({ reset: false })}
+                                    disabled={loadingMore}
+                                    className="w-full p-3 text-sm text-[#16a085] hover:bg-zinc-800 border-t border-zinc-800"
+                                    aria-label="Load more archives"
+                                >
+                                    {loadingMore ? 'Loading…' : 'Load more'}
+                                </button>
+                            )}
+                        </>
+                    ) : (
                         <p className="p-4 text-gray-500 text-center mt-4">No chat history found for your account.</p>
                     )}
                 </div>
             </aside>
 
-            {/* Main content area */}
+            {/* Main content */}
             <main className="flex-1 h-full flex flex-col bg-zinc-900">
-                {/* ✅ 5. Centralized display for all states: initial, loading, error, and content */}
                 {error ? (
                     <div className="flex flex-col items-center justify-center h-full text-red-400">
                         <FaExclamationCircle className="text-4xl mb-3" />
@@ -103,28 +283,35 @@ export function ChatHistoryViewer() {
                 ) : (
                     <div className="flex-1 p-6 overflow-y-auto space-y-4">
                         {messages.map((msg, index) => {
-                             if(msg.type === 'event') {
+                            if (msg.type === 'event') {
                                 return (
                                     <div key={index} className="text-center my-4">
                                         <span className="text-xs text-gray-400 bg-zinc-800 px-3 py-1 rounded-full font-medium">
                                             Event: {msg.event} at {new Date(msg.timestamp).toLocaleString()}
                                         </span>
                                     </div>
-                                )
+                                );
                             }
+                            const isAgent = msg.from === 'agent';
                             return (
-                                <div key={index} className={`flex items-end gap-3 max-w-xl ${msg.from === 'agent' ? 'flex-row-reverse ml-auto' : 'mr-auto'}`}>
-                                    <div className={`p-3 rounded-xl ${
-                                        msg.from === 'agent' ? 'bg-[#16a085] text-white' : 'bg-zinc-800 text-gray-200'
-                                    }`}>
+                                <div
+                                    key={index}
+                                    className={`flex items-end gap-3 max-w-xl ${isAgent ? 'flex-row-reverse ml-auto' : 'mr-auto'}`}
+                                >
+                                    <div
+                                        className={`p-3 rounded-xl ${isAgent ? 'bg-[#16a085] text-white' : 'bg-zinc-800 text-gray-200'
+                                            }`}
+                                    >
                                         <div className="flex items-baseline gap-2">
-                                            <p className="font-bold text-sm">{msg.from === 'agent' ? msg.agentName || 'Agent' : 'User'}</p>
+                                            <p className="font-bold text-sm">{isAgent ? msg.agentName || 'Agent' : 'User'}</p>
                                         </div>
                                         <p className="mt-1 text-sm whitespace-pre-wrap">{msg.text}</p>
-                                        <p className="text-xs opacity-60 text-right mt-2">{new Date(msg.timestamp).toLocaleTimeString()}</p>
+                                        <p className="text-xs opacity-60 text-right mt-2">
+                                            {new Date(msg.timestamp).toLocaleTimeString()}
+                                        </p>
                                     </div>
                                 </div>
-                            )
+                            );
                         })}
                     </div>
                 )}

@@ -70,6 +70,8 @@ app.use('/api/voip-config', voipConfigRoutes);
 app.use('/api/facebook', facebookRouter);
 app.use('/api/chat-history', chatHistoryRoutes);
 app.use('/api/widget', widgetRoutes);
+app.use('/api', chatRoutes);            // ✅ gives /api/chat-history, /api/tenant/chat-history, etc.
+
 app.use("/api/voice", voiceBot);
 app.use('/api/chat', chatRoutes); // ✅ ADD THIS
 app.use('/api/settings', settingsRoutes);
