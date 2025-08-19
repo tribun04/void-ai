@@ -8,47 +8,27 @@ const bcrypt = require('bcryptjs');
  */
 exports.getSettings = async (req, res) => {
     try {
-        console.log("getSettings - User:", req.user);
-
         const userId = req.user.id;
-        const tenantId = req.user.tenantId; // Assuming tenantId is in req.user
+        const tenantId = req.user.tenantId;
 
-        // Fetch user profile from the users table
         const [users] = await db.query(
-            'SELECT id, fullName AS name, email FROM users WHERE id = ? AND tenantId = ?', // Selecting only necessary fields
+            'SELECT id, fullName AS name, email FROM users WHERE id = ? AND tenantId = ?',
             [userId, tenantId]
         );
 
         if (!users || users.length === 0) {
-            console.warn("User not found for ID:", userId, "and tenantId:", tenantId);
             return res.status(404).json({ message: 'User not found.' });
         }
+        
+        // Return only the profile data
+        res.status(200).json({ profile: users[0] });
 
-        const user = users[0];
-
-        // Fetch workspace settings from the workspace_settings table, using tenantId
-        const [workspace] = await db.query(
-            'SELECT timezone FROM workspace_settings WHERE tenantId = ?',
-            [tenantId]
-        );
-
-        const workspaceSettings = workspace && workspace.length > 0 ? workspace[0] : { timezone: 'UTC' }; // Correctly access the first element if it exists
-
-
-        res.status(200).json({
-            profile: {
-                name: user.name,
-                email: user.email,
-            },
-            workspace: {
-                timezone: workspaceSettings.timezone,
-            },
-        });
     } catch (error) {
         console.error("Error in getSettings:", error);
         res.status(500).json({ message: 'Server Error: ' + error.message });
     }
 };
+
 
 /**
  * @desc    Update user profile (name)
